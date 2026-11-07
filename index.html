@@ -52,10 +52,6 @@
   <!-- ===== NAVIGATION ===== -->
   <header class="site-nav">
     <div class="nav-container">
-      <a href="#home" class="nav-brand" aria-label="Shubham Kumar Home">
-        <span>Shubham Kumar</span>
-      </a>
-
       <nav class="nav-links-menu" id="navLinksMenu" aria-label="Main Navigation">
         <a href="#home" class="nav-item active">Home</a>
         <a href="#about" class="nav-item">About</a>
@@ -81,6 +77,13 @@
         </div>
 
         <a href="#contact" class="nav-item">Contact</a>
+
+        <div class="mobile-drawer-actions">
+          <a href="https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-solid-blue mobile-drawer-resume" aria-label="Download Resume PDF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Resume (PDF)
+          </a>
+        </div>
       </nav>
 
       <div class="nav-actions">
@@ -99,12 +102,15 @@
           Resume
         </a>
 
-        <button class="nav-menu-toggle" id="navMenuToggle" aria-label="Toggle navigation drawer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <button class="nav-menu-toggle" id="navMenuToggle" aria-label="Toggle navigation drawer" aria-expanded="false" aria-controls="navLinksMenu">
+          <span class="hamburger-bar hamburger-bar-1"></span>
+          <span class="hamburger-bar hamburger-bar-2"></span>
+          <span class="hamburger-bar hamburger-bar-3"></span>
         </button>
       </div>
     </div>
   </header>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
 
   <main>
     <!-- ===== HERO SECTION (EDITORIAL ASYMMETRIC) ===== -->

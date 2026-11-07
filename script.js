@@ -1532,12 +1532,53 @@ function initScrollSpy() {
 function initMobileNav() {
   const toggleBtn = document.getElementById('navMenuToggle');
   const linksMenu = document.getElementById('navLinksMenu');
+  const backdrop = document.getElementById('mobileNavBackdrop');
   const moreBtn = document.getElementById('navMoreDropdownBtn');
   const dropdownWrap = document.querySelector('.nav-dropdown-wrapper');
   if (!toggleBtn || !linksMenu) return;
 
-  toggleBtn.addEventListener('click', () => {
-    linksMenu.classList.toggle('open');
+  function openDrawer() {
+    linksMenu.classList.add('open');
+    toggleBtn.classList.add('open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    if (backdrop) backdrop.classList.add('open');
+    document.body.classList.add('drawer-open');
+  }
+
+  function closeDrawer() {
+    linksMenu.classList.remove('open');
+    toggleBtn.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    if (backdrop) backdrop.classList.remove('open');
+    document.body.classList.remove('drawer-open');
+    if (dropdownWrap) {
+      dropdownWrap.classList.remove('open');
+      if (moreBtn) moreBtn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = linksMenu.classList.contains('open');
+    if (isOpen) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      closeDrawer();
+    });
+  }
+
+  // Keyboard navigation: Escape key closes mobile drawer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && linksMenu.classList.contains('open')) {
+      closeDrawer();
+      toggleBtn.focus();
+    }
   });
 
   if (moreBtn && dropdownWrap) {
@@ -1556,15 +1597,19 @@ function initMobileNav() {
     });
   }
 
+  // Close drawer when any navigation link is clicked
   linksMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      linksMenu.classList.remove('open');
-      if (dropdownWrap) {
-        dropdownWrap.classList.remove('open');
-        if (moreBtn) moreBtn.setAttribute('aria-expanded', 'false');
-      }
+      closeDrawer();
     });
   });
+
+  // Close drawer if window is resized above tablet breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && linksMenu.classList.contains('open')) {
+      closeDrawer();
+    }
+  }, { passive: true });
 }
 
 /* ==========================================================================
