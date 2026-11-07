@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initMobileNav();
   initContactForm();
+  initScrollReveal();
 });
 
 /* ==========================================================================
@@ -723,7 +724,8 @@ function initProjectsShowcase() {
         </div>
 
         <div class="project-visual-pane">
-          <div class="technical-blueprint-card">
+          <div class="technical-blueprint-card" data-category="${escapeHtml(p.category)}">
+            <div class="blueprint-header-strip"></div>
             <div class="blueprint-header">
               <span>SYSTEM BLUEPRINT // ${escapeHtml(p.id.toUpperCase())}</span>
               <span>VERIFIED REPOSITORY</span>
@@ -741,6 +743,9 @@ function initProjectsShowcase() {
                 <span class="flow-step-marker">3</span>
                 <span>${escapeHtml(p.whatLearned)}</span>
               </div>
+            </div>
+            <div class="blueprint-tech-icons">
+              ${p.tech.slice(0, 6).map(t => `<div class="bp-tech-icon" title="${escapeHtml(t)}">${escapeHtml(t.substring(0,3))}</div>`).join('')}
             </div>
             <div class="blueprint-footer">
               <span>PATTERN: ${escapeHtml(p.categoryLabel || 'Distributed System')}</span>
@@ -801,6 +806,7 @@ function initArchitectureExplorer() {
     arch.nodes.forEach((node, idx) => {
       const card = document.createElement('div');
       card.className = `arch-node-card ${idx === 0 ? 'active' : ''}`;
+      card.setAttribute('data-type', (node.type || 'default').toLowerCase());
       card.innerHTML = `
         <div class="arch-node-type">[${escapeHtml(node.type)}]</div>
         <div class="arch-node-label">${escapeHtml(node.label)}</div>
@@ -863,9 +869,30 @@ function initEngineeringLab() {
       const add2 = Math.floor(Math.random() * 25) + 15;
       p0 += add0; p1 += add1; p2 += add2;
 
-      if (p0Count) p0Count.textContent = p0;
-      if (p1Count) p1Count.textContent = p1;
-      if (p2Count) p2Count.textContent = p2;
+      function flashCount(el, val) {
+        if (!el) return;
+        el.textContent = val;
+        el.classList.remove('updated');
+        // Force reflow to restart animation
+        void el.offsetWidth;
+        el.classList.add('updated');
+      }
+
+      flashCount(p0Count, p0);
+      flashCount(p1Count, p1);
+      flashCount(p2Count, p2);
+
+      // Update mini bars (relative to max ~600)
+      const max = 600;
+      [
+        { el: p0Count, val: p0 },
+        { el: p1Count, val: p1 },
+        { el: p2Count, val: p2 }
+      ].forEach(({el, val}) => {
+        if (!el) return;
+        const bar = el.closest('.kafka-partition-box')?.querySelector('.partition-mini-bar-fill');
+        if (bar) bar.style.width = Math.min(100, (val / max) * 100) + '%';
+      });
     });
   }
 
@@ -876,6 +903,13 @@ function initEngineeringLab() {
       if (dlqStatus) {
         dlqStatus.textContent = `Worker retry ceiling (3) reached. Payload isolated in DLQ topic.`;
         dlqStatus.style.color = 'var(--accent-secondary)';
+      }
+      // Visual flash on DLQ panel
+      const dlqPanel = btnSimulateFail.closest('.kafka-simulator-container')?.querySelector('.dlq-status-panel');
+      if (dlqPanel) {
+        dlqPanel.classList.remove('has-failed');
+        void dlqPanel.offsetWidth;
+        dlqPanel.classList.add('has-failed');
       }
     });
   }
@@ -896,12 +930,19 @@ function initEngineeringLab() {
 
   nodeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      nodeButtons.forEach(b => b.classList.remove('selected'));
+      nodeButtons.forEach(b => b.classList.remove('selected', 'on-path'));
       btn.classList.add('selected');
       const node = btn.getAttribute('data-node');
       selectedEnd = node;
 
       const result = calculateShortest(selectedStart, selectedEnd);
+
+      // Highlight on-path nodes
+      nodeButtons.forEach(b => {
+        const nLabel = `Node ${b.getAttribute('data-node')}`;
+        if (result.path.includes(nLabel)) b.classList.add('on-path');
+      });
+
       if (pathResultText) {
         pathResultText.innerHTML = `
           Shortest Delivery Route: <strong style="color:var(--accent-primary);">${result.path.join(' → ')}</strong><br>
@@ -1695,4 +1736,46 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+/* ==========================================================================
+   SCROLL REVEAL — IntersectionObserver-based entrance animations
+   ========================================================================= */
+function initScrollReveal() {
+  // Respect reduced-motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Targets to observe
+  const revealSelectors = [
+    '.section-meta-header',
+    '.skills-sector-block',
+    '.milestone-category-block',
+    '.lab-experiment-card',
+    '.editorial-project-row',
+    '.about-pillar-block',
+    '.building-card',
+    '.timeline-entry-row',
+    '.arch-explorer-container',
+    '.dsa-hero-banner',
+    '.contact-form-wrapper',
+    '.github-dash-container',
+    '.technical-blueprint-card',
+  ];
+
+  const targets = document.querySelectorAll(revealSelectors.join(', '));
+  targets.forEach(el => el.classList.add('reveal-on-scroll'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target); // fire once
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  targets.forEach(el => observer.observe(el));
 }

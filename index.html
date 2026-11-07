@@ -98,8 +98,9 @@
           <span class="cmd-key-hint">Ctrl K</span>
         </button>
 
-        <a href="https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-sm-editorial btn-magnetic" aria-label="Download Resume PDF">
-          Resume
+        <a href="https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-resume-nav btn-magnetic" aria-label="Download Resume PDF">
+          <svg class="resume-icon-dl" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Resume</span>
         </a>
 
         <button class="nav-menu-toggle" id="navMenuToggle" aria-label="Toggle navigation drawer" aria-expanded="false" aria-controls="navLinksMenu">
@@ -181,13 +182,40 @@
           </div>
 
           <div class="hero-portrait-frame">
+            <!-- Animated Ambient Aurora Glow -->
+            <div class="hero-aura-ambient" aria-hidden="true"></div>
+            
+            <!-- Abstract Engineering Tech Accents -->
+            <div class="hero-tech-bracket top-left" aria-hidden="true"></div>
+            <div class="hero-tech-bracket top-right" aria-hidden="true"></div>
+            <div class="hero-tech-bracket bottom-left" aria-hidden="true"></div>
+            <div class="hero-tech-bracket bottom-right" aria-hidden="true"></div>
+
+            <!-- Floating Interactive Engineering Pills -->
+            <div class="hero-floating-pill pill-status">
+              <span class="pulse-indicator"></span>
+              <span>Available for SDE Roles</span>
+            </div>
+
+            <div class="hero-floating-pill pill-stats">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>700+ DSA · Rank #59</span>
+            </div>
+
             <div class="portrait-monolith">
               <div class="portrait-image-wrapper">
                 <img src="assets/profile.png" alt="Shubham Kumar - Aspiring Software Engineer" width="400" height="500">
+                <div class="portrait-scanline" aria-hidden="true"></div>
               </div>
               <div class="portrait-caption">
-                <span>Shubham Kumar</span>
-                <span>Aspiring Software Engineer</span>
+                <div class="caption-identity">
+                  <strong>Shubham Kumar</strong>
+                  <span>Aspiring Software Engineer</span>
+                </div>
+                <div class="caption-stamp">
+                  <span class="caption-dot"></span>
+                  <span>GEU · 3RD YR</span>
+                </div>
               </div>
             </div>
           </div>
@@ -366,7 +394,7 @@
 
         <div class="skills-engineering-grid">
           <!-- Sector 1: Programming Languages -->
-          <div class="skills-sector-block">
+          <div class="skills-sector-block" data-sector="programming">
             <div class="skills-sector-head">
               <span class="sector-title">Programming</span>
             </div>
@@ -395,7 +423,7 @@
           </div>
 
           <!-- Sector 2: Backend Engineering -->
-          <div class="skills-sector-block">
+          <div class="skills-sector-block" data-sector="backend">
             <div class="skills-sector-head">
               <span class="sector-title">Backend</span>
             </div>
@@ -424,7 +452,7 @@
           </div>
 
           <!-- Sector 3: Frontend -->
-          <div class="skills-sector-block">
+          <div class="skills-sector-block" data-sector="frontend">
             <div class="skills-sector-head">
               <span class="sector-title">Frontend</span>
             </div>
@@ -453,7 +481,7 @@
           </div>
 
           <!-- Sector 4: Databases -->
-          <div class="skills-sector-block">
+          <div class="skills-sector-block" data-sector="databases">
             <div class="skills-sector-head">
               <span class="sector-title">Databases</span>
             </div>
@@ -474,7 +502,7 @@
           </div>
 
           <!-- Sector 5: AI & Machine Learning -->
-          <div class="skills-sector-block">
+          <div class="skills-sector-block" data-sector="ai">
             <div class="skills-sector-head">
               <span class="sector-title">AI / ML</span>
             </div>
@@ -499,7 +527,7 @@
           </div>
 
           <!-- Sector 6: Cloud & DevOps -->
-          <div class="skills-sector-block">
+          <div class="skills-sector-block" data-sector="cloud">
             <div class="skills-sector-head">
               <span class="sector-title">Cloud &amp; DevOps</span>
             </div>
@@ -528,7 +556,7 @@
           </div>
 
           <!-- Sector 7: Core Computer Science -->
-          <div class="skills-sector-block">
+          <div class="skills-sector-block" data-sector="cs">
             <div class="skills-sector-head">
               <span class="sector-title">Computer Science</span>
             </div>
@@ -775,14 +803,17 @@
                 <div class="kafka-partition-box">
                   <div class="partition-name">PARTITION 0</div>
                   <div class="partition-count" id="kafkaP0Count">330</div>
+                  <div class="partition-mini-bar"><div class="partition-mini-bar-fill" style="width:55%"></div></div>
                 </div>
                 <div class="kafka-partition-box">
                   <div class="partition-name">PARTITION 1</div>
                   <div class="partition-count" id="kafkaP1Count">345</div>
+                  <div class="partition-mini-bar"><div class="partition-mini-bar-fill" style="width:57%"></div></div>
                 </div>
                 <div class="kafka-partition-box">
                   <div class="partition-name">PARTITION 2</div>
                   <div class="partition-count" id="kafkaP2Count">315</div>
+                  <div class="partition-mini-bar"><div class="partition-mini-bar-fill" style="width:52%"></div></div>
                 </div>
               </div>
 
@@ -1096,6 +1127,9 @@
           <!-- CATEGORY 01: AWARDS & COMPETITIONS (Glacier Accent) -->
           <div class="milestone-category-block milestone-cat-competitions">
             <div class="milestone-cat-header">
+              <div class="milestone-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 010-5H6"/><path d="M18 9h1.5a2.5 2.5 0 000-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0012 0V2z"/></svg>
+              </div>
               <span class="milestone-cat-badge">01 // Awards &amp; Competitions</span>
               <h3 class="milestone-cat-title">Hackathons &amp; Contests</h3>
               <p class="milestone-cat-desc">National-level problem solving under time-constrained sprint conditions.</p>
@@ -1123,6 +1157,9 @@
           <!-- CATEGORY 02: COMPETITIVE PROGRAMMING (Blue Accent) -->
           <div class="milestone-category-block milestone-cat-programming">
             <div class="milestone-cat-header">
+              <div class="milestone-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
               <span class="milestone-cat-badge">02 // Competitive Programming</span>
               <h3 class="milestone-cat-title">Algorithmic Problem Solving</h3>
               <p class="milestone-cat-desc">Consistent data structures &amp; algorithmic practice across platforms.</p>
@@ -1171,6 +1208,9 @@
           <!-- CATEGORY 03: OPEN SOURCE & COMMUNITY (Teal Accent) -->
           <div class="milestone-category-block milestone-cat-opensource">
             <div class="milestone-cat-header">
+              <div class="milestone-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+              </div>
               <span class="milestone-cat-badge">03 // Open Source &amp; Community</span>
               <h3 class="milestone-cat-title">Open Source &amp; Collaborations</h3>
               <p class="milestone-cat-desc">Contributing to public tools, peer code reviews, and community initiatives.</p>
@@ -1219,6 +1259,9 @@
           <!-- CATEGORY 04: TECHNICAL LEARNING (Warm Accent) -->
           <div class="milestone-category-block milestone-cat-learning">
             <div class="milestone-cat-header">
+              <div class="milestone-cat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              </div>
               <span class="milestone-cat-badge">04 // Technical Learning</span>
               <h3 class="milestone-cat-title">Enterprise Engineering Simulations</h3>
               <p class="milestone-cat-desc">Practical simulations of enterprise workloads and architecture standards.</p>

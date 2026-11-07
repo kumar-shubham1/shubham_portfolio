@@ -4607,3 +4607,654 @@ h1, h2, h3, h4,
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ==========================================================================
+   PREMIUM VISUAL ENHANCEMENTS — RESUME BUTTON, HERO PORTRAIT & SCROLL REVEAL
+   ========================================================================== */
+
+/* ── Resume Nav Button ────────────────────────────────────────────────────── */
+.btn-resume-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--accent-primary);
+  background: var(--accent-secondary-glow);
+  border: 1.5px solid var(--border-accent);
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: all var(--trans-fast);
+  white-space: nowrap;
+}
+
+.btn-resume-nav:hover {
+  background: var(--accent-primary);
+  color: #fff !important;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 14px rgba(7, 94, 141, 0.28);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .btn-resume-nav:hover {
+  color: #08111F !important;
+  box-shadow: 0 0 18px rgba(103, 213, 232, 0.35);
+}
+
+.resume-icon-dl {
+  flex-shrink: 0;
+  transition: transform var(--trans-fast);
+}
+
+.btn-resume-nav:hover .resume-icon-dl {
+  transform: translateY(2px);
+}
+
+@media (max-width: 480px) {
+  .btn-resume-nav span:last-child {
+    display: none;
+  }
+  .btn-resume-nav {
+    padding: 8px 12px;
+  }
+}
+
+/* ── Hero Aura Ambient Glow ───────────────────────────────────────────────── */
+.hero-portrait-frame {
+  position: relative;
+}
+
+.hero-aura-ambient {
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(7, 94, 141, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(6, 111, 91, 0.10) 0%, transparent 55%);
+  filter: blur(32px);
+  animation: auroraFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .hero-aura-ambient {
+  background:
+    radial-gradient(circle at 40% 35%, rgba(103, 213, 232, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(52, 211, 153, 0.12) 0%, transparent 55%);
+  filter: blur(36px);
+}
+
+@keyframes auroraFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  33%       { transform: translate(6px, -8px) scale(1.03); opacity: 1; }
+  66%       { transform: translate(-5px, 5px) scale(0.97); opacity: 0.85; }
+}
+
+/* ── Hero Tech Bracket Corners ───────────────────────────────────────────── */
+.hero-tech-bracket {
+  position: absolute;
+  z-index: 3;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  opacity: 0.65;
+  transition: opacity var(--trans-mid);
+}
+
+.hero-portrait-frame:hover .hero-tech-bracket { opacity: 1; }
+
+.hero-tech-bracket.top-left {
+  top: -6px; left: -6px;
+  border-top: 2px solid var(--accent-primary);
+  border-left: 2px solid var(--accent-primary);
+}
+.hero-tech-bracket.top-right {
+  top: -6px; right: -6px;
+  border-top: 2px solid var(--accent-primary);
+  border-right: 2px solid var(--accent-primary);
+}
+.hero-tech-bracket.bottom-left {
+  bottom: -6px; left: -6px;
+  border-bottom: 2px solid var(--accent-teal);
+  border-left: 2px solid var(--accent-teal);
+}
+.hero-tech-bracket.bottom-right {
+  bottom: -6px; right: -6px;
+  border-bottom: 2px solid var(--accent-teal);
+  border-right: 2px solid var(--accent-teal);
+}
+
+/* ── Hero Floating Pills ─────────────────────────────────────────────────── */
+.hero-floating-pill {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: none;
+  animation: pillFloat 5s ease-in-out infinite;
+}
+
+.pill-status {
+  top: 12px;
+  left: -20px;
+  background: rgba(7, 94, 141, 0.12);
+  color: var(--accent-primary);
+  border: 1px solid rgba(7, 94, 141, 0.3);
+  animation-delay: 0s;
+}
+
+[data-theme="dark"] .pill-status {
+  background: rgba(103, 213, 232, 0.14);
+  color: var(--accent-primary);
+  border-color: rgba(103, 213, 232, 0.3);
+}
+
+.pill-stats {
+  bottom: 60px;
+  right: -16px;
+  background: rgba(6, 111, 91, 0.1);
+  color: var(--accent-teal);
+  border: 1px solid rgba(6, 111, 91, 0.25);
+  animation-delay: 2.5s;
+}
+
+[data-theme="dark"] .pill-stats {
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--accent-teal);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+@keyframes pillFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ── Portrait Scanline Overlay ───────────────────────────────────────────── */
+.portrait-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.018) 3px,
+    rgba(0, 0, 0, 0.018) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Portrait Caption Upgrade ────────────────────────────────────────────── */
+.caption-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.caption-identity strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.caption-identity span {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+
+.caption-stamp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+.caption-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-teal);
+  box-shadow: 0 0 6px var(--accent-teal);
+  flex-shrink: 0;
+  animation: captionPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes captionPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* Ensure portrait-monolith is above aura z-index */
+.portrait-monolith {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile adjustments for floating pills */
+@media (max-width: 768px) {
+  .hero-floating-pill {
+    display: none;
+  }
+  .hero-tech-bracket {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s var(--ease-snappy), transform 0.6s var(--ease-snappy);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-on-scroll.reveal-left {
+  transform: translateX(-24px);
+}
+
+.reveal-on-scroll.reveal-left.revealed {
+  transform: translateX(0);
+}
+
+.reveal-on-scroll.reveal-right {
+  transform: translateX(24px);
+}
+
+.reveal-on-scroll.reveal-right.revealed {
+  transform: translateX(0);
+}
+
+/* Stagger delays for children */
+.reveal-stagger > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   SKILLS SECTION — VISUAL SECTOR ACCENTS
+   ========================================================================== */
+
+/* Sector-specific accent colors via CSS custom property */
+.skills-sector-block[data-sector="programming"] { --sector-accent: var(--accent-primary); }
+.skills-sector-block[data-sector="backend"]     { --sector-accent: var(--accent-teal); }
+.skills-sector-block[data-sector="frontend"]    { --sector-accent: var(--accent-violet); }
+.skills-sector-block[data-sector="databases"]   { --sector-accent: var(--accent-warm); }
+.skills-sector-block[data-sector="ai"]          { --sector-accent: var(--accent-primary); }
+.skills-sector-block[data-sector="cloud"]       { --sector-accent: var(--accent-teal); }
+.skills-sector-block[data-sector="cs"]          { --sector-accent: var(--accent-primary); }
+
+.skills-sector-block {
+  border-top: 3px solid var(--sector-accent, var(--accent-primary));
+  transition: border-color var(--trans-fast), transform var(--trans-fast), box-shadow var(--trans-mid);
+}
+
+.skills-sector-block:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+  transform: translateY(-3px);
+}
+
+[data-theme="dark"] .skills-sector-block:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.sector-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sector-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--sector-accent, var(--accent-primary));
+  flex-shrink: 0;
+}
+
+/* Skill level dots for proficiency indicator */
+.skill-level-dots {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.skill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-medium);
+  transition: background var(--trans-fast);
+}
+
+.skill-dot.filled {
+  background: var(--sector-accent, var(--accent-primary));
+}
+
+.skill-row-item:hover .skill-dot.filled {
+  box-shadow: 0 0 5px var(--sector-accent, var(--accent-primary));
+}
+
+/* ==========================================================================
+   ENGINEERING LAB — ENHANCED VISUAL FEEDBACK
+   ========================================================================== */
+
+/* Kafka partition count flash animation */
+@keyframes partitionFlash {
+  0%   { transform: scale(1); color: var(--accent-primary); }
+  40%  { transform: scale(1.3); color: var(--accent-teal); }
+  100% { transform: scale(1); color: var(--accent-primary); }
+}
+
+.partition-count.updated {
+  animation: partitionFlash 0.4s var(--ease-snappy) forwards;
+}
+
+/* Kafka partition mini progress bar */
+.partition-mini-bar {
+  margin-top: 6px;
+  height: 3px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.partition-mini-bar-fill {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: 2px;
+  transition: width 0.4s var(--ease-snappy);
+}
+
+/* DLQ panel highlight */
+.dlq-status-panel.has-failed {
+  background: rgba(225, 29, 72, 0.12);
+  border-color: rgba(225, 29, 72, 0.5);
+  animation: dlqPulse 1.6s ease-in-out 3;
+}
+
+@keyframes dlqPulse {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 12px rgba(225, 29, 72, 0.3); }
+}
+
+/* Dijkstra path node highlight */
+.dijkstra-node-btn.on-path {
+  border-color: var(--accent-teal);
+  background: rgba(6, 111, 91, 0.12);
+  color: var(--accent-teal);
+  box-shadow: 0 0 10px rgba(6, 111, 91, 0.25);
+}
+
+[data-theme="dark"] .dijkstra-node-btn.on-path {
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--accent-teal);
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.25);
+}
+
+@keyframes nodeReveal {
+  0%   { transform: scale(0.9); opacity: 0.6; }
+  60%  { transform: scale(1.12); }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.dijkstra-node-btn.selected {
+  animation: nodeReveal 0.3s var(--ease-snappy) forwards;
+}
+
+/* CPU Scheduler running task highlight */
+.sched-task-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--bg-canvas-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  transition: all var(--trans-fast);
+}
+
+.sched-task-row.running {
+  border-color: var(--accent-primary);
+  background: var(--accent-secondary-glow);
+  color: var(--accent-primary);
+}
+
+.sched-task-row.running::before {
+  content: '▶';
+  font-size: 0.7rem;
+  color: var(--accent-teal);
+}
+
+.sched-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.sched-progress-fill {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: 2px;
+  transition: width 0.6s linear;
+}
+
+.sched-task-row.running .sched-progress-fill {
+  background: var(--accent-teal);
+}
+
+/* ==========================================================================
+   ARCHITECTURE EXPLORER — COLOUR-CODED NODE TYPES
+   ========================================================================== */
+
+/* Type-specific accent colors */
+.arch-node-card[data-type="service"]   { --node-accent: var(--accent-primary); }
+.arch-node-card[data-type="broker"]    { --node-accent: var(--accent-violet); }
+.arch-node-card[data-type="worker"]    { --node-accent: var(--accent-teal); }
+.arch-node-card[data-type="storage"]   { --node-accent: var(--accent-warm); }
+.arch-node-card[data-type="entry"]     { --node-accent: var(--accent-teal); }
+.arch-node-card[data-type="fallback"]  { --node-accent: #e11d48; }
+.arch-node-card[data-type="cache"]     { --node-accent: var(--accent-warm); }
+.arch-node-card[data-type="default"]   { --node-accent: var(--accent-primary); }
+
+.arch-node-card {
+  border-left: 3px solid var(--node-accent, var(--accent-primary));
+  transition: all var(--trans-fast);
+}
+
+.arch-node-card:hover, .arch-node-card.active {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: var(--bg-surface-hover);
+}
+
+[data-theme="dark"] .arch-node-card:hover,
+[data-theme="dark"] .arch-node-card.active {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.arch-node-type {
+  color: var(--node-accent, var(--accent-secondary));
+}
+
+/* Animated data flow arrow in flow steps */
+.arch-flow-item .flow-arrow {
+  color: var(--accent-primary);
+  font-size: 0.8rem;
+  animation: flowArrow 1.8s ease-in-out infinite;
+}
+
+@keyframes flowArrow {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50%       { transform: translateX(4px); opacity: 1; }
+}
+
+/* ==========================================================================
+   ACHIEVEMENTS — ICON BADGES & SHIMMER STAT NUMBERS
+   ========================================================================== */
+
+.milestone-cat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--cat-accent-bg, rgba(7, 94, 141, 0.08));
+  color: var(--cat-accent, var(--accent-primary));
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.milestone-cat-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Shimmer on stat numbers */
+@keyframes shimmerStat {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.milestone-stat-large {
+  background: linear-gradient(
+    90deg,
+    var(--cat-accent) 0%,
+    rgba(255,255,255,0.7) 50%,
+    var(--cat-accent) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerStat 3s linear infinite;
+}
+
+[data-theme="dark"] .milestone-stat-large {
+  background: linear-gradient(
+    90deg,
+    var(--cat-accent) 0%,
+    rgba(255,255,255,0.5) 50%,
+    var(--cat-accent) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ==========================================================================
+   PROJECT BLUEPRINT CARDS — ENHANCED VISUAL HEADERS
+   ========================================================================== */
+
+/* Project-category color header strip */
+.blueprint-header-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--proj-accent, var(--accent-primary));
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.technical-blueprint-card[data-category="backend"]       { --proj-accent: var(--accent-primary); }
+.technical-blueprint-card[data-category="distributed"]   { --proj-accent: var(--accent-teal); }
+.technical-blueprint-card[data-category="ai"]            { --proj-accent: var(--accent-violet); }
+.technical-blueprint-card[data-category="fullstack"]     { --proj-accent: var(--accent-warm); }
+.technical-blueprint-card[data-category="systems"]       { --proj-accent: var(--accent-primary); }
+.technical-blueprint-card[data-category="data"]          { --proj-accent: var(--accent-teal); }
+
+/* Architecture diagram node animation */
+.bp-arch-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  transition: all var(--trans-fast);
+}
+
+.bp-arch-node.node-primary {
+  border-color: var(--proj-accent, var(--accent-primary));
+  color: var(--proj-accent, var(--accent-primary));
+  background: rgba(7, 94, 141, 0.07);
+}
+
+.bp-arch-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-faint);
+  font-size: 0.75rem;
+  padding: 2px 0;
+}
+
+/* Tech stack icon row in blueprint cards */
+.blueprint-tech-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.bp-tech-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background: var(--bg-canvas-subtle);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  transition: all var(--trans-fast);
+}
+
+.bp-tech-icon:hover {
+  border-color: var(--proj-accent, var(--accent-primary));
+  color: var(--proj-accent, var(--accent-primary));
+}
