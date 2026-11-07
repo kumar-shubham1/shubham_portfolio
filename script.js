@@ -13,6 +13,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all interactive modules
+  initTheme();
   initScrollProgress();
   initCursorSpotlight();
   initMagneticButtons();
@@ -28,6 +29,39 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initContactForm();
 });
+
+/* ==========================================================================
+   0. THEME INITIALIZATION & TOGGLE
+   ========================================================================= */
+function initTheme() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    localStorage.setItem('portfolio-theme', theme);
+  }
+
+  toggle.addEventListener('click', () => {
+    const current = getCurrentTheme();
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Listen for system preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('portfolio-theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+}
 
 /* ==========================================================================
    1. SCROLL PROGRESS INDICATOR
@@ -139,6 +173,7 @@ function initCommandPalette() {
     { title: "Open OrderMesh", category: "Case Study", target: "#projects", action: "ordermesh" },
     { title: "Open AstraOS", category: "Case Study", target: "#projects", action: "astraos" },
     { title: "Open NewsSenseAI", category: "Case Study", target: "#projects", action: "newssenseai" },
+    { title: "Open AI Job Tracker", category: "Case Study", target: "#projects", action: "ai-job-tracker" },
     { title: "View Education", category: "Navigation", target: "#timeline" },
     { title: "View Experience", category: "Navigation", target: "#timeline" },
     { title: "View Achievements", category: "Navigation", target: "#achievements" },
@@ -146,7 +181,9 @@ function initCommandPalette() {
     { title: "Open GitHub", category: "Social", url: PORTFOLIO_DATA.personal.github },
     { title: "Open LinkedIn", category: "Social", url: PORTFOLIO_DATA.personal.linkedin },
     { title: "Open LeetCode", category: "Coding", url: PORTFOLIO_DATA.personal.leetcode },
-    { title: "Contact Shubham", category: "Contact", target: "#contact" }
+    { title: "Contact Shubham", category: "Contact", target: "#contact" },
+    { title: "Switch to Dark Theme", category: "Theme", action: "theme-dark" },
+    { title: "Switch to Light Theme", category: "Theme", action: "theme-light" }
   ];
 
   let highlightedIndex = 0;
@@ -190,6 +227,16 @@ function initCommandPalette() {
 
   function executeCommand(item) {
     closePalette();
+    if (item.action === 'theme-dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('portfolio-theme', 'dark');
+      return;
+    }
+    if (item.action === 'theme-light') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('portfolio-theme', 'light');
+      return;
+    }
     if (item.url) {
       window.open(item.url, '_blank', 'noopener,noreferrer');
     } else if (item.target) {
@@ -297,7 +344,7 @@ function initDevTerminal() {
       "Java, Spring Boot, Python, Kafka, React, Next.js, PostgreSQL and more."
     ],
     projects: () => [
-      "OrderMesh, AstraOS, NewsSenseAI, Crop Disease Prediction, Uber Ambulance and Disaster Relief Portal."
+      "OrderMesh, AstraOS, NewsSenseAI, Crop Disease Prediction, AI Job Tracker and Disaster Relief Portal."
     ],
     "current-focus": () => [
       "Backend Engineering, Distributed Systems and AI Engineering."
@@ -447,19 +494,19 @@ function initProjectsShowcase() {
             <div class="blueprint-diagram-area">
               <div class="blueprint-flow-step">
                 <span class="flow-step-marker">1</span>
-                <span>${escapeHtml(p.highlights[0] || 'Ingestion & Validation Pipeline')}</span>
+                <span>${escapeHtml(p.howItWorks)}</span>
               </div>
               <div class="blueprint-flow-step">
                 <span class="flow-step-marker">2</span>
-                <span>${escapeHtml(p.highlights[1] || 'Processing & Transformation Pipeline')}</span>
+                <span>${escapeHtml(p.keyChallenge)}</span>
               </div>
               <div class="blueprint-flow-step">
                 <span class="flow-step-marker">3</span>
-                <span>${escapeHtml(p.highlights[2] || 'State Commit & Fault-Tolerant Routing')}</span>
+                <span>${escapeHtml(p.whatLearned)}</span>
               </div>
             </div>
             <div class="blueprint-footer">
-              <span>PATTERN: ${escapeHtml(p.architectureTag)}</span>
+              <span>PATTERN: ${escapeHtml(p.categoryLabel || 'Distributed System')}</span>
               <span>METRIC: ${escapeHtml(p.metrics)}</span>
             </div>
           </div>
@@ -538,7 +585,7 @@ function initArchitectureExplorer() {
       row.className = 'arch-flow-item';
       row.innerHTML = `
         <span>▹</span>
-        <span>${escapeHtml(f.label)}: <strong style="color:var(--text-main);">${escapeHtml(f.from)}</strong> → <strong style="color:var(--accent-orange);">${escapeHtml(f.to)}</strong></span>
+        <span>${escapeHtml(f.label)}: <strong style="color:var(--text-main);">${escapeHtml(f.from)}</strong> → <strong style="color:var(--accent-primary);">${escapeHtml(f.to)}</strong></span>
       `;
       flowStepsList.appendChild(row);
     });
@@ -591,7 +638,7 @@ function initEngineeringLab() {
       if (dlqCount) dlqCount.textContent = dlq;
       if (dlqStatus) {
         dlqStatus.textContent = `Worker retry ceiling (3) reached. Payload isolated in DLQ topic.`;
-        dlqStatus.style.color = '#F59E0B';
+        dlqStatus.style.color = 'var(--accent-secondary)';
       }
     });
   }
@@ -620,7 +667,7 @@ function initEngineeringLab() {
       const result = calculateShortest(selectedStart, selectedEnd);
       if (pathResultText) {
         pathResultText.innerHTML = `
-          Shortest Delivery Route: <strong style="color:var(--accent-orange);">${result.path.join(' → ')}</strong><br>
+          Shortest Delivery Route: <strong style="color:var(--accent-primary);">${result.path.join(' → ')}</strong><br>
           Computed Transit Cost: <strong>${result.cost} units</strong> · Allocation: Priority Emergency Aid
         `;
       }
@@ -643,10 +690,10 @@ function initEngineeringLab() {
     function updateSchedulerDisplay() {
       const cur = tasks[currentTaskIdx];
       schedActiveTask.innerHTML = `
-        Running: <strong style="color:var(--accent-orange);">${cur.id} (${cur.name})</strong> · Remaining: <strong>${cur.remaining} quantum</strong>
+        Running: <strong style="color:var(--accent-primary);">${cur.id} (${cur.name})</strong> · Remaining: <strong>${cur.remaining} quantum</strong>
       `;
       const queueList = tasks.map((t, i) => 
-        `<span style="margin-right:12px; font-family:var(--font-mono); font-size:0.75rem; color:${i === currentTaskIdx ? 'var(--accent-orange)' : 'var(--text-faint)'}">[${t.id}: ${t.remaining}q]</span>`
+        `<span style="margin-right:12px; font-family:var(--font-mono); font-size:0.75rem; color:${i === currentTaskIdx ? 'var(--accent-primary)' : 'var(--text-faint)'}">[${t.id}: ${t.remaining}q]</span>`
       ).join('');
       schedQueue.innerHTML = queueList;
     }
@@ -760,14 +807,12 @@ function openProjectDetails(projectId) {
   const project = PORTFOLIO_DATA.projects.find(p => p.id === projectId);
   if (!project) return;
 
-  const highlights = project.highlights.map(item => `<li>${escapeHtml(item)}</li>`).join('');
-
   modalSheet.innerHTML = `
     <div class="project-modal-sheet-header">
       <div>
         <span class="project-idx" style="font-family:var(--font-mono); font-size:0.8rem;">// CASE STUDY ${escapeHtml(project.number)}</span>
         <h2 style="font-size:1.8rem; font-weight:800; color:var(--text-main); margin-top:4px;">${escapeHtml(project.title)}</h2>
-        <div style="font-size:0.95rem; color:var(--accent-amber); font-weight:600;">${escapeHtml(project.subtitle)}</div>
+        <div style="font-size:0.95rem; color:var(--accent-secondary); font-weight:600;">${escapeHtml(project.subtitle)}</div>
       </div>
       <button class="modal-close-trigger" id="modalInnerCloseBtn" aria-label="Close modal">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -776,37 +821,35 @@ function openProjectDetails(projectId) {
 
     <div class="project-modal-sheet-body">
       <div class="modal-detail-block">
-        <div class="modal-block-label">Problem Statement</div>
-        <p class="modal-block-text">${escapeHtml(project.problem)}</p>
+        <div class="modal-block-label">1. What Problem Does It Solve?</div>
+        <p class="modal-block-text">${escapeHtml(project.whatProblem)}</p>
       </div>
 
       <div class="modal-detail-block">
-        <div class="modal-block-label">Engineering Solution</div>
-        <p class="modal-block-text">${escapeHtml(project.solution)}</p>
+        <div class="modal-block-label">2. Why Did I Build It?</div>
+        <p class="modal-block-text">${escapeHtml(project.whyBuilt)}</p>
       </div>
 
       <div class="modal-detail-block">
-        <div class="modal-block-label">System Architecture</div>
-        <p class="modal-block-text">${escapeHtml(project.architecture)}</p>
+        <div class="modal-block-label">3. How Does It Work?</div>
+        <p class="modal-block-text">${escapeHtml(project.howItWorks)}</p>
       </div>
 
       <div class="modal-detail-block">
-        <div class="modal-block-label">Implementation Highlights</div>
-        <ul class="modal-bullet-list">${highlights}</ul>
+        <div class="modal-block-label">4. Key Engineering Challenges Overcome</div>
+        <div class="arch-tradeoff-box" style="margin-top:8px;">${escapeHtml(project.keyChallenge)}</div>
       </div>
 
       <div class="modal-detail-block">
-        <div class="modal-block-label">Key Engineering Decisions &amp; Tradeoffs</div>
-        <div class="arch-tradeoff-box">${escapeHtml(project.engineeringDecisions)}</div>
+        <div class="modal-block-label">5. Key Takeaways &amp; What I Learned</div>
+        <p class="modal-block-text">${escapeHtml(project.whatLearned)}</p>
       </div>
 
       <div class="modal-detail-block">
-        <div class="modal-block-label">Key Challenges Overcome</div>
-        <p class="modal-block-text">${escapeHtml(project.keyChallenges)}</p>
-      </div>
-
-      <div class="modal-detail-block">
-        <div class="modal-block-label">Technologies</div>
+        <div class="modal-block-label">6. Verified Tech Stack &amp; Performance</div>
+        <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-primary); margin-bottom:10px;">
+          Performance Benchmark: ${escapeHtml(project.metrics)}
+        </div>
         <div class="project-tech-line" style="margin-bottom:0;">
           ${project.tech.map(t => `<span class="tech-tag-mono">${escapeHtml(t)}</span>`).join('')}
         </div>

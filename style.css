@@ -1,47 +1,85 @@
 /* ==========================================================================
-   SHUBHAM KUMAR — SIGNATURE PORTFOLIO V2
-   Cinematic Dark / Editorial Typography / Swiss-Brutalist Architecture
-   Palette: #0B0D10 | #111318 | #171A20 | #F5F2EC | #A1A1AA | #FF7626 | #F5A623
+   SHUBHAM KUMAR â€” SIGNATURE PORTFOLIO V2
+   Dual Light/Dark Editorial Theme â€” Swiss-Brutalist Architecture
    ========================================================================== */
 
 :root {
-  /* Core Color Palette */
-  --bg-canvas: #0B0D10;
-  --bg-canvas-subtle: #111318;
-  --bg-surface: #171A20;
-  --bg-surface-elevated: #1E222A;
-  --bg-surface-hover: #232832;
+  /* Light Theme â€” Warm Editorial */
+  --bg-canvas: #FAF8F5;
+  --bg-canvas-subtle: #F2EDE8;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-surface-hover: #F0EBE5;
 
-  --text-main: #F5F2EC;
-  --text-muted: #A1A1AA;
-  --text-faint: #606470;
-  --text-inverse: #0B0D10;
+  --text-main: #1A1D20;
+  --text-muted: #5A626A;
+  --text-faint: #9CA3AF;
+  --text-inverse: #FFFFFF;
 
-  --accent-orange: #FF7626;
-  --accent-orange-hover: #E86315;
-  --accent-amber: #F5A623;
-  --accent-amber-glow: rgba(245, 166, 35, 0.15);
+  --accent-primary: #2563EB;
+  --accent-primary-hover: #1D4ED8;
+  --accent-secondary: #3B82F6;
+  --accent-secondary-glow: rgba(37, 99, 235, 0.10);
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(255, 118, 38, 0.35);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.10);
+  --border-accent: rgba(37, 99, 235, 0.30);
 
   /* Typography */
+  --font-heading: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
   --font-editorial: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
   /* Geometry & Rhythm */
   --max-w: 1240px;
   --header-h: 72px;
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
   --radius-pill: 9999px;
 
   /* Transitions */
   --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
   --trans-fast: 0.18s var(--ease-snappy);
   --trans-mid: 0.3s var(--ease-snappy);
+
+  /* Theme-specific */
+  --grid-line-color: rgba(0, 0, 0, 0.04);
+  --spotlight-color: rgba(37, 99, 235, 0.04);
+  --nav-bg: rgba(250, 248, 245, 0.90);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg-canvas: #0A0F1D;
+  --bg-canvas-subtle: #11192C;
+  --bg-surface: #162033;
+  --bg-surface-elevated: #1C2840;
+  --bg-surface-hover: #1F2D45;
+
+  --text-main: #F1F5F9;
+  --text-muted: #94A3B8;
+  --text-faint: #64748B;
+  --text-inverse: #0A0F1D;
+
+  --accent-primary: #3B82F6;
+  --accent-primary-hover: #2563EB;
+  --accent-secondary: #8B5CF6;
+  --accent-secondary-glow: rgba(59, 130, 246, 0.15);
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.10);
+  --border-accent: rgba(59, 130, 246, 0.35);
+
+  /* Theme-specific */
+  --grid-line-color: rgba(255, 255, 255, 0.018);
+  --spotlight-color: rgba(59, 130, 246, 0.05);
+  --nav-bg: rgba(10, 15, 29, 0.88);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
+
+  color-scheme: dark;
 }
 
 /* Base Reset & Foundations */
@@ -58,7 +96,6 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 24px);
-  color-scheme: dark;
 }
 
 body {
@@ -75,8 +112,8 @@ body {
   position: fixed;
   inset: 0;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
   background-size: 72px 72px;
   pointer-events: none;
   z-index: 0;
@@ -92,7 +129,7 @@ body {
   margin-left: -250px;
   margin-top: -250px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 118, 38, 0.038) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 70%);
   pointer-events: none;
   z-index: 999;
   transition: opacity 0.3s ease;
@@ -106,7 +143,7 @@ body {
   left: 0;
   height: 2px;
   width: 0%;
-  background: linear-gradient(90deg, var(--accent-orange), var(--accent-amber));
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
   z-index: 1000;
   pointer-events: none;
   transition: width 0.08s linear;
@@ -128,7 +165,7 @@ section {
   border-bottom: 1px solid var(--border-subtle);
 }
 
-/* Section Header — Swiss Editorial Style */
+/* Section Header â€” Swiss Editorial Style */
 .section-meta-header {
   margin-bottom: 64px;
 }
@@ -141,7 +178,7 @@ section {
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   margin-bottom: 16px;
 }
 
@@ -149,7 +186,18 @@ section {
   content: '';
   width: 18px;
   height: 1px;
-  background: var(--accent-orange);
+  background: var(--accent-primary);
+}
+
+h1, h2, h3, h4,
+.section-title,
+.hero-headline,
+.project-title-large,
+.achieve-headline,
+.building-title,
+.timeline-role-title,
+.lab-exp-title {
+  font-family: var(--font-heading);
 }
 
 .section-title {
@@ -179,7 +227,7 @@ section {
   right: 0;
   height: var(--header-h);
   z-index: 100;
-  background: rgba(11, 13, 16, 0.88);
+  background: var(--nav-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
@@ -210,7 +258,7 @@ section {
 .nav-brand-index {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   background: rgba(255, 118, 38, 0.1);
   padding: 2px 7px;
   border-radius: var(--radius-xs);
@@ -241,13 +289,56 @@ section {
 .nav-item.active {
   color: var(--text-main);
   font-weight: 600;
-  border-bottom: 2px solid var(--accent-orange);
+  border-bottom: 2px solid var(--accent-primary);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xs);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--trans-fast), border-color var(--trans-fast), background var(--trans-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  background: var(--accent-secondary-glow);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Light mode: show moon (to switch to dark), hide sun */
+.theme-toggle .icon-sun {
+  display: none;
+}
+.theme-toggle .icon-moon {
+  display: inline-block;
+}
+
+/* Dark mode: show sun (to switch to light), hide moon */
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: inline-block;
+}
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
 }
 
 /* Command Palette Trigger Button */
@@ -267,7 +358,7 @@ section {
 }
 
 .cmd-palette-trigger:hover {
-  border-color: var(--accent-orange);
+  border-color: var(--accent-primary);
   color: var(--text-main);
 }
 
@@ -276,7 +367,7 @@ section {
   padding: 2px 6px;
   border-radius: 2px;
   font-size: 0.7rem;
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
 }
 
 .nav-menu-toggle {
@@ -316,15 +407,15 @@ section {
 }
 
 .btn-solid-orange {
-  background: var(--accent-orange);
+  background: var(--accent-primary);
   color: #0B0D10;
-  border-color: var(--accent-orange);
+  border-color: var(--accent-primary);
   font-weight: 700;
 }
 
 .btn-solid-orange:hover {
-  background: var(--accent-orange-hover);
-  border-color: var(--accent-orange-hover);
+  background: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
   transform: translateY(-2px);
 }
 
@@ -342,13 +433,13 @@ section {
 
 .btn-ghost-orange {
   background: transparent;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   border-color: rgba(255, 118, 38, 0.3);
 }
 
 .btn-ghost-orange:hover {
   background: rgba(255, 118, 38, 0.1);
-  border-color: var(--accent-orange);
+  border-color: var(--accent-primary);
 }
 
 .btn-sm-editorial {
@@ -357,7 +448,7 @@ section {
 }
 
 /* ==========================================================================
-   HERO SECTION — ASYMMETRIC EDITORIAL
+   HERO SECTION â€” ASYMMETRIC EDITORIAL
    ========================================================================== */
 .hero-editorial {
   min-height: calc(100vh - var(--header-h));
@@ -378,7 +469,7 @@ section {
 .hero-technical-stamp {
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -390,9 +481,9 @@ section {
 .pulse-indicator {
   width: 8px;
   height: 8px;
-  background: var(--accent-orange);
+  background: var(--accent-primary);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent-orange);
+  box-shadow: 0 0 10px var(--accent-primary);
   animation: pulse 2s infinite ease-in-out;
 }
 
@@ -411,7 +502,7 @@ section {
 }
 
 .hero-headline .accent-word {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   font-style: italic;
   font-weight: 700;
 }
@@ -422,7 +513,7 @@ section {
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 1.05rem;
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
   margin-bottom: 24px;
   min-height: 1.6em;
 }
@@ -502,8 +593,8 @@ section {
   left: 0;
   width: 40px;
   height: 40px;
-  border-top: 2px solid var(--accent-orange);
-  border-left: 2px solid var(--accent-orange);
+  border-top: 2px solid var(--accent-primary);
+  border-left: 2px solid var(--accent-primary);
   pointer-events: none;
 }
 
@@ -541,7 +632,7 @@ section {
 }
 
 .portrait-caption span:first-child {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 /* ==========================================================================
@@ -581,7 +672,7 @@ section {
 .identity-pillar-item {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-left: 2px solid var(--accent-orange);
+  border-left: 2px solid var(--accent-primary);
   border-radius: var(--radius-xs);
   padding: 16px;
 }
@@ -607,7 +698,7 @@ section {
   background: #0E1014;
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-sm);
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -619,7 +710,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .terminal-dots {
@@ -640,14 +731,14 @@ section {
 .terminal-tab-title {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: #94A3B8;
 }
 
 .terminal-body {
   padding: 20px;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--text-main);
+  color: #F1F5F9;
   min-height: 280px;
   max-height: 380px;
   overflow-y: auto;
@@ -660,19 +751,19 @@ section {
 }
 
 .term-prompt {
-  color: var(--accent-orange);
+  color: #38BDF8;
   margin-right: 8px;
   font-weight: bold;
 }
 
 .term-output {
-  color: var(--text-muted);
+  color: #94A3B8;
   margin-left: 14px;
   margin-bottom: 12px;
 }
 
 .term-output-highlight {
-  color: var(--accent-amber);
+  color: #F59E0B;
 }
 
 .term-input-row {
@@ -684,7 +775,7 @@ section {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--text-main);
+  color: #F1F5F9;
   font-family: inherit;
   font-size: inherit;
   flex: 1;
@@ -693,7 +784,7 @@ section {
 .terminal-quick-actions {
   padding: 12px 16px;
   background: #121419;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -701,9 +792,9 @@ section {
 }
 
 .quick-cmd-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94A3B8;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   padding: 3px 8px;
@@ -713,13 +804,19 @@ section {
 }
 
 .quick-cmd-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38BDF8;
+  color: #F1F5F9;
+}
+
+.quick-cmd-btn:hover {
   background: rgba(255, 118, 38, 0.15);
-  border-color: var(--accent-orange);
-  color: var(--accent-orange);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
 }
 
 /* ==========================================================================
-   PROJECT SHOWCASE — ALTERNATING EDITORIAL BLUEPRINTS
+   PROJECT SHOWCASE â€” ALTERNATING EDITORIAL BLUEPRINTS
    ========================================================================== */
 .projects-filter-bar {
   display: flex;
@@ -748,7 +845,7 @@ section {
 }
 
 .filter-tab.active {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   background: rgba(255, 118, 38, 0.08);
   font-weight: 600;
 }
@@ -787,7 +884,7 @@ section {
 }
 
 .project-idx {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   font-weight: 700;
 }
 
@@ -808,7 +905,7 @@ section {
 
 .project-subtitle-line {
   font-size: 1rem;
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
   font-weight: 500;
   margin-bottom: 20px;
 }
@@ -826,11 +923,11 @@ section {
   gap: 8px;
   background: rgba(255, 118, 38, 0.08);
   border: 1px solid rgba(255, 118, 38, 0.25);
-  border-left: 3px solid var(--accent-orange);
+  border-left: 3px solid var(--accent-primary);
   padding: 6px 14px;
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   margin-bottom: 24px;
   border-radius: var(--radius-xs);
 }
@@ -871,7 +968,7 @@ section {
 }
 
 .technical-blueprint-card:hover {
-  border-color: var(--accent-orange);
+  border-color: var(--accent-primary);
   transform: translateY(-4px);
 }
 
@@ -889,7 +986,7 @@ section {
 
 .blueprint-diagram-area {
   min-height: 180px;
-  background: #111317;
+  background: var(--bg-canvas-subtle);
   border: 1px dashed var(--border-medium);
   border-radius: var(--radius-xs);
   padding: 16px;
@@ -912,8 +1009,8 @@ section {
   width: 22px;
   height: 22px;
   background: rgba(255, 118, 38, 0.12);
-  border: 1px solid var(--accent-orange);
-  color: var(--accent-orange);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -946,7 +1043,7 @@ section {
 
 .arch-explorer-nav {
   display: flex;
-  background: #121419;
+  background: var(--bg-canvas-subtle);
   border-bottom: 1px solid var(--border-subtle);
   overflow-x: auto;
 }
@@ -967,13 +1064,13 @@ section {
 
 .arch-nav-tab:hover {
   color: var(--text-main);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-surface-hover);
 }
 
 .arch-nav-tab.active {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   background: var(--bg-surface);
-  border-top: 2px solid var(--accent-orange);
+  border-top: 2px solid var(--accent-primary);
   font-weight: 600;
 }
 
@@ -989,7 +1086,7 @@ section {
 }
 
 .arch-node-card {
-  background: #12141A;
+  background: var(--bg-surface);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-xs);
   padding: 16px;
@@ -998,8 +1095,8 @@ section {
 }
 
 .arch-node-card:hover, .arch-node-card.active {
-  border-color: var(--accent-orange);
-  background: #181C24;
+  border-color: var(--accent-primary);
+  background: var(--bg-surface-hover);
   transform: translateY(-2px);
 }
 
@@ -1007,7 +1104,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   text-transform: uppercase;
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
   margin-bottom: 6px;
 }
 
@@ -1025,7 +1122,7 @@ section {
 }
 
 .arch-flow-sequence {
-  background: #101217;
+  background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   padding: 20px;
@@ -1035,7 +1132,7 @@ section {
 .arch-flow-title {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   text-transform: uppercase;
   margin-bottom: 14px;
   letter-spacing: 0.08em;
@@ -1057,12 +1154,12 @@ section {
 }
 
 .arch-flow-item span:first-child {
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
 }
 
 .arch-tradeoff-box {
   background: rgba(255, 118, 38, 0.06);
-  border-left: 3px solid var(--accent-orange);
+  border-left: 3px solid var(--accent-primary);
   padding: 14px 18px;
   font-size: 0.88rem;
   color: var(--text-main);
@@ -1093,7 +1190,7 @@ section {
   gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   text-transform: uppercase;
   margin-bottom: 8px;
 }
@@ -1114,7 +1211,7 @@ section {
 
 /* Interactive Kafka Live Stream Simulator */
 .kafka-simulator-container {
-  background: #101217;
+  background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   padding: 20px;
@@ -1135,7 +1232,7 @@ section {
 }
 
 .kafka-partition-box {
-  background: #161A22;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   padding: 10px;
   font-family: var(--font-mono);
@@ -1152,7 +1249,7 @@ section {
 .partition-count {
   font-size: 1.15rem;
   font-weight: bold;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 .dlq-status-panel {
@@ -1169,7 +1266,7 @@ section {
 
 /* Interactive Dijkstra Pathfinding Demo */
 .dijkstra-demo-box {
-  background: #101217;
+  background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   padding: 20px;
@@ -1190,7 +1287,7 @@ section {
 .dijkstra-node-btn {
   width: 44px;
   height: 44px;
-  background: #181C24;
+  background: var(--bg-surface);
   border: 2px solid var(--border-medium);
   border-radius: 50%;
   color: var(--text-main);
@@ -1206,14 +1303,14 @@ section {
 }
 
 .dijkstra-node-btn:hover, .dijkstra-node-btn.selected {
-  border-color: var(--accent-orange);
-  background: rgba(255, 118, 38, 0.2);
-  color: var(--accent-orange);
+  border-color: var(--accent-primary);
+  background: var(--accent-secondary-glow);
+  color: var(--accent-primary);
   transform: scale(1.1);
 }
 
 .dijkstra-result-strip {
-  background: #161A22;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   padding: 12px;
@@ -1224,7 +1321,7 @@ section {
 }
 
 /* ==========================================================================
-   TECHNICAL SKILLS — SWISS ENGINEERING BREAKDOWN
+   TECHNICAL SKILLS â€” SWISS ENGINEERING BREAKDOWN
    ========================================================================== */
 .skills-engineering-grid {
   display: grid;
@@ -1263,7 +1360,7 @@ section {
 .sector-idx {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 .skills-items-flow {
@@ -1277,7 +1374,7 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 6px 10px;
-  background: #111419;
+  background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   font-size: 0.88rem;
@@ -1286,8 +1383,8 @@ section {
 }
 
 .skill-row-item:hover {
-  background: #191E28;
-  border-color: var(--accent-orange);
+  background: var(--bg-surface-hover);
+  border-color: var(--accent-primary);
 }
 
 .skill-level-code {
@@ -1325,7 +1422,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   background: rgba(245, 166, 35, 0.1);
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
   border: 1px solid rgba(245, 166, 35, 0.3);
   padding: 2px 8px;
   border-radius: var(--radius-xs);
@@ -1374,8 +1471,8 @@ section {
 }
 
 .timeline-entry-row:hover {
-  border-color: var(--accent-orange);
-  background: #191D26;
+  border-color: var(--accent-primary);
+  background: var(--bg-surface-hover);
 }
 
 .timeline-entry-top {
@@ -1395,7 +1492,7 @@ section {
 
 .timeline-org-name {
   font-size: 0.95rem;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   font-weight: 600;
 }
 
@@ -1403,7 +1500,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--text-faint);
-  background: #111419;
+  background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   padding: 4px 10px;
   border-radius: var(--radius-xs);
@@ -1437,7 +1534,7 @@ section {
 .achieve-rank-large {
   font-size: 2.4rem;
   font-weight: 900;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   font-family: var(--font-mono);
   line-height: 1;
   margin-bottom: 8px;
@@ -1453,7 +1550,7 @@ section {
 .achieve-org {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
   margin-bottom: 12px;
 }
 
@@ -1492,8 +1589,8 @@ section {
 }
 
 .contact-box-link:hover {
-  border-color: var(--accent-orange);
-  background: #191D26;
+  border-color: var(--accent-primary);
+  background: var(--bg-surface-hover);
   transform: translateX(4px);
 }
 
@@ -1535,7 +1632,7 @@ section {
 .form-field-group input,
 .form-field-group textarea {
   width: 100%;
-  background: #101217;
+  background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-xs);
   padding: 12px 16px;
@@ -1548,7 +1645,7 @@ section {
 .form-field-group input:focus,
 .form-field-group textarea:focus {
   outline: none;
-  border-color: var(--accent-orange);
+  border-color: var(--accent-primary);
 }
 
 .form-field-group textarea {
@@ -1578,7 +1675,7 @@ section {
 .cmd-palette-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(11, 13, 16, 0.85);
+  background: rgba(10, 15, 29, 0.75);
   backdrop-filter: blur(12px);
   z-index: 2000;
   display: flex;
@@ -1598,10 +1695,10 @@ section {
 .cmd-palette-window {
   width: 100%;
   max-width: 640px;
-  background: #14171E;
+  background: var(--bg-surface);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-sm);
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   transform: translateY(-20px);
   transition: transform var(--trans-mid);
@@ -1620,7 +1717,7 @@ section {
 }
 
 .cmd-search-input-box svg {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   flex-shrink: 0;
 }
 
@@ -1654,12 +1751,12 @@ section {
 }
 
 .cmd-result-item:hover, .cmd-result-item.highlighted {
-  background: #1F2430;
+  background: var(--bg-surface-hover);
   color: var(--text-main);
 }
 
 .cmd-result-item.highlighted .cmd-result-tag {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 .cmd-result-tag {
@@ -1671,7 +1768,7 @@ section {
 
 .cmd-footer-hints {
   padding: 10px 20px;
-  background: #101217;
+  background: var(--bg-canvas-subtle);
   border-top: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
@@ -1687,7 +1784,7 @@ section {
 .project-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(11, 13, 16, 0.88);
+  background: rgba(10, 15, 29, 0.78);
   backdrop-filter: blur(14px);
   z-index: 2000;
   display: flex;
@@ -1705,14 +1802,14 @@ section {
 }
 
 .project-modal-sheet {
-  background: #14171E;
+  background: var(--bg-surface);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-sm);
   max-width: 760px;
   width: 100%;
   max-height: 88vh;
   overflow-y: auto;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
 }
 
 .project-modal-sheet-header {
@@ -1739,8 +1836,8 @@ section {
 }
 
 .modal-close-trigger:hover {
-  border-color: var(--accent-orange);
-  color: var(--accent-orange);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
 }
 
 .project-modal-sheet-body {
@@ -1759,7 +1856,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   text-transform: uppercase;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
   letter-spacing: 0.08em;
   margin-bottom: 8px;
 }
@@ -1789,13 +1886,13 @@ section {
   content: '—';
   position: absolute;
   left: 0;
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 .project-modal-sheet-footer {
   padding: 20px 32px;
   border-top: 1px solid var(--border-subtle);
-  background: #101217;
+  background: var(--bg-canvas-subtle);
   display: flex;
   justify-content: flex-end;
   gap: 12px;
@@ -1827,7 +1924,7 @@ section {
 }
 
 .github-profile-pill svg {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 .github-repos-grid {
@@ -1847,8 +1944,8 @@ section {
 }
 
 .github-repo-card:hover {
-  border-color: var(--accent-orange);
-  background: #191E28;
+  border-color: var(--accent-primary);
+  background: var(--bg-surface-hover);
   transform: translateY(-2px);
 }
 
@@ -1876,13 +1973,13 @@ section {
 }
 
 .repo-name-link a:hover {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 .repo-star-badge {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--accent-amber);
+  color: var(--accent-secondary);
   background: rgba(245, 166, 35, 0.1);
   padding: 2px 8px;
   border-radius: var(--radius-xs);
@@ -1920,12 +2017,12 @@ section {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-orange);
+  background: var(--accent-primary);
 }
 
 /* Scheduler Simulation Widget */
 .scheduler-sim-container {
-  background: #101217;
+  background: var(--bg-canvas-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   padding: 20px;
@@ -1943,7 +2040,7 @@ section {
    ========================================================================== */
 .editorial-footer {
   padding: 60px 0 40px;
-  background: #080A0D;
+  background: var(--bg-canvas-subtle);
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -1976,7 +2073,7 @@ section {
 }
 
 .footer-social-link:hover {
-  color: var(--accent-orange);
+  color: var(--accent-primary);
 }
 
 /* ==========================================================================

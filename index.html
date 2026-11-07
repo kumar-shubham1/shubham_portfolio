@@ -19,12 +19,12 @@
   <meta name="twitter:image" content="assets/profile.png">
 
   <!-- Favicon (Monogram SK) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B0D10%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 fill=%22%23FF7626%22 text-anchor=%22middle%22 font-family=%22system-ui, monospace%22 font-weight=%22900%22>SK</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230A0F1D%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 fill=%22%232563EB%22 text-anchor=%22middle%22 font-family=%22system-ui, monospace%22 font-weight=%22900%22>SK</text></svg>">
 
   <!-- Typography: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -39,8 +39,7 @@
   <header class="site-nav">
     <div class="nav-container">
       <a href="#home" class="nav-brand" aria-label="Shubham Kumar Home">
-        <span class="nav-brand-index">[SK // 01]</span>
-        <span>SHUBHAM KUMAR</span>
+        <span>Shubham Kumar</span>
       </a>
 
       <nav class="nav-links-menu" id="navLinksMenu" aria-label="Main Navigation">
@@ -56,6 +55,11 @@
       </nav>
 
       <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+
         <button type="button" class="cmd-palette-trigger" id="cmdPaletteTrigger" aria-label="Open Command Palette (Ctrl+K)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <span>Search</span>
@@ -80,11 +84,11 @@
         <div class="hero-text-pane">
           <div class="hero-technical-stamp">
             <span class="pulse-indicator"></span>
-            <span>AVAILABLE FOR SDE INTERNSHIPS // 2026</span>
+            <span>AVAILABLE FOR SOFTWARE ENGINEERING INTERNSHIPS</span>
           </div>
 
           <h1 class="hero-headline">
-            Engineering ideas into <span class="accent-word">systems</span> that matter.
+            Building intelligent software. <span class="accent-word">Engineering systems that scale.</span>
           </h1>
 
           <div class="hero-descriptor-loop">
@@ -122,9 +126,9 @@
               <span class="meta-col-sub">LeetCode &amp; GFG Rank 59</span>
             </div>
             <div class="meta-col-item">
-              <span class="meta-col-label">GRADUATION</span>
-              <span class="meta-col-value">2028</span>
-              <span class="meta-col-sub">Dehradun, India</span>
+              <span class="meta-col-label">CORE FOCUS</span>
+              <span class="meta-col-value">Distributed Systems</span>
+              <span class="meta-col-sub">Backend &amp; Applied AI</span>
             </div>
           </div>
         </div>
@@ -135,8 +139,8 @@
               <img src="assets/profile.png" alt="Shubham Kumar Portrait" width="400" height="500">
             </div>
             <div class="portrait-caption">
-              <span>[FIG 01. ENGINEER]</span>
-              <span>KUMAR, SHUBHAM // SDE</span>
+              <span>Shubham Kumar</span>
+              <span>Software Engineer</span>
             </div>
           </div>
         </div>
@@ -147,7 +151,7 @@
     <section id="about">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">01 // Engineering Philosophy</span>
+          <span class="section-label">Engineering Philosophy</span>
           <h2 class="section-title">Not just writing code. Understanding how things work.</h2>
           <p class="section-desc">
             Behind every framework and API is a network of system decisions, memory allocations, and message broker tradeoffs.
@@ -217,7 +221,7 @@
                 <span class="term-prompt">$</span> <span>projects</span>
               </div>
               <div class="term-output">
-                <div>OrderMesh, AstraOS, NewsSenseAI, Crop Disease Prediction, Uber Ambulance and Disaster Relief Portal.</div>
+                <div>OrderMesh, AstraOS, NewsSenseAI, Crop Disease Prediction, AI Job Tracker and Disaster Relief Portal.</div>
               </div>
 
               <div class="term-line">
@@ -253,7 +257,7 @@
     <section id="skills">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">02 // Technical Capabilities</span>
+          <span class="section-label">Technical Capabilities</span>
           <h2 class="section-title">The Engineering Stack</h2>
           <p class="section-desc">Languages, runtime environments, databases, and architectural toolchains with verified project implementation.</p>
         </div>
@@ -263,7 +267,6 @@
           <div class="skills-sector-block">
             <div class="skills-sector-head">
               <span class="sector-title">Programming</span>
-              <span class="sector-idx">[01]</span>
             </div>
             <div class="skills-items-flow">
               <div class="skill-row-item">
@@ -293,7 +296,6 @@
           <div class="skills-sector-block">
             <div class="skills-sector-head">
               <span class="sector-title">Backend</span>
-              <span class="sector-idx">[02]</span>
             </div>
             <div class="skills-items-flow">
               <div class="skill-row-item">
@@ -323,7 +325,6 @@
           <div class="skills-sector-block">
             <div class="skills-sector-head">
               <span class="sector-title">Frontend</span>
-              <span class="sector-idx">[03]</span>
             </div>
             <div class="skills-items-flow">
               <div class="skill-row-item">
@@ -353,7 +354,6 @@
           <div class="skills-sector-block">
             <div class="skills-sector-head">
               <span class="sector-title">Databases</span>
-              <span class="sector-idx">[04]</span>
             </div>
             <div class="skills-items-flow">
               <div class="skill-row-item">
@@ -375,7 +375,6 @@
           <div class="skills-sector-block">
             <div class="skills-sector-head">
               <span class="sector-title">AI / ML</span>
-              <span class="sector-idx">[05]</span>
             </div>
             <div class="skills-items-flow">
               <div class="skill-row-item">
@@ -401,7 +400,6 @@
           <div class="skills-sector-block">
             <div class="skills-sector-head">
               <span class="sector-title">Cloud &amp; DevOps</span>
-              <span class="sector-idx">[06]</span>
             </div>
             <div class="skills-items-flow">
               <div class="skill-row-item">
@@ -431,7 +429,6 @@
           <div class="skills-sector-block">
             <div class="skills-sector-head">
               <span class="sector-title">Computer Science</span>
-              <span class="sector-idx">[07]</span>
             </div>
             <div class="skills-items-flow">
               <div class="skill-row-item">
@@ -468,7 +465,7 @@
     <section id="projects">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">03 // Selected Engineering Works</span>
+          <span class="section-label">Selected Works</span>
           <h2 class="section-title">Production Systems &amp; Architectures</h2>
           <p class="section-desc">Six distinctive projects built with a focus on throughput, on-device execution, and algorithmic efficiency.</p>
         </div>
@@ -493,16 +490,16 @@
     <section id="architecture">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">04 // Interactive Systems Breakdown</span>
+          <span class="section-label">Systems Breakdown</span>
           <h2 class="section-title">Project Architecture Explorer</h2>
           <p class="section-desc">Inspect verified data flow pipelines, broker topologies, and engineering tradeoffs of my primary systems.</p>
         </div>
 
         <div class="arch-explorer-container">
           <div class="arch-explorer-nav">
-            <button type="button" class="arch-nav-tab active" data-arch="ordermesh">01 // OrderMesh (Kafka)</button>
-            <button type="button" class="arch-nav-tab" data-arch="astraos">02 // AstraOS (On-Device AI)</button>
-            <button type="button" class="arch-nav-tab" data-arch="newssenseai">03 // NewsSenseAI (Spring AI)</button>
+            <button type="button" class="arch-nav-tab active" data-arch="ordermesh">OrderMesh (Kafka)</button>
+            <button type="button" class="arch-nav-tab" data-arch="astraos">AstraOS (On-Device AI)</button>
+            <button type="button" class="arch-nav-tab" data-arch="newssenseai">NewsSenseAI (Spring AI)</button>
           </div>
 
           <div class="arch-canvas-pane">
@@ -532,7 +529,7 @@
     <section id="lab">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">05 // Interactive Demonstrations</span>
+          <span class="section-label">Interactive Demonstrations</span>
           <h2 class="section-title">Shubham's Engineering Lab</h2>
           <p class="section-desc">Working interactive simulations illustrating the core distributed messaging and algorithmic logic powering my projects.</p>
         </div>
@@ -584,7 +581,7 @@
 
             <div class="dijkstra-demo-box">
               <div class="dijkstra-canvas-mock">
-                <button type="button" class="dijkstra-node-btn" data-node="A" style="border-color:var(--accent-orange);">A (Hub)</button>
+                <button type="button" class="dijkstra-node-btn" data-node="A" style="border-color:var(--accent-primary);">A (Hub)</button>
                 <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">──(2)──</span>
                 <button type="button" class="dijkstra-node-btn" data-node="C">C</button>
                 <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">──(3)──</span>
@@ -594,14 +591,14 @@
               </div>
 
               <div class="dijkstra-result-strip" id="dijkstraPathResult">
-                Route: <strong style="color:var(--accent-orange);">Node A → Node C → Node D</strong><br>
+                Route: <strong style="color:var(--accent-primary);">Node A → Node C → Node D</strong><br>
                 Estimated Transit Cost: <strong>5 units</strong> · Priority: High Urgency Medical Dispatch
               </div>
 
               <!-- Demo 3: Interactive Process Scheduler Simulation -->
               <div class="scheduler-sim-container">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                  <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-amber);">ROUND-ROBIN TASK SCHEDULER</span>
+                  <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-secondary);">ROUND-ROBIN TASK SCHEDULER</span>
                   <button type="button" class="btn-editorial btn-outline-minimal btn-sm-editorial btn-magnetic" id="labNextQuantumBtn" style="padding:3px 8px; font-size:0.72rem;">Schedule Next Quantum</button>
                 </div>
                 <div id="schedActiveTask" style="font-size:0.85rem; margin-bottom:6px; color:var(--text-main);">Loading scheduler...</div>
@@ -617,7 +614,7 @@
     <section id="github-activity">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">06 // Code Consistency &amp; Activity</span>
+          <span class="section-label">Code &amp; Activity</span>
           <h2 class="section-title">Developer Activity &amp; GitHub Repositories</h2>
           <p class="section-desc">Public repository activity, language distributions, and open-source contributions directly linked to GitHub.</p>
         </div>
@@ -628,7 +625,7 @@
             <span>GitHub Profile: <strong>@kumar-shubham1</strong></span>
           </div>
           <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);">
-            Public Repositories: <strong style="color:var(--accent-orange);" id="githubTotalReposCount">30+</strong>
+            Public Repositories: <strong style="color:var(--accent-primary);" id="githubTotalReposCount">30+</strong>
           </div>
           <a href="https://github.com/kumar-shubham1" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-sm-editorial btn-magnetic">
             View All Repositories on GitHub
@@ -646,7 +643,7 @@
     <section id="building">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">07 // Active Systems Exploration</span>
+          <span class="section-label">Active Exploration</span>
           <h2 class="section-title">Currently Building &amp; Researching</h2>
           <p class="section-desc">Active investigations into distributed consensus protocols, high-concurrency RPC protocols, and edge compute.</p>
         </div>
@@ -701,7 +698,7 @@
     <section id="timeline">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">08 // Trajectory &amp; Growth</span>
+          <span class="section-label">Trajectory &amp; Growth</span>
           <h2 class="section-title">Career &amp; Academic Timeline</h2>
           <p class="section-desc">Formal computer science training, campus leadership, and industry engineering simulations.</p>
         </div>
@@ -771,7 +768,7 @@
     <section id="achievements">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">09 // Verified Milestones</span>
+          <span class="section-label">Verified Milestones</span>
           <h2 class="section-title">Honors &amp; Engineering Activity</h2>
           <p class="section-desc">Competitive coding rankings, national hackathon podiums, and open source selections.</p>
         </div>
@@ -812,7 +809,7 @@
     <section id="contact">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">10 // Direct Contact</span>
+          <span class="section-label">Direct Contact</span>
           <h2 class="section-title">Have an interesting problem? Let's build something.</h2>
           <p class="section-desc">Available for software engineering internships, technical collaborations, and distributed systems discussions.</p>
         </div>
@@ -929,7 +926,7 @@
   <footer class="editorial-footer">
     <div class="wrap footer-inner-flex">
       <div class="footer-credit">
-        &copy; 2026 SHUBHAM KUMAR // ENGINEERED WITH EDITORIAL STANDARDS &amp; ZERO FRAMEWORK BLOAT
+        &copy; 2026 Shubham Kumar · Designed &amp; Engineered with Care
       </div>
 
       <div class="footer-social-cluster">
@@ -941,6 +938,16 @@
       </div>
     </div>
   </footer>
+
+  <!-- Theme initialization (prevents flash of wrong theme) -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('portfolio-theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 
   <!-- Centralized Data and Scripts -->
   <script src="projects-data.js"></script>

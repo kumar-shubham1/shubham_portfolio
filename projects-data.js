@@ -1,15 +1,15 @@
 /**
- * SHUBHAM KUMAR — ULTIMATE PORTFOLIO CENTRALIZED DATA STORE
- * Single source of truth for Personal Details, Featured Projects,
- * System Architectures, GitHub Activity Fallbacks, and Currently Building items.
+ * SHUBHAM KUMAR — PERSONAL PORTFOLIO CENTRALIZED DATA STORE
+ * Clean, readable, verified project details, architectures, and engineering profiles.
  */
 
 const PORTFOLIO_DATA = {
   personal: {
     name: "Shubham Kumar",
+    wordmark: "Shubham Kumar",
     title: "Software Engineer | Backend & Full Stack Developer | AI/ML Enthusiast",
-    headline: "Engineering ideas into systems that matter.",
-    introduction: "I build scalable backend systems, distributed applications, and AI-powered software. I enjoy solving real-world problems through clean code, thoughtful system design, and modern technologies.",
+    headline: "Building intelligent software. Engineering systems that scale.",
+    introduction: "I'm Shubham Kumar, a Computer Science undergraduate and software developer interested in backend engineering, distributed systems and AI-powered applications. I enjoy turning complex technical ideas into practical, reliable software.",
     education: {
       degree: "B.Tech in Computer Science & Engineering",
       institution: "Graphic Era University, Dehradun",
@@ -28,41 +28,57 @@ const PORTFOLIO_DATA = {
     resumeUrl: "https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view"
   },
 
-  currentlyBuilding: {
-    activeProjects: [
-      {
-        title: "Distributed Consensus Protocols (Raft)",
-        category: "Systems Research",
-        focus: "Implementing leader election, log replication, and heartbeat mechanisms in Python/Go to examine network partition split-brain resilience.",
-        status: "Active Prototype",
-        tech: ["Raft", "Distributed Systems", "RPC", "Python"]
-      },
-      {
-        title: "High-Throughput gRPC Microservices",
-        category: "Backend Architecture",
-        focus: "Benchmarking Protocol Buffers vs REST JSON serialization latencies under high concurrency workloads.",
-        status: "Benchmarking",
-        tech: ["Java", "gRPC", "Protobuf", "Docker"]
-      },
-      {
-        title: "On-Device Edge Vision Pipelines",
-        category: "AI Engineering",
-        focus: "Optimizing quantized PyTorch models for zero-cloud latency inference in low-compute hardware environments.",
-        status: "Model Quantization",
-        tech: ["PyTorch", "ONNX", "Computer Vision"]
-      }
+  skills: {
+    programming: [
+      { name: "Java", note: "Enterprise backend, OOP, Spring Boot" },
+      { name: "Python", note: "Distributed workers, PyTorch ML, Flask" },
+      { name: "C / C++", note: "DSA foundations, memory concepts" },
+      { name: "JavaScript", note: "Full-stack apps, async patterns" },
+      { name: "TypeScript", note: "Type-safe applications, Node.js" },
+      { name: "SQL", note: "Relational queries, schema design" }
     ],
-    technologiesExploring: ["Raft Consensus", "gRPC / Protobuf", "eBPF", "Vector Indexing (HNSW)", "Quantized LLMs"],
-    engineeringInterests: [
-      "Distributed Stream Processing & Event Brokers",
-      "High-Throughput Fault-Tolerant Microservices",
-      "Applied Deep Learning & Computer Vision",
-      "Algorithmic Optimization & Graph Systems"
+    backend: [
+      { name: "Spring Boot", note: "RESTful microservices, Spring Data JPA" },
+      { name: "Spring AI", note: "Model abstractions, vector search" },
+      { name: "Node.js & Express", note: "High-concurrency API servers" },
+      { name: "Flask", note: "Python micro-framework, ML inference" },
+      { name: "REST APIs", note: "HTTP semantics, pagination, rate limits" }
     ],
-    learningGoals: [
-      "Master distributed storage engine internals (LSM Trees, WAL)",
-      "Deepen Spring Cloud and Kubernetes container orchestration",
-      "Expand competitive coding achievements on LeetCode & Codeforces"
+    frontend: [
+      { name: "React.js", note: "Component hierarchy, hooks, state" },
+      { name: "Next.js", note: "Server-side rendering, routing" },
+      { name: "Vue.js", note: "Lightweight reactive interfaces" },
+      { name: "HTML5 & CSS3", note: "Semantic structure, responsive layouts" },
+      { name: "Tailwind CSS", note: "Utility-first design systems" },
+      { name: "Bootstrap", note: "Rapid prototyping grids" }
+    ],
+    databases: [
+      { name: "PostgreSQL", note: "B-Tree indexing, complex joins" },
+      { name: "MongoDB", note: "Document store, geospatial queries" },
+      { name: "MySQL", note: "Relational storage, transactions" }
+    ],
+    aiml: [
+      { name: "PyTorch", note: "Deep learning model training & inference" },
+      { name: "Machine Learning", note: "Classification, regression, metrics" },
+      { name: "Deep Learning", note: "CNN architectures, image processing" },
+      { name: "Computer Vision", note: "ResNet9, OpenCV image preprocessing" },
+      { name: "Generative AI", note: "LLM integration, embeddings, semantic search" }
+    ],
+    cloudDevops: [
+      { name: "Docker", note: "Container packaging, multi-service compose" },
+      { name: "Apache Kafka", note: "Event streaming, topic partitions, DLQ" },
+      { name: "Google Cloud Platform", note: "Compute Engine, storage bucket setup" },
+      { name: "Git & GitHub", note: "Branching workflows, version control" },
+      { name: "Linux & Bash", note: "CLI navigation, process automation" },
+      { name: "Postman", note: "API design testing, contract validation" }
+    ],
+    computerScience: [
+      { name: "Data Structures & Algorithms", note: "700+ solved problems on LeetCode/GFG" },
+      { name: "Object-Oriented Programming", note: "Encapsulation, inheritance, SOLID" },
+      { name: "DBMS", note: "ACID properties, indexing, normalization" },
+      { name: "Operating Systems", note: "Process scheduling, concurrency, memory" },
+      { name: "Computer Networks", note: "TCP/IP, HTTP/HTTPS, DNS, WebSockets" },
+      { name: "System Design", note: "Scalability, decoupling, caching, brokers" }
     ]
   },
 
@@ -73,49 +89,35 @@ const PORTFOLIO_DATA = {
       title: "OrderMesh",
       subtitle: "Distributed Order Processing System",
       category: "distributed",
-      categoryLabel: "Distributed Systems & Streaming",
-      summary: "High-throughput, event-driven distributed order processing engine built with Apache Kafka and Docker to decouple microservice workflows and guarantee fault tolerance under peak traffic.",
-      metrics: "990+ msgs/sec sustained throughput",
-      tech: ["Python", "Apache Kafka", "Docker", "Microservices", "Dead Letter Queues", "Async IO"],
+      categoryLabel: "Distributed Systems",
+      summary: "An event-driven order processing engine using Apache Kafka and Docker to decouple microservice workflows and sustain high throughput during peak load.",
+      metrics: "990+ messages/sec in performance testing",
+      tech: ["Python", "Apache Kafka", "Docker", "Microservices", "Dead Letter Queues"],
       githubUrl: "https://github.com/kumar-shubham1/OrderMesh",
       liveUrl: null,
-      problem: "E-commerce order spikes often overwhelm monolithic relational databases, creating cascading service timeouts, dropped transaction states, and single points of failure.",
-      solution: "Engineered an asynchronous, event-driven pipeline where incoming orders are published to partitioned Kafka topics, processed in parallel by decoupled consumers with exponential retry backoff and DLQ containment.",
-      architecture: "Producer services publish validated order events with idempotency keys to partitioned Apache Kafka topics. Consumer groups pull batches in parallel, processing inventory allocation and payment validation with manual offset commits. Faulty messages are isolated into Dead Letter Queues.",
-      keyChallenges: "Managing partition rebalancing during dynamic consumer scaling and eliminating message duplication through consumer-side idempotency verification.",
-      engineeringDecisions: "Chosen Kafka over RabbitMQ for persistent append-only log retention and deterministic multi-subscriber consumer group replays during failure recoveries.",
-      highlights: [
-        "Partitioned Apache Kafka topics to allow scalable horizontal consumer worker scaling.",
-        "Manual offset commit management to ensure strictly at-least-once delivery guarantees.",
-        "Dead Letter Queue (DLQ) isolation routing corrupt messages without blocking the main event queue.",
-        "Docker Compose orchestration for multi-container broker and worker deployment."
-      ],
-      architectureTag: "Event-Driven Producer/Consumer"
+      whatProblem: "During sudden shopping spikes, synchronous databases get overwhelmed with write requests, causing timeouts, payment drops, and cascading service failures.",
+      whyBuilt: "I wanted to understand how large e-commerce platforms process thousands of transactions per second without locking up their primary databases.",
+      howItWorks: "Incoming orders are published to partitioned Kafka topics. Separate consumer workers process payment, update inventory, and commit states independently with automatic retry policies.",
+      keyChallenge: "Handling malformed payloads without blocking healthy orders. I solved this by implementing Dead Letter Queues (DLQ) with exponential backoff retries.",
+      whatLearned: "How log-based event streaming provides durability, how consumer groups scale horizontally, and why idempotency is critical in distributed transactions."
     },
     {
       id: "astraos",
       number: "02",
       title: "AstraOS",
-      subtitle: "Offline AI Personal Operating Environment",
+      subtitle: "Offline AI Personal Operating System",
       category: "aiml",
-      categoryLabel: "On-Device AI & Systems",
-      summary: "An offline-first personal AI assistant and desktop productivity shell designed to run private multi-modal intelligence entirely on local device hardware without cloud telemetries.",
-      metrics: "100% Offline Local Model Inference",
-      tech: ["TypeScript", "On-Device AI", "Local LLMs", "Web Speech API", "Node.js", "Desktop Shell"],
+      categoryLabel: "On-Device AI",
+      summary: "A private, offline-first personal assistant shell that runs voice and text AI interactions directly on local hardware without sending telemetry to cloud servers.",
+      metrics: "100% on-device offline inference",
+      tech: ["TypeScript", "On-Device AI", "Local Models", "Web Speech API", "Node.js"],
       githubUrl: "https://github.com/kumar-shubham1/AstraOS",
       liveUrl: null,
-      problem: "Cloud-hosted AI assistants leak sensitive personal queries, require persistent internet bandwidth, and incur unbounded API subscription costs.",
-      solution: "Constructed an offline runtime shell leveraging local quantized models for privacy-preserving semantic query resolution, voice synthesis, and desktop command dispatch.",
-      architecture: "A local TypeScript event loop manages bidirectional Web Speech audio capture, routes natural language intents through local quantized model runtimes, and commits contextual state to encrypted local storage without external network egress.",
-      keyChallenges: "Operating within strict local RAM and CPU compute envelopes while maintaining natural conversational response times under 150ms.",
-      engineeringDecisions: "Architected around local event buses rather than cloud webhooks to maintain complete data autonomy and privacy-preserving execution.",
-      highlights: [
-        "Lightweight TypeScript orchestrator managing command parsing and local tool executions.",
-        "Bi-directional voice interface integrating Web Speech recognition and local text-to-speech.",
-        "Contextual memory storage engine utilizing encrypted local JSON state caches.",
-        "Zero-cloud network sandbox ensuring complete data privacy."
-      ],
-      architectureTag: "Local Event Bus & Quantized Runtime"
+      whatProblem: "Cloud-hosted AI assistants send private conversational queries to external servers, require constant internet access, and introduce network latency.",
+      whyBuilt: "I wanted to explore the feasibility of running responsive personal productivity assistants completely locally on personal computer hardware.",
+      howItWorks: "A lightweight TypeScript runtime processes natural language voice and text input, routes intents through local quantized model runtimes, and manages personal desktop utilities via an internal event loop.",
+      keyChallenge: "Keeping memory consumption low and latency snappy on standard hardware without relying on cloud GPU clusters.",
+      whatLearned: "Trade-offs between model parameter size and inference latency, speech recognition streaming in the browser, and offline state caching."
     },
     {
       id: "newssenseai",
@@ -123,206 +125,173 @@ const PORTFOLIO_DATA = {
       title: "NewsSenseAI",
       subtitle: "AI-Powered News Intelligence Platform",
       category: "backend",
-      categoryLabel: "Enterprise Backend & Spring AI",
-      summary: "Contextual news aggregation and semantic ranking backend platform leveraging Java, Spring Boot, Spring AI, and PostgreSQL for real-time article retrieval and abstractive summarization.",
+      categoryLabel: "Backend & Spring AI",
+      summary: "An enterprise-grade news aggregation platform using Spring Boot, PostgreSQL, and Spring AI for semantic search, topic grouping, and contextual summaries.",
       metrics: "Sub-100ms API response latency",
-      tech: ["Java", "Spring Boot", "Spring AI", "PostgreSQL", "REST APIs", "HikariCP", "Vector Search"],
+      tech: ["Java", "Spring Boot", "Spring AI", "PostgreSQL", "REST APIs", "HikariCP"],
       githubUrl: "https://github.com/kumar-shubham1/NewsSense",
       liveUrl: null,
-      problem: "Traditional keyword news searches miss conceptual nuances, flood users with duplicate clickbait, and struggle with multi-source geopolitical context ranking.",
-      solution: "Developed high-performance Spring Boot REST microservices integrating Spring AI for semantic vector embeddings, source credibility indexing, and geospatial news queries.",
-      architecture: "Layered Spring Boot enterprise application featuring HikariCP connection pooling, indexed PostgreSQL data access via Spring Data JPA, and decoupled Spring AI model client abstractions.",
-      keyChallenges: "Optimizing database indexing strategies to handle concurrent geospatial queries and vector similarity searches with sub-100ms latency.",
-      engineeringDecisions: "Adopted Spring AI's unified client abstraction to keep the backend decoupled from specific LLM providers and simplify enterprise testing.",
-      highlights: [
-        "Spring Boot enterprise architecture following modular Service-Repository patterns.",
-        "PostgreSQL connection pooling via HikariCP and B-tree indexing for low-latency queries.",
-        "Spring AI integration for automated article summarization and key entity extraction.",
-        "Geospatial query endpoints for radius-based regional news discovery."
-      ],
-      architectureTag: "Layered Spring Boot Microservice"
+      whatProblem: "Readers waste time scrolling through repetitive news articles across different outlets that say the same thing with clickbait headlines.",
+      whyBuilt: "To build a robust Java Spring backend that enriches news streams with semantic understanding rather than basic keyword queries.",
+      howItWorks: "Spring Boot microservices ingest articles, store them in PostgreSQL with B-tree indices, and leverage Spring AI to generate abstractive summaries, category scores, and location tags.",
+      keyChallenge: "Tuning connection pooling and database indices to keep response times under 100ms while executing complex multi-criteria filters.",
+      whatLearned: "Production Spring Boot architectural patterns, HikariCP connection tuning, and integrating modern AI frameworks in the Java ecosystem."
     },
     {
       id: "crop-disease",
       number: "04",
       title: "Crop Disease Prediction",
-      subtitle: "Deep Learning-Based Crop Pathogen Detection",
+      subtitle: "AI-Based Crop Disease Detection",
       category: "aiml",
-      categoryLabel: "Computer Vision & Diagnostics",
-      summary: "End-to-end agricultural diagnostics pipeline deploying a customized PyTorch ResNet9 convolutional neural network for rapid plant leaf pathology diagnosis and actionable treatment guidance.",
-      metrics: "Sub-second inference per image",
+      categoryLabel: "Computer Vision",
+      summary: "A deep learning diagnostic web app that identifies plant leaf pathogens from photos in seconds, powered by a custom-trained ResNet9 neural network.",
+      metrics: "Instant image diagnosis with confidence scores",
       tech: ["Python", "PyTorch", "ResNet9", "Flask", "React", "Next.js", "Docker"],
       githubUrl: "https://github.com/kumar-shubham1/Crop-Disease-Prediction",
       liveUrl: null,
-      problem: "Smallholder farmers face severe crop yield loss due to delayed identification of fungal and viral leaf diseases without accessible agronomic specialists.",
-      solution: "Engineered a deep learning inference system accessible via mobile-friendly web interface that classifies leaf disease images and serves localized treatment remedies.",
-      architecture: "PyTorch-trained ResNet9 neural network weights served through a lightweight Flask REST inference worker, consuming preprocessed multipart tensor payloads from a Next.js/React frontend.",
-      keyChallenges: "Mitigating class imbalance across rare leaf rust conditions and ensuring high inference accuracy across varying mobile camera lighting conditions.",
-      engineeringDecisions: "Selected ResNet9 over heavyweight ResNet50 to reduce memory footprint by 80% while retaining over 97% classification fidelity on test datasets.",
-      highlights: [
-        "Trained a lightweight ResNet9 CNN architecture in PyTorch achieving high validation accuracy with minimal parameter footprint.",
-        "Constructed Flask REST endpoint handling image tensor normalization and confidence scoring.",
-        "Integrated reactive web interface with real-time camera upload previews and diagnosis cards.",
-        "Containerized with Docker for reproducible deployment across low-spec server targets."
-      ],
-      architectureTag: "CNN Tensor Pipeline + Flask REST"
+      whatProblem: "Farmers often fail to identify plant diseases early, leading to crop loss and misuse of expensive chemical treatments.",
+      whyBuilt: "To create an accessible diagnostic tool that gives farmers instant disease detection and remedy advice right from their phone camera.",
+      howItWorks: "The user takes or uploads a leaf picture. A Flask REST API normalizes the image tensor, runs inference against a PyTorch ResNet9 CNN, and returns the disease name, confidence score, and treatment instructions.",
+      keyChallenge: "Balancing model accuracy with fast mobile upload speeds on low-bandwidth rural connections.",
+      whatLearned: "Convolutional neural network training, data augmentation techniques, tensor serialization, and containerizing PyTorch models with Docker."
     },
     {
-      id: "uber-ambulance",
+      id: "ai-job-tracker",
       number: "05",
-      title: "Uber Ambulance",
-      subtitle: "Emergency Medical Transport Platform",
+      title: "AI Job Tracker",
+      subtitle: "Intelligent Job Application Management",
       category: "fullstack",
-      categoryLabel: "Full-Stack Geospatial Engineering",
-      summary: "Mission-critical emergency ambulance dispatch and live tracking application built on the MERN stack with Google Maps Platform integration for real-time triage routing.",
-      metrics: "Real-time GPS dispatch workflow",
-      tech: ["MongoDB", "Express.js", "React.js", "Node.js", "Google Maps API", "Geospatial Indexing"],
-      githubUrl: "https://github.com/kumar-shubham1/Uber-Ambulance",
+      categoryLabel: "Full Stack Web",
+      summary: "A full-stack application that organizes the developer job search pipeline, tracking applications across stages with smart resume-to-job matching insights.",
+      metrics: "Centralized pipeline with status tracking",
+      tech: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "Tailwind CSS"],
+      githubUrl: "https://github.com/kumar-shubham1/AI-Job-Tracker",
       liveUrl: null,
-      problem: "Fragmented emergency dispatch networks lead to critical response delays and lack of patient-to-hospital route transparency during medical emergencies.",
-      solution: "Created an on-demand medical transport web application connecting patients with the closest certified ambulances and nearest specialized emergency trauma centers.",
-      architecture: "Node.js and Express REST backend utilizing MongoDB 2dsphere spherical geospatial indexing for rapid proximity discovery, paired with Google Maps JavaScript Directions API on the client.",
-      keyChallenges: "Minimizing GPS coordinate serialization latency and preventing concurrent dispatch race conditions when multiple ambulances accept an emergency distress signal.",
-      engineeringDecisions: "Utilized MongoDB geospatial spherical coordinates over external GIS services to minimize third-party API latency during critical emergency dispatch requests.",
-      highlights: [
-        "MongoDB 2dsphere geospatial indexing for sub-50ms radius queries of available ambulances.",
-        "Google Maps JavaScript API and Directions API for real-time transit routing estimates.",
-        "Two-sided role-based authentication workflows for emergency responders and distress callers.",
-        "Optimized Express.js API handlers reducing dispatch handoff delays."
-      ],
-      architectureTag: "MERN Geospatial Dispatch Loop"
+      whatProblem: "Active job applicants submit dozens of applications across different platforms, quickly losing track of status, interview stages, and follow-up deadlines.",
+      whyBuilt: "To replace chaotic spreadsheets with an interactive kanban pipeline tailored specifically to developer job applications.",
+      howItWorks: "Users log positions, track stages (Applied, Interviewing, Offered, Rejected), upload job descriptions to highlight key skill matches, and schedule follow-up reminders.",
+      keyChallenge: "Structuring a flexible MongoDB schema that accommodates varied company application processes while maintaining fast query speeds.",
+      whatLearned: "Full-stack MERN patterns, JWT authentication, state management for drag-and-drop boards, and building productivity tools people use daily."
     },
     {
       id: "disaster-relief",
       number: "06",
       title: "Disaster Relief Aid Portal",
-      subtitle: "Algorithm-Based Relief Resource Allocation",
+      subtitle: "Disaster Resource Allocation System",
       category: "backend",
-      categoryLabel: "Graph Algorithms & Logistics",
-      summary: "Crisis logistics management platform leveraging Dijkstra's shortest-path graph algorithms and priority queues to calculate optimal supply distribution routes across damaged transit grids.",
-      metrics: "Deterministic shortest-path allocation",
+      categoryLabel: "Algorithms & Logistics",
+      summary: "A disaster management logistics platform using Dijkstra's shortest-path algorithm and priority queues to allocate emergency resources across damaged infrastructure.",
+      metrics: "Deterministic shortest-path route calculation",
       tech: ["Python", "Flask", "JavaScript", "Leaflet", "Chart.js", "Graph Algorithms"],
       githubUrl: "https://github.com/kumar-shubham1/Disaster-Relief-Aid-Request-Portal",
       liveUrl: null,
-      problem: "Natural disaster zones suffer from broken communication, impassable road segments, and chaotic resource misallocations that delay life-saving medical supplies.",
-      solution: "Architected a graph-based logistics engine that models road network closures as weighted graph nodes, running Dijkstra's algorithm to dispatch priority aid efficiently.",
-      architecture: "Flask Python backend maintaining in-memory weighted adjacency list graph structures, computing shortest transit paths via min-heaps and delivering GeoJSON vector layers to Leaflet maps.",
-      keyChallenges: "Dynamically updating road segment weights in the graph when first responders report newly flooded or blocked transport corridors without restarting the routing engine.",
-      engineeringDecisions: "Designed custom weighted graph data structures allowing real-time edge weight recalculations with minimal computational complexity.",
-      highlights: [
-        "Implemented graph pathfinding logic with priority queues to compute lowest-cost safe delivery routes.",
-        "Built a multi-tier urgency triage queue prioritizing acute medical supplies over general goods.",
-        "Interactive Leaflet canvas visualization showing live hazard heatmaps and road blockages.",
-        "Flask backend providing structured GeoJSON routing coordinates."
-      ],
-      architectureTag: "Dijkstra Priority Graph Engine"
+      whatProblem: "During natural disasters, blocked roads and damaged bridges cause relief trucks to get stuck or misallocate critical medical supplies to wrong depots.",
+      whyBuilt: "To explore how classical graph algorithms can solve high-stakes logistics bottlenecks in disaster crisis scenarios.",
+      howItWorks: "Emergency road grids are represented as a weighted graph. When roads flood or close, edge weights update dynamically, and Dijkstra's algorithm computes the safest, fastest supply delivery routes displayed on an interactive Leaflet map.",
+      keyChallenge: "Recalculating shortest paths in real time as field responders report newly impassable roads without resetting the entire network state.",
+      whatLearned: "Practical graph theory implementation with adjacency lists and min-heaps, geospatial coordinates rendering with Leaflet, and priority triage queue management."
     }
   ],
 
   architectures: {
     ordermesh: {
       title: "OrderMesh — Distributed Event-Driven Topology",
-      subtitle: "Conceptual blueprint reflecting actual repository implementation (Python, Kafka, Docker)",
+      note: "Conceptual architecture reflecting the implemented producer-consumer Kafka pipeline.",
       nodes: [
-        { id: "client", label: "Client / REST Gateway", type: "entry", desc: "HTTP Order POST requests received, validated, and given idempotency UUIDs." },
-        { id: "producer", label: "Order Producer Service", type: "service", desc: "Serializes payloads, assigns partition keys, and pushes asynchronously to Kafka." },
-        { id: "kafka", label: "Apache Kafka Broker Cluster", type: "broker", desc: "Partitioned 'orders-inbound' topic with distributed commit log persistence." },
-        { id: "consumer", label: "Order Processor Workers", type: "worker", desc: "Horizontal consumer group polling batches for inventory, ledger & notifications." },
-        { id: "dlq", label: "Dead Letter Queue (DLQ)", type: "fallback", desc: "Isolates unparseable or retry-exhausted messages for telemetry review." },
-        { id: "db", label: "Persistent Order Store", type: "storage", desc: "Final order lifecycle states and transaction commitments." }
+        { id: "gateway", label: "REST Order Gateway", type: "service", desc: "Receives order requests, validates payload schemas, assigns idempotency keys." },
+        { id: "producer", label: "Kafka Order Producer", type: "service", desc: "Serializes order events and publishes asynchronously to topic partitions." },
+        { id: "broker", label: "Kafka Broker Cluster", type: "broker", desc: "Partitioned 'orders-inbound' topic with persistent write-ahead logs." },
+        { id: "workers", label: "Order Processor Workers", type: "worker", desc: "Consumer group reading partition batches for payment and inventory checks." },
+        { id: "dlq", label: "Dead Letter Queue (DLQ)", type: "fallback", desc: "Safely isolates failed or unparseable messages for investigation." },
+        { id: "db", label: "Persistent State Store", type: "storage", desc: "Final transaction records committed with at-least-once delivery." }
       ],
       flows: [
-        { from: "Client Gateway", to: "Producer Service", label: "1. POST /api/v1/orders" },
-        { from: "Producer Service", to: "Kafka Broker", label: "2. Async Partition Emit" },
-        { from: "Kafka Broker", to: "Consumer Workers", label: "3. Consumer Poll (Partition Key)" },
-        { from: "Consumer Workers", to: "Persistent Store", label: "4. State Commit (Success)" },
-        { from: "Consumer Workers", to: "Dead Letter Queue", label: "5. Route to DLQ (On Retry Expiry)" }
+        { from: "REST Gateway", to: "Kafka Order Producer", label: "1. POST /api/orders" },
+        { from: "Kafka Order Producer", to: "Kafka Broker Cluster", label: "2. Async Event Emit" },
+        { from: "Kafka Broker Cluster", to: "Order Processor Workers", label: "3. Partition Batch Poll" },
+        { from: "Order Processor Workers", to: "Persistent State Store", label: "4. State Commit (Success)" },
+        { from: "Order Processor Workers", to: "Dead Letter Queue", label: "5. Route to DLQ (On Failure)" }
       ],
-      tradeoffs: "Tradeoff Analysis: Introducing Kafka adds broker cluster operational complexity compared to direct database writes, but decouples producer availability from database latency, absorbs peak spikes, and yields 990+ msgs/sec throughput."
+      tradeoffs: "Trade-off: Adding a Kafka broker cluster introduces deployment and operational overhead compared to direct SQL database writes, but protects downstream databases from traffic spikes and delivers 990+ messages/sec sustained throughput."
     },
     astraos: {
-      title: "AstraOS — Local On-Device AI Pipeline",
-      subtitle: "Conceptual blueprint reflecting actual repository implementation (TypeScript, Local AI, Web Speech)",
+      title: "AstraOS — On-Device Offline AI Pipeline",
+      note: "Conceptual architecture reflecting the local speech and quantized model inference flow.",
       nodes: [
-        { id: "user", label: "User Input (Voice / CLI)", type: "entry", desc: "Continuous speech capture via Web Speech API or keyboard terminal prompt." },
-        { id: "parser", label: "Command & Intent Parser", type: "service", desc: "Normalizes raw text into structured intent queries with parameter extraction." },
-        { id: "local_llm", label: "Quantized Local Model Runtime", type: "worker", desc: "Offline inference engine generating contextual tool calls without cloud access." },
-        { id: "bus", label: "Desktop Internal Event Bus", type: "broker", desc: "Coordinates command dispatch across local desktop environment utilities." },
-        { id: "storage", label: "Encrypted State & Memory Cache", type: "storage", desc: "Local JSON memory logs and user preferences with zero telemetry egress." }
+        { id: "user", label: "Voice / Text Input", type: "entry", desc: "Captures natural speech via Web Speech API or typed terminal commands." },
+        { id: "parser", label: "Intent Parser", type: "service", desc: "Extracts action intents and parameters from natural language prompts." },
+        { id: "llm", label: "Local Quantized Model", type: "worker", desc: "Executes offline reasoning without external API calls or network dependencies." },
+        { id: "bus", label: "Internal Event Bus", type: "broker", desc: "Dispatches commands to desktop environment utilities and tools." },
+        { id: "cache", label: "Encrypted Local Cache", type: "storage", desc: "Persists context history and preferences directly on user device." }
       ],
       flows: [
-        { from: "Voice / CLI Input", to: "Intent Parser", label: "1. Audio / Text Stream" },
-        { from: "Intent Parser", to: "Local Quantized Model", label: "2. Contextual Prompt Dispatch" },
-        { from: "Local Quantized Model", to: "Event Bus", label: "3. Action Execution Call" },
-        { from: "Event Bus", to: "Encrypted State Cache", label: "4. Local Memory Commit" }
+        { from: "Voice / Text Input", to: "Intent Parser", label: "1. Stream Audio / Text" },
+        { from: "Intent Parser", to: "Local Quantized Model", label: "2. Prompt Formulation" },
+        { from: "Local Quantized Model", to: "Internal Event Bus", label: "3. Action Command Emit" },
+        { from: "Internal Event Bus", to: "Encrypted Local Cache", label: "4. Local State Update" }
       ],
-      tradeoffs: "Tradeoff Analysis: Local on-device models have smaller parameter counts than trillion-parameter cloud APIs, but deliver 100% privacy, zero latency over internet boundaries, and continuous offline availability."
+      tradeoffs: "Trade-off: Local models have smaller parameter counts than cloud APIs, but guarantee complete privacy, work 100% offline, and avoid recurring API subscription costs."
     },
     newssenseai: {
       title: "NewsSenseAI — Spring AI Intelligence Pipeline",
-      subtitle: "Conceptual blueprint reflecting actual repository implementation (Java, Spring Boot, Spring AI, PostgreSQL)",
+      note: "Conceptual architecture reflecting the Spring Boot and PostgreSQL backend.",
       nodes: [
-        { id: "client", label: "API Consumer / Dashboard", type: "entry", desc: "Semantic query specifying target category, score, and geospatial radius." },
-        { id: "controller", label: "Spring Boot REST Controller", type: "service", desc: "Request validation, authentication, and HTTP response serialization." },
-        { id: "postgres", label: "PostgreSQL Database", type: "storage", desc: "B-Tree indexed relational articles + vector search embeddings." },
-        { id: "spring_ai", label: "Spring AI Orchestrator", type: "worker", desc: "LLM abstraction generating contextual abstractive summaries and metadata." },
-        { id: "hikari", label: "HikariCP Connection Pool", type: "broker", desc: "High-performance connection reuse keeping database access sub-10ms." }
+        { id: "client", label: "Client Application", type: "entry", desc: "Queries articles by category, keyword, confidence score, and region." },
+        { id: "controller", label: "Spring Boot REST Controller", type: "service", desc: "Validates incoming queries, manages security, and routes requests." },
+        { id: "hikari", label: "HikariCP Connection Pool", type: "broker", desc: "Maintains optimal connection reuse for high concurrency under load." },
+        { id: "postgres", label: "PostgreSQL Database", type: "storage", desc: "B-Tree indexed article tables with vector embedding support." },
+        { id: "ai", label: "Spring AI Orchestrator", type: "worker", desc: "Coordinates article summarization and topic grouping." }
       ],
       flows: [
-        { from: "API Consumer", to: "Spring REST Controller", label: "1. GET /api/v1/news/semantic" },
-        { from: "Spring REST Controller", to: "HikariCP Pool", label: "2. Acquire DB Connection" },
-        { from: "HikariCP Pool", to: "PostgreSQL Database", label: "3. Vector & Relational Query" },
-        { from: "Spring REST Controller", to: "Spring AI Orchestrator", label: "4. LLM Summary Context" }
+        { from: "Client Application", to: "Spring Boot REST Controller", label: "1. GET /api/v1/news" },
+        { from: "Spring Boot REST Controller", to: "HikariCP Connection Pool", label: "2. Acquire DB Connection" },
+        { from: "HikariCP Connection Pool", to: "PostgreSQL Database", label: "3. Indexed Query & Fetch" },
+        { from: "Spring Boot REST Controller", to: "Spring AI Orchestrator", label: "4. Semantic Summarization" }
       ],
-      tradeoffs: "Tradeoff Analysis: Layered enterprise Spring Boot requires slightly higher JVM startup overhead, but provides compile-time type safety, robust connection pooling, and seamless Spring AI ecosystem integration."
+      tradeoffs: "Trade-off: Spring Boot has a larger initial memory footprint compared to minimal Node.js frameworks, but provides robust compile-time type safety, enterprise dependency injection, and clean architectural maintainability."
     }
   },
 
   verifiedGitHubRepos: [
     {
       name: "OrderMesh",
-      description: "Distributed Order Processing System engineered with Apache Kafka, Python, and Docker. 990+ msgs/sec.",
+      description: "Distributed Order Processing System engineered with Apache Kafka, Python, and Docker.",
       language: "Python",
       stars: 1,
       forks: 0,
-      url: "https://github.com/kumar-shubham1/OrderMesh",
-      topics: ["kafka", "distributed-systems", "docker", "microservices"]
+      url: "https://github.com/kumar-shubham1/OrderMesh"
     },
     {
       name: "AstraOS",
-      description: "Offline-first AI personal operating environment with local inference, voice synthesis, and desktop shell.",
+      description: "Offline-first personal AI operating environment with local model inference and desktop utilities.",
       language: "TypeScript",
       stars: 1,
       forks: 0,
-      url: "https://github.com/kumar-shubham1/AstraOS",
-      topics: ["typescript", "on-device-ai", "offline-first", "speech-api"]
+      url: "https://github.com/kumar-shubham1/AstraOS"
     },
     {
       name: "NewsSense",
-      description: "AI-Powered News Intelligence Platform using Java, Spring Boot, PostgreSQL, and Spring AI framework.",
+      description: "AI-Powered News Intelligence Platform using Java, Spring Boot, PostgreSQL, and Spring AI.",
       language: "Java",
       stars: 1,
       forks: 0,
-      url: "https://github.com/kumar-shubham1/NewsSense",
-      topics: ["spring-boot", "spring-ai", "postgresql", "java"]
+      url: "https://github.com/kumar-shubham1/NewsSense"
     },
     {
       name: "Crop-Disease-Prediction",
-      description: "Deep learning crop disease detection pipeline using custom-trained ResNet9 in PyTorch with Flask REST API.",
+      description: "Deep learning crop disease detection using PyTorch ResNet9 with Flask REST API.",
       language: "Python",
       stars: 1,
       forks: 0,
-      url: "https://github.com/kumar-shubham1/Crop-Disease-Prediction",
-      topics: ["pytorch", "resnet9", "computer-vision", "flask"]
+      url: "https://github.com/kumar-shubham1/Crop-Disease-Prediction"
     },
     {
-      name: "Uber-Ambulance",
-      description: "Emergency ambulance booking & hospital discovery platform with MongoDB 2dsphere geospatial indexing.",
+      name: "AI-Job-Tracker",
+      description: "Full-stack job application management platform with tracking pipelines and status workflows.",
       language: "JavaScript",
       stars: 1,
       forks: 0,
-      url: "https://github.com/kumar-shubham1/Uber-Ambulance",
-      topics: ["mern-stack", "geospatial", "google-maps-api", "express"]
+      url: "https://github.com/kumar-shubham1"
     },
     {
       name: "Disaster-Relief-Aid-Request-Portal",
@@ -330,8 +299,7 @@ const PORTFOLIO_DATA = {
       language: "Python",
       stars: 1,
       forks: 0,
-      url: "https://github.com/kumar-shubham1/Disaster-Relief-Aid-Request-Portal",
-      topics: ["dijkstra", "graph-algorithms", "flask", "leaflet"]
+      url: "https://github.com/kumar-shubham1/Disaster-Relief-Aid-Request-Portal"
     }
   ]
 };
