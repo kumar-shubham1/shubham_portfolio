@@ -1802,6 +1802,143 @@ section {
 }
 
 /* ==========================================================================
+   DEVELOPER DASHBOARD & GITHUB REPOSITORY CARDS
+   ========================================================================== */
+.github-dashboard-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+}
+
+.github-profile-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.github-profile-pill svg {
+  color: var(--accent-orange);
+}
+
+.github-repos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.github-repo-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--trans-fast);
+}
+
+.github-repo-card:hover {
+  border-color: var(--accent-orange);
+  background: #191E28;
+  transform: translateY(-2px);
+}
+
+.repo-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.repo-name-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.repo-name-link a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color var(--trans-fast);
+}
+
+.repo-name-link a:hover {
+  color: var(--accent-orange);
+}
+
+.repo-star-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-amber);
+  background: rgba(245, 166, 35, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  white-space: nowrap;
+}
+
+.repo-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.repo-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+}
+
+.repo-lang-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.lang-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-orange);
+}
+
+/* Scheduler Simulation Widget */
+.scheduler-sim-container {
+  background: #101217;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 20px;
+  margin-top: 16px;
+}
+
+/* Magnetic Buttons Transition */
+.btn-magnetic {
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 .editorial-footer {
