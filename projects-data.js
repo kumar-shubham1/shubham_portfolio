@@ -7,9 +7,9 @@ const PORTFOLIO_DATA = {
   personal: {
     name: "Shubham Kumar",
     wordmark: "Shubham Kumar",
-    title: "Aspiring Software Engineer | Backend & Distributed Systems Enthusiast",
-    headline: "Building intelligent software. Engineering systems that scale.",
-    introduction: "I'm Shubham Kumar, a Computer Science undergraduate at Graphic Era University, Dehradun. I enjoy building backend systems, distributed applications and AI-powered software. My focus is on writing clean, maintainable code, understanding system architecture and solving challenging engineering problems. I believe good software is not just about making things work — it is about making them reliable, efficient and easy to evolve.",
+    title: "Aspiring Software Engineer | Backend Development · Distributed Systems · Full-Stack & AI Projects",
+    headline: "I build thoughtful software for real-world problems.",
+    introduction: "I'm Shubham Kumar, a third-year Computer Science and Engineering student at Graphic Era University, Dehradun. I build backend services, full-stack applications and AI-powered projects while strengthening my foundations in data structures, databases and system design. I enjoy understanding why systems fail, measuring how they perform, and improving them through thoughtful engineering. Always learning. Building with purpose. Improving with every iteration.",
     education: {
       degree: "B.Tech in Computer Science and Engineering",
       institution: "Graphic Era University, Dehradun",

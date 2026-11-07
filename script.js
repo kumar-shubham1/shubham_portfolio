@@ -52,11 +52,16 @@ function initTheme() {
   function setTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
+      toggle.setAttribute('aria-label', 'Switch to Light Theme');
     } else {
       document.documentElement.removeAttribute('data-theme');
+      toggle.setAttribute('aria-label', 'Switch to Dark Theme');
     }
     localStorage.setItem('portfolio-theme', theme);
   }
+
+  // Set initial accessible label
+  toggle.setAttribute('aria-label', getCurrentTheme() === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme');
 
   toggle.addEventListener('click', () => {
     const current = getCurrentTheme();
@@ -1570,35 +1575,67 @@ function initContactForm() {
   const feedback = document.getElementById('formFeedback');
   if (!form) return;
 
+  const nameInput = document.getElementById('cName');
+  const emailInput = document.getElementById('cEmail');
+  const subjectInput = document.getElementById('cSubject');
+  const messageInput = document.getElementById('cMessage');
+
+  // Clear invalid styling on input
+  [nameInput, emailInput, subjectInput, messageInput].forEach(inp => {
+    if (inp) {
+      inp.addEventListener('input', () => {
+        inp.classList.remove('field-invalid');
+      });
+    }
+  });
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('cName').value.trim();
-    const email = document.getElementById('cEmail').value.trim();
-    const subject = document.getElementById('cSubject').value.trim() || 'Software Engineering Inquiry';
-    const message = document.getElementById('cMessage').value.trim();
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const subject = (subjectInput && subjectInput.value.trim()) ? subjectInput.value.trim() : 'Software Engineering Opportunity / Discussion';
+    const message = messageInput ? messageInput.value.trim() : '';
 
-    if (!name || !email || !message) {
-      alert('Please fill out all required fields.');
-      return;
+    let hasError = false;
+
+    if (!name) {
+      if (nameInput) nameInput.classList.add('field-invalid');
+      hasError = true;
+    }
+    if (!email) {
+      if (emailInput) emailInput.classList.add('field-invalid');
+      hasError = true;
+    }
+    if (!message) {
+      if (messageInput) messageInput.classList.add('field-invalid');
+      hasError = true;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert('Please provide a valid email address.');
+    if (email && !emailRegex.test(email)) {
+      if (emailInput) emailInput.classList.add('field-invalid');
+      hasError = true;
+    }
+
+    if (hasError) {
+      if (feedback) {
+        feedback.innerHTML = `<span style="color:#DC2626;">Please fill in your name, a valid email address, and a message before sending.</span>`;
+        feedback.classList.add('active');
+      }
       return;
     }
 
     if (feedback) {
-      feedback.textContent = `Opening your default email client prefilled to shubham824045@gmail.com...`;
+      feedback.innerHTML = `Launching your default email client addressed to <strong>shubham824045@gmail.com</strong>...<br><span style="font-size:0.8rem; color:var(--text-muted); margin-top:4px; display:inline-block;">If your mail app does not open automatically, you can email directly at <a href="mailto:shubham824045@gmail.com">shubham824045@gmail.com</a>.</span>`;
       feedback.classList.add('active');
     }
 
     const encSub = encodeURIComponent(`[Portfolio] ${subject} — ${name}`);
-    const encBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n--\nSent from Shubham Kumar Developer Portfolio`);
+    const encBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n--\nSent from Shubham Kumar Engineering Portfolio`);
 
     setTimeout(() => {
       window.location.href = `mailto:shubham824045@gmail.com?subject=${encSub}&body=${encBody}`;
-    }, 400);
+    }, 350);
   });
 }
 

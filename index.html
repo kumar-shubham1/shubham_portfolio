@@ -27,6 +27,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Immediate Theme Application (Zero Flash) -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('portfolio-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -99,23 +113,32 @@
           <div class="hero-text-pane">
             <div class="hero-technical-stamp">
               <span class="pulse-indicator"></span>
-              <span>UNDERGRADUATE COMPUTER SCIENCE &middot; GRAPHIC ERA UNIVERSITY</span>
+              <span>B.TECH COMPUTER SCIENCE &amp; ENGINEERING &middot; GRAPHIC ERA UNIVERSITY</span>
             </div>
 
             <h1 class="hero-headline">
-              Building intelligent software. <span class="accent-word">Engineering systems that scale.</span>
+              I build <span class="accent-word">thoughtful software</span> for real-world problems.
             </h1>
 
-            <div class="hero-descriptor-loop">
-              <span>&gt;</span>
-              <span id="heroRotatingText">Aspiring Software Engineer</span>
+            <div class="hero-role-identity">
+              <span class="hero-role-badge">Aspiring Software Engineer</span>
+              <span class="hero-role-sub">Backend Development &middot; Distributed Systems &middot; Full-Stack &amp; AI Projects</span>
             </div>
 
-            <p class="hero-bio">
-              I'm <strong>Shubham Kumar</strong>, a Computer Science undergraduate at Graphic Era University, Dehradun. I enjoy building backend systems, distributed applications and AI-powered software. My focus is on writing clean, maintainable code, understanding system architecture and solving challenging engineering problems.
-              <br><br>
-              I believe good software is not just about making things work — it is about making them reliable, efficient and easy to evolve.
-            </p>
+            <div class="hero-bio">
+              <p>
+                I'm <strong>Shubham Kumar</strong>, a third-year Computer Science and Engineering student at Graphic Era University, Dehradun.
+              </p>
+              <p>
+                I build backend services, full-stack applications and AI-powered projects while strengthening my foundations in data structures, databases and system design.
+              </p>
+              <p>
+                I enjoy understanding why systems fail, measuring how they perform, and improving them through thoughtful engineering.
+              </p>
+              <p class="hero-closing-line">
+                Always learning. Building with purpose. Improving with every iteration.
+              </p>
+            </div>
 
             <div class="hero-actions-cluster">
               <a href="#projects" class="btn-editorial btn-solid-orange btn-magnetic">
@@ -153,7 +176,7 @@
           <div class="hero-portrait-frame">
             <div class="portrait-monolith">
               <div class="portrait-image-wrapper">
-                <img src="assets/profile.png" alt="Shubham Kumar Portrait" width="400" height="500">
+                <img src="assets/profile.png" alt="Shubham Kumar - Aspiring Software Engineer" width="400" height="500">
               </div>
               <div class="portrait-caption">
                 <span>Shubham Kumar</span>
@@ -169,29 +192,47 @@
     <section id="about">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">Background &amp; Focus</span>
-          <h2 class="section-title">Undergraduate in Computer Science &amp; Aspiring Software Engineer</h2>
+          <span class="section-label">Background &amp; Evolution</span>
+          <h2 class="section-title">Curious by nature. An engineer in progress.</h2>
           <p class="section-desc">
-            Exploring backend engineering, distributed systems, and intelligent applications with a commitment to reliable software architecture.
+            Computer Science undergraduate at Graphic Era University exploring backend systems, distributed architectures, and applied AI through practical engineering.
           </p>
         </div>
 
         <div class="about-editorial-grid">
-          <!-- Left: Narrative & Approach -->
+          <!-- Left: Narrative & 4-Pillar Visual Hierarchy -->
           <div class="about-narrative-pane">
-            <div class="about-paragraphs-flow">
-              <p>
-                I'm a Computer Science undergraduate at Graphic Era University, currently exploring the intersection of backend engineering, distributed systems and intelligent applications.
-              </p>
-              <p>
-                I enjoy turning complex problems into practical software solutions. My work includes building event-driven systems, full-stack applications and AI-powered tools using technologies such as Java, Python, Spring Boot, Kafka, React and PostgreSQL.
-              </p>
-              <p>
-                Beyond building projects, I actively practise Data Structures and Algorithms, explore software architecture and work on improving my understanding of how reliable systems are designed.
-              </p>
-              <p>
-                I'm continuously learning, experimenting and looking for opportunities to contribute to meaningful engineering work.
-              </p>
+            <div class="about-pillars-grid">
+              <div class="about-pillar-block">
+                <div class="pillar-tag">01 // WHO I AM</div>
+                <p>
+                  I'm a Computer Science undergraduate at Graphic Era University, currently in my third year and preparing for the next stage of my engineering journey.
+                </p>
+              </div>
+
+              <div class="about-pillar-block">
+                <div class="pillar-tag">02 // WHAT I BUILD</div>
+                <p>
+                  Over time, my interests have grown from writing programs to understanding how complete software systems work. I've explored backend development, database design, distributed messaging, full-stack applications and AI-powered solutions through practical projects.
+                </p>
+              </div>
+
+              <div class="about-pillar-block">
+                <div class="pillar-tag">03 // WHAT I ENJOY LEARNING</div>
+                <p>
+                  I enjoy learning by building. Whether it is working with Apache Kafka, developing services using Spring Boot, experimenting with PyTorch or solving algorithmic problems, I try to understand the reasoning behind every technical decision.
+                </p>
+                <p style="margin-top:12px;">
+                  Beyond projects, I regularly practise Data Structures and Algorithms and explore software engineering concepts such as reliability, scalability, performance and maintainability.
+                </p>
+              </div>
+
+              <div class="about-pillar-block">
+                <div class="pillar-tag">04 // WHERE I WANT TO GROW</div>
+                <p>
+                  I'm looking forward to learning from experienced engineers, contributing to meaningful products and growing through real-world engineering opportunities.
+                </p>
+              </div>
             </div>
 
             <!-- Short Engineering Philosophy -->
@@ -520,8 +561,8 @@
       <div class="wrap">
         <div class="section-meta-header">
           <span class="section-label">Algorithmic Foundations</span>
-          <h2 class="section-title">Problem Solving &amp; DSA</h2>
-          <p class="section-desc">Continuous algorithmic problem solving across dynamic programming, graph theory, trees, heaps, and discrete system logic.</p>
+          <h2 class="section-title">Problem Solving &amp; Data Structures</h2>
+          <p class="section-desc">Continuous algorithmic practice focused on data structures, time-space complexity optimization, and problem-solving intuition.</p>
         </div>
 
         <!-- Combined Achievement Banner -->
@@ -530,7 +571,7 @@
           <div class="dsa-hero-info">
             <h3 class="dsa-hero-headline">700+ DSA problems solved across LeetCode and GeeksforGeeks.</h3>
             <p class="dsa-hero-sub">
-              This count reflects my combined problem-solving total across both platforms. I focus on developing clean algorithmic intuition, analyzing time-space complexity tradeoffs, and implementing optimal data structures.
+              This count reflects my combined problem-solving journey across both platforms. I focus on developing clean algorithmic intuition, analyzing time-space complexity tradeoffs, and implementing optimal data structures.
             </p>
           </div>
         </div>
@@ -551,10 +592,10 @@
                   <span class="dsa-platform-handle">@kumar-shubham1</span>
                 </div>
               </div>
-              <span class="dsa-platform-tag">Active Coding</span>
+              <span class="dsa-platform-tag">Active Problem Solver</span>
             </div>
             <p class="dsa-platform-desc">
-              Solving medium and hard challenges across dynamic programming, graph traversal (BFS/DFS, Dijkstra), binary trees, heaps, binary search, and backtracking in Java and C++.
+              Algorithmic problem solving across dynamic programming, graph traversals, binary trees, heaps, sliding window, and backtracking with optimal complexity.
             </p>
             <div class="dsa-platform-footer">
               <a href="https://leetcode.com/u/kumar-shubham1/" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-solid-orange btn-sm-editorial btn-magnetic">
@@ -578,10 +619,10 @@
                   <span class="dsa-platform-handle">@shubhamvezhpz</span>
                 </div>
               </div>
-              <span class="dsa-platform-tag">Rank #59 (GEU)</span>
+              <span class="dsa-platform-tag">Active Problem Solver</span>
             </div>
             <p class="dsa-platform-desc">
-              Core computer science concepts, algorithmic foundations, and continuous data structures practice. Ranked #59 on the Graphic Era University campus leaderboard.
+              Foundational computer science data structures, classic algorithmic problem sets, recursion, graph algorithms, and standard interview problems.
             </p>
             <div class="dsa-platform-footer">
               <a href="https://www.geeksforgeeks.org/profile/shubhamvezhpz" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-sm-editorial btn-magnetic">
@@ -1139,17 +1180,17 @@
 
               <div class="form-field-group">
                 <label for="cEmail">Your Email *</label>
-                <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
+                <input type="email" id="cEmail" name="email" placeholder="Enter your email address" required>
               </div>
 
               <div class="form-field-group">
                 <label for="cSubject">Subject</label>
-                <input type="text" id="cSubject" name="subject" placeholder="SDE Internship Opportunity / Technical Collaboration">
+                <input type="text" id="cSubject" name="subject" placeholder="What would you like to discuss?">
               </div>
 
               <div class="form-field-group">
                 <label for="cMessage">Message *</label>
-                <textarea id="cMessage" name="message" placeholder="Hi Shubham, I'd like to connect with you regarding..." required></textarea>
+                <textarea id="cMessage" name="message" placeholder="Tell me about the opportunity, project or collaboration..." required></textarea>
               </div>
 
               <button type="submit" class="btn-editorial btn-solid-orange btn-magnetic" style="width:100%;">
