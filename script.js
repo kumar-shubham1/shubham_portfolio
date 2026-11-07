@@ -200,7 +200,7 @@ function initCommandPalette() {
     { title: "Engineering Notes & Field Notes", category: "Writing", target: "#notes" },
     { title: "Currently Exploring Topics", category: "Roadmap", target: "#exploring" },
     { title: "Career & Academic Timeline", category: "Navigation", target: "#timeline" },
-    { title: "View Honors & Achievements", category: "Navigation", target: "#achievements" },
+    { title: "Recognition & Technical Milestones", category: "Navigation", target: "#achievements" },
     { title: "Download Resume", category: "Action", url: PORTFOLIO_DATA.personal.resumeUrl },
     { title: "Open GitHub Profile", category: "Social", url: PORTFOLIO_DATA.personal.github },
     { title: "Open LinkedIn Profile", category: "Social", url: PORTFOLIO_DATA.personal.linkedin },
