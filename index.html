@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shubham Kumar — Software Engineer &amp; Systems Developer</title>
+  <title>Shubham Kumar — Aspiring Software Engineer | Systems &amp; Backend Developer</title>
   
   <!-- SEO & OpenGraph Meta -->
-  <meta name="description" content="Portfolio of Shubham Kumar — Software Engineer, Backend &amp; Distributed Systems Builder, and AI/ML Enthusiast. B.Tech CSE (3rd Year) at Graphic Era University, Dehradun.">
-  <meta name="keywords" content="Shubham Kumar, Software Engineer, Backend Developer, Distributed Systems, Apache Kafka, Spring Boot, PyTorch, Graphic Era University, Java, Python, Full Stack">
+  <meta name="description" content="Portfolio of Shubham Kumar — Aspiring Software Engineer, Backend &amp; Distributed Systems Explorer, and Algorithmic Problem Solver. B.Tech CSE (3rd Year — approaching 4th Year) at Graphic Era University, Dehradun.">
+  <meta name="keywords" content="Shubham Kumar, Aspiring Software Engineer, Backend Developer, Distributed Systems, Apache Kafka, Spring Boot, PyTorch, Graphic Era University, Java, Python, Data Structures and Algorithms">
   <meta name="author" content="Shubham Kumar">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Shubham Kumar — Software Engineer &amp; Systems Developer">
-  <meta property="og:description" content="Engineering ideas into systems that matter. Distributed systems, scalable backend architectures, and applied AI.">
+  <meta property="og:title" content="Shubham Kumar — Aspiring Software Engineer | Systems &amp; Backend Developer">
+  <meta property="og:description" content="Aspiring Software Engineer focused on distributed systems, scalable backend architectures, and algorithmic problem solving.">
   <meta property="og:image" content="assets/profile.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shubham Kumar | Software Engineer">
+  <meta name="twitter:title" content="Shubham Kumar | Aspiring Software Engineer">
   <meta name="twitter:description" content="Engineering ideas into systems that matter.">
   <meta name="twitter:image" content="assets/profile.png">
 
@@ -50,19 +50,25 @@
         <a href="#projects" class="nav-item">Projects</a>
         <a href="#quality" class="nav-item">Quality</a>
         <a href="#benchmarks" class="nav-item">Benchmarks</a>
-        <a href="#opensource" class="nav-item">Open Source</a>
-        <a href="#notes" class="nav-item">Notes</a>
-        <a href="#api-playground" class="nav-item">API</a>
-        <a href="#timeline" class="nav-item">Timeline</a>
+        
+        <div class="nav-dropdown-wrapper">
+          <button type="button" class="nav-item nav-dropdown-btn" id="navMoreDropdownBtn" aria-expanded="false" aria-haspopup="true">
+            <span>More</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" id="navMoreDropdownMenu">
+            <a href="#dsa" class="dropdown-item">Problem Solving &amp; DSA</a>
+            <a href="#opensource" class="dropdown-item">Open Source</a>
+            <a href="#notes" class="dropdown-item">Engineering Notes</a>
+            <a href="#api-playground" class="dropdown-item">API Playground</a>
+            <a href="#timeline" class="dropdown-item">Timeline &amp; Experience</a>
+          </div>
+        </div>
+
         <a href="#contact" class="nav-item">Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <button type="button" class="btn-fasttrack btn-magnetic" id="recruiterModalTrigger" aria-label="Open Recruiter Fast-Track summary">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span>Recruiter Fast-Track</span>
-        </button>
-
         <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -87,178 +93,199 @@
 
   <main>
     <!-- ===== HERO SECTION (EDITORIAL ASYMMETRIC) ===== -->
-    <section class="hero-editorial wrap" id="home">
-      <div class="hero-asymmetric-grid">
-        <div class="hero-text-pane">
-          <div class="hero-technical-stamp">
-            <span class="pulse-indicator"></span>
-            <span>AVAILABLE FOR SOFTWARE ENGINEERING INTERNSHIPS</span>
+    <section class="hero-editorial" id="home">
+      <div class="wrap">
+        <div class="hero-asymmetric-grid">
+          <div class="hero-text-pane">
+            <div class="hero-technical-stamp">
+              <span class="pulse-indicator"></span>
+              <span>UNDERGRADUATE COMPUTER SCIENCE &middot; GRAPHIC ERA UNIVERSITY</span>
+            </div>
+
+            <h1 class="hero-headline">
+              Building intelligent software. <span class="accent-word">Engineering systems that scale.</span>
+            </h1>
+
+            <div class="hero-descriptor-loop">
+              <span>&gt;</span>
+              <span id="heroRotatingText">Aspiring Software Engineer</span>
+            </div>
+
+            <p class="hero-bio">
+              I'm <strong>Shubham Kumar</strong>, a Computer Science undergraduate at Graphic Era University, Dehradun. I enjoy building backend systems, distributed applications and AI-powered software. My focus is on writing clean, maintainable code, understanding system architecture and solving challenging engineering problems.
+              <br><br>
+              I believe good software is not just about making things work — it is about making them reliable, efficient and easy to evolve.
+            </p>
+
+            <div class="hero-actions-cluster">
+              <a href="#projects" class="btn-editorial btn-solid-orange btn-magnetic">
+                View Selected Work
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+              <a href="https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Resume
+              </a>
+              <a href="#contact" class="btn-editorial btn-ghost-orange btn-magnetic">
+                Let's Connect
+              </a>
+            </div>
+
+            <div class="hero-meta-strip">
+              <div class="meta-col-item">
+                <span class="meta-col-label">ACADEMIC STAGE</span>
+                <span class="meta-col-value">3rd Year</span>
+                <span class="meta-col-sub">Approaching 4th Year &middot; GEU</span>
+              </div>
+              <div class="meta-col-item">
+                <span class="meta-col-label">PROBLEM SOLVING</span>
+                <span class="meta-col-value">700+ DSA</span>
+                <span class="meta-col-sub">Combined LeetCode &amp; GFG</span>
+              </div>
+              <div class="meta-col-item">
+                <span class="meta-col-label">TECHNICAL FOCUS</span>
+                <span class="meta-col-value">Distributed Systems</span>
+                <span class="meta-col-sub">Backend &amp; Applied AI</span>
+              </div>
+            </div>
           </div>
 
-          <h1 class="hero-headline">
-            Building intelligent software. <span class="accent-word">Engineering systems that scale.</span>
-          </h1>
-
-          <div class="hero-descriptor-loop">
-            <span>&gt;</span>
-            <span id="heroRotatingText">Backend Systems Engineer</span>
-          </div>
-
-          <p class="hero-bio">
-            I'm <strong>Shubham Kumar</strong> — a Computer Science undergraduate and developer exploring backend engineering, distributed systems, and AI-powered applications. I build scalable software through clean abstractions, resilient architectures, and strong algorithmic fundamentals.
-          </p>
-
-          <div class="hero-actions-cluster">
-            <a href="#projects" class="btn-editorial btn-solid-orange btn-magnetic">
-              View Selected Work
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-            <a href="https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download Resume
-            </a>
-            <button type="button" class="btn-editorial btn-fasttrack-outline btn-magnetic" id="heroFasttrackTrigger">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              Recruiter Fast-Track
-            </button>
-            <a href="#contact" class="btn-editorial btn-ghost-orange btn-magnetic">
-              Let's Connect
-            </a>
-          </div>
-
-          <div class="hero-meta-strip">
-            <div class="meta-col-item">
-              <span class="meta-col-label">ACADEMIC STATUS</span>
-              <span class="meta-col-value">3rd Year</span>
-              <span class="meta-col-sub">B.Tech CSE · Graphic Era Univ.</span>
-            </div>
-            <div class="meta-col-item">
-              <span class="meta-col-label">PROBLEM SOLVING</span>
-              <span class="meta-col-value">700+ DSA</span>
-              <span class="meta-col-sub">LeetCode &amp; GFG Rank 59</span>
-            </div>
-            <div class="meta-col-item">
-              <span class="meta-col-label">CORE FOCUS</span>
-              <span class="meta-col-value">Distributed Systems</span>
-              <span class="meta-col-sub">Backend &amp; Applied AI</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-portrait-frame">
-          <div class="portrait-monolith">
-            <div class="portrait-image-wrapper">
-              <img src="assets/profile.png" alt="Shubham Kumar Portrait" width="400" height="500">
-            </div>
-            <div class="portrait-caption">
-              <span>Shubham Kumar</span>
-              <span>Software Engineer</span>
+          <div class="hero-portrait-frame">
+            <div class="portrait-monolith">
+              <div class="portrait-image-wrapper">
+                <img src="assets/profile.png" alt="Shubham Kumar Portrait" width="400" height="500">
+              </div>
+              <div class="portrait-caption">
+                <span>Shubham Kumar</span>
+                <span>Aspiring Software Engineer</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== ABOUT ME & DEV TERMINAL ===== -->
+    <!-- ===== ABOUT SECTION ===== -->
     <section id="about">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">Engineering Philosophy</span>
-          <h2 class="section-title">Not just writing code. Understanding how things work.</h2>
+          <span class="section-label">Background &amp; Focus</span>
+          <h2 class="section-title">Undergraduate in Computer Science &amp; Aspiring Software Engineer</h2>
           <p class="section-desc">
-            Behind every framework and API is a network of system decisions, memory allocations, and message broker tradeoffs.
+            Exploring backend engineering, distributed systems, and intelligent applications with a commitment to reliable software architecture.
           </p>
         </div>
 
-        <div class="identity-grid">
-          <div class="identity-narrative">
-            <p>
-              I view software development as a balance between <strong>system design rigor</strong> and <strong>practical utility</strong>. Writing code that simply passes a test case is easy; designing systems that stay resilient when brokers partition, requests spike, or external dependencies fail is where real engineering happens.
-            </p>
-            <p>
-              From stress-testing Kafka consumer groups to achieve <strong>990+ messages per second</strong> in OrderMesh to building offline-first on-device AI in AstraOS, I focus on the "why" before the "how".
-            </p>
+        <div class="about-editorial-grid">
+          <!-- Left: Narrative & Approach -->
+          <div class="about-narrative-pane">
+            <div class="about-paragraphs-flow">
+              <p>
+                I'm a Computer Science undergraduate at Graphic Era University, currently exploring the intersection of backend engineering, distributed systems and intelligent applications.
+              </p>
+              <p>
+                I enjoy turning complex problems into practical software solutions. My work includes building event-driven systems, full-stack applications and AI-powered tools using technologies such as Java, Python, Spring Boot, Kafka, React and PostgreSQL.
+              </p>
+              <p>
+                Beyond building projects, I actively practise Data Structures and Algorithms, explore software architecture and work on improving my understanding of how reliable systems are designed.
+              </p>
+              <p>
+                I'm continuously learning, experimenting and looking for opportunities to contribute to meaningful engineering work.
+              </p>
+            </div>
 
-            <div class="identity-pillars-list">
-              <div class="identity-pillar-item">
-                <h4>Backend Architecture</h4>
-                <p>Designing layered REST and microservice APIs with Spring Boot, PostgreSQL indexing, and clean abstractions.</p>
-              </div>
+            <!-- Short Engineering Philosophy -->
+            <div class="about-philosophy-box">
+              <span class="philosophy-label">CORE PHILOSOPHY</span>
+              <p class="philosophy-text">
+                "Good software is not just about making things work — it is about making them reliable, efficient and easy to evolve."
+              </p>
+            </div>
 
-              <div class="identity-pillar-item">
-                <h4>Distributed Systems</h4>
-                <p>Event-driven topologies, Kafka partition assignment, Dead Letter Queues, and asynchronous concurrency.</p>
-              </div>
-
-              <div class="identity-pillar-item">
-                <h4>Applied AI &amp; CV</h4>
-                <p>Deep learning classification with PyTorch ResNet9, Spring AI integration, and on-device offline models.</p>
-              </div>
-
-              <div class="identity-pillar-item">
-                <h4>Algorithmic Rigor</h4>
-                <p>700+ Data Structures &amp; Algorithms challenges solved; applying graph traversal and dynamic programming to real software.</p>
-              </div>
+            <div class="about-social-channels">
+              <a href="https://github.com/kumar-shubham1" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-sm-editorial btn-magnetic">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.3.1 1.9 1.3 1.9 1.3 1.1 1.9 3 1.4 3.7 1a2.4 2.4 0 01.7-1.6c-2.6-.3-5.4-1.4-5.4-6a4.7 4.7 0 011.3-3.3 4.4 4.4 0 01.1-3.2s1-.3 3.4 1.3a11.5 11.5 0 016 0c2.3-1.6 3.3-1.3 3.3-1.3a4.4 4.4 0 01.2 3.2 4.7 4.7 0 011.2 3.3c0 4.7-2.8 5.7-5.5 6a2.7 2.7 0 01.8 2.1v3.1c0 .3.2.7.8.6A12 12 0 0012 .3z"/></svg>
+                GitHub Profile
+              </a>
+              <a href="https://www.linkedin.com/in/shubham-k-62aa571b7/" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-sm-editorial btn-magnetic">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                LinkedIn Profile
+              </a>
             </div>
           </div>
 
-          <!-- Developer Terminal ("Inside Shubham's Dev Environment") -->
-          <div class="terminal-device">
-            <div class="terminal-topbar">
-              <div class="terminal-dots">
-                <span class="t-dot t-dot-red"></span>
-                <span class="t-dot t-dot-yellow"></span>
-                <span class="t-dot t-dot-green"></span>
+          <!-- Right: Education Card, Technical Interests & Interactive Terminal -->
+          <div class="about-details-pane">
+            <!-- Education Card -->
+            <div class="about-education-card">
+              <div class="edu-card-top">
+                <span class="edu-badge">FORMAL EDUCATION</span>
+                <span class="edu-year-pill">3rd Year &mdash; approaching 4th Year</span>
               </div>
-              <div class="terminal-tab-title">Inside Shubham's Dev Environment</div>
-              <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">BASH</span>
-            </div>
-
-            <div class="terminal-body" id="terminalBody">
-              <div class="term-line">
-                <span class="term-prompt">$</span> <span>whoami</span>
-              </div>
-              <div class="term-output">
-                <div>Shubham Kumar — Computer Science Developer.</div>
-              </div>
-
-              <div class="term-line">
-                <span class="term-prompt">$</span> <span>skills</span>
-              </div>
-              <div class="term-output">
-                <div>Java, Spring Boot, Python, Kafka, React, Next.js, PostgreSQL and more.</div>
-              </div>
-
-              <div class="term-line">
-                <span class="term-prompt">$</span> <span>projects</span>
-              </div>
-              <div class="term-output">
-                <div>OrderMesh, AstraOS, NewsSenseAI, Crop Disease Prediction, AI Job Tracker and Disaster Relief Portal.</div>
-              </div>
-
-              <div class="term-line">
-                <span class="term-prompt">$</span> <span>current-focus</span>
-              </div>
-              <div class="term-output">
-                <div>Backend Engineering, Distributed Systems and AI Engineering.</div>
+              <h3 class="edu-degree-title">B.Tech in Computer Science and Engineering</h3>
+              <div class="edu-institution-name">Graphic Era University, Dehradun</div>
+              <div class="edu-meta-row">
+                <span>Period: 2024 &ndash; Present</span>
+                <span>Expected Graduation: 2028</span>
               </div>
             </div>
 
-            <div class="term-input-row" style="padding: 10px 16px; border-top:1px solid var(--border-subtle);">
-              <span class="term-prompt">$</span>
-              <input type="text" id="terminalInput" class="term-input" placeholder="Type command ('help', 'about', 'skills', 'projects', 'github')..." autocomplete="off" spellcheck="false">
+            <!-- Technical Interests -->
+            <div class="about-interests-card">
+              <span class="interests-title">TECHNICAL INTERESTS</span>
+              <div class="interests-pills-flow">
+                <span class="interest-pill">Backend Engineering</span>
+                <span class="interest-pill">Distributed Systems</span>
+                <span class="interest-pill">Data Structures and Algorithms</span>
+                <span class="interest-pill">Database Systems</span>
+                <span class="interest-pill">AI-powered Applications</span>
+                <span class="interest-pill">System Design</span>
+              </div>
             </div>
 
-            <div class="terminal-quick-actions">
-              <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint); margin-right:4px;">Commands:</span>
-              <button type="button" class="quick-cmd-btn" data-cmd="help">help</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="whoami">whoami</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="skills">skills</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="projects">projects</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="current-focus">current-focus</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="github">github</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="contact">contact</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="clear">clear</button>
+            <!-- Developer Terminal ("Inside Shubham's Dev Environment") -->
+            <div class="terminal-device">
+              <div class="terminal-topbar">
+                <div class="terminal-dots">
+                  <span class="t-dot t-dot-red"></span>
+                  <span class="t-dot t-dot-yellow"></span>
+                  <span class="t-dot t-dot-green"></span>
+                </div>
+                <div class="terminal-tab-title">Inside Shubham's Dev Environment</div>
+                <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">BASH</span>
+              </div>
+
+              <div class="terminal-body" id="terminalBody">
+                <div class="term-line">
+                  <span class="term-prompt">$</span> <span>whoami</span>
+                </div>
+                <div class="term-output">
+                  <div>Shubham Kumar — Aspiring Software Engineer.</div>
+                </div>
+
+                <div class="term-line">
+                  <span class="term-prompt">$</span> <span>current-focus</span>
+                </div>
+                <div class="term-output">
+                  <div>Backend Engineering, Distributed Systems and AI Engineering.</div>
+                </div>
+              </div>
+
+              <div class="term-input-row" style="padding: 10px 16px; border-top:1px solid var(--border-subtle);">
+                <span class="term-prompt">$</span>
+                <input type="text" id="terminalInput" class="term-input" placeholder="Type command ('help', 'about', 'skills', 'projects', 'dsa')..." autocomplete="off" spellcheck="false">
+              </div>
+
+              <div class="terminal-quick-actions">
+                <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint); margin-right:4px;">Quick:</span>
+                <button type="button" class="quick-cmd-btn" data-cmd="help">help</button>
+                <button type="button" class="quick-cmd-btn" data-cmd="about">about</button>
+                <button type="button" class="quick-cmd-btn" data-cmd="skills">skills</button>
+                <button type="button" class="quick-cmd-btn" data-cmd="projects">projects</button>
+                <button type="button" class="quick-cmd-btn" data-cmd="dsa">dsa</button>
+                <button type="button" class="quick-cmd-btn" data-cmd="contact">contact</button>
+                <button type="button" class="quick-cmd-btn" data-cmd="clear">clear</button>
+              </div>
             </div>
           </div>
         </div>
@@ -488,7 +515,84 @@
       </div>
     </section>
 
-    <!-- ===== DEDICATED ENGINEERING CASE STUDIES (12-POINT DEEP DIVE) ===== -->
+    <!-- ===== PROBLEM SOLVING & DSA ===== -->
+    <section id="dsa">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Algorithmic Foundations</span>
+          <h2 class="section-title">Problem Solving &amp; DSA</h2>
+          <p class="section-desc">Continuous algorithmic problem solving across dynamic programming, graph theory, trees, heaps, and discrete system logic.</p>
+        </div>
+
+        <!-- Combined Achievement Banner -->
+        <div class="dsa-hero-banner">
+          <div class="dsa-hero-stat">700+</div>
+          <div class="dsa-hero-info">
+            <h3 class="dsa-hero-headline">700+ DSA problems solved across LeetCode and GeeksforGeeks.</h3>
+            <p class="dsa-hero-sub">
+              This count reflects my combined problem-solving total across both platforms. I focus on developing clean algorithmic intuition, analyzing time-space complexity tradeoffs, and implementing optimal data structures.
+            </p>
+          </div>
+        </div>
+
+        <!-- Platform Monolith Cards: LeetCode & GeeksforGeeks -->
+        <div class="dsa-platforms-grid">
+          <!-- LeetCode Card -->
+          <div class="dsa-platform-card">
+            <div class="dsa-card-header">
+              <div class="dsa-platform-brand">
+                <div class="dsa-icon-wrapper dsa-icon-leetcode">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.246 2.17 5.86 2.096 8.016-.164l6.233-6.529a1.385 1.385 0 0 0 0-1.93 1.372 1.372 0 0 0-1.942 0l-6.234 6.53a3.02 3.02 0 0 1-4.344.09l-4.27-4.187a3.094 3.094 0 0 1-.722-1.04 3.003 3.003 0 0 1-.168-.616 3.045 3.045 0 0 1 .15-1.474 3.09 3.09 0 0 1 .69-1.127l3.85-4.124 5.405-5.787a1.376 1.376 0 0 0-.97-2.336zM8.59 10.354a1.37 1.37 0 0 0-.965.402l-3.21 3.23a1.37 1.37 0 0 0 0 1.938 1.37 1.37 0 0 0 1.942 0l3.21-3.23a1.37 1.37 0 0 0-.977-2.34z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="dsa-platform-name">LeetCode</h3>
+                  <span class="dsa-platform-handle">@kumar-shubham1</span>
+                </div>
+              </div>
+              <span class="dsa-platform-tag">Active Coding</span>
+            </div>
+            <p class="dsa-platform-desc">
+              Solving medium and hard challenges across dynamic programming, graph traversal (BFS/DFS, Dijkstra), binary trees, heaps, binary search, and backtracking in Java and C++.
+            </p>
+            <div class="dsa-platform-footer">
+              <a href="https://leetcode.com/u/kumar-shubham1/" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-solid-orange btn-sm-editorial btn-magnetic">
+                View LeetCode Profile
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- GeeksforGeeks Card -->
+          <div class="dsa-platform-card">
+            <div class="dsa-card-header">
+              <div class="dsa-platform-brand">
+                <div class="dsa-icon-wrapper dsa-icon-gfg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2zm4 8h-2v-4h2v4zm0-6h-2v-2h2v2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="dsa-platform-name">GeeksforGeeks</h3>
+                  <span class="dsa-platform-handle">@shubhamvezhpz</span>
+                </div>
+              </div>
+              <span class="dsa-platform-tag">Rank #59 (GEU)</span>
+            </div>
+            <p class="dsa-platform-desc">
+              Core computer science concepts, algorithmic foundations, and continuous data structures practice. Ranked #59 on the Graphic Era University campus leaderboard.
+            </p>
+            <div class="dsa-platform-footer">
+              <a href="https://www.geeksforgeeks.org/profile/shubhamvezhpz" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-sm-editorial btn-magnetic">
+                View GeeksforGeeks Profile
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="case-studies">
       <div class="wrap">
         <div class="section-meta-header">
@@ -1030,22 +1134,22 @@
             <form id="editorialContactForm" novalidate>
               <div class="form-field-group">
                 <label for="cName">Your Name *</label>
-                <input type="text" id="cName" name="name" placeholder="John Doe" required>
+                <input type="text" id="cName" name="name" placeholder="Enter your name" required>
               </div>
 
               <div class="form-field-group">
                 <label for="cEmail">Your Email *</label>
-                <input type="email" id="cEmail" name="email" placeholder="john@example.com" required>
+                <input type="email" id="cEmail" name="email" placeholder="you@example.com" required>
               </div>
 
               <div class="form-field-group">
                 <label for="cSubject">Subject</label>
-                <input type="text" id="cSubject" name="subject" placeholder="SDE Internship / Technical Collaboration">
+                <input type="text" id="cSubject" name="subject" placeholder="SDE Internship Opportunity / Technical Collaboration">
               </div>
 
               <div class="form-field-group">
                 <label for="cMessage">Message *</label>
-                <textarea id="cMessage" name="message" placeholder="Hi Shubham, I would like to discuss an opportunity..." required></textarea>
+                <textarea id="cMessage" name="message" placeholder="Hi Shubham, I'd like to connect with you regarding..." required></textarea>
               </div>
 
               <button type="submit" class="btn-editorial btn-solid-orange btn-magnetic" style="width:100%;">
@@ -1089,13 +1193,6 @@
     </div>
   </div>
 
-  <!-- ===== RECRUITER FAST-TRACK MODAL ===== -->
-  <div class="recruiter-modal-backdrop" id="recruiterModalBackdrop" role="dialog" aria-modal="true" aria-label="Recruiter Fast-Track Executive Summary">
-    <div class="recruiter-modal-sheet" id="recruiterModalContent">
-      <!-- Injected dynamically by script.js -->
-    </div>
-  </div>
-
   <!-- ===== TECHNICAL ARTICLE MODAL READER ===== -->
   <div class="article-modal-backdrop" id="articleModalBackdrop" role="dialog" aria-modal="true" aria-label="Engineering Note Reader">
     <div class="article-modal-sheet" id="articleModalContent">
@@ -1114,6 +1211,7 @@
         <a href="https://github.com/kumar-shubham1" target="_blank" rel="noopener noreferrer" class="footer-social-link">GitHub</a>
         <a href="https://www.linkedin.com/in/shubham-k-62aa571b7/" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn</a>
         <a href="https://leetcode.com/u/kumar-shubham1/" target="_blank" rel="noopener noreferrer" class="footer-social-link">LeetCode</a>
+        <a href="https://www.geeksforgeeks.org/profile/shubhamvezhpz" target="_blank" rel="noopener noreferrer" class="footer-social-link">GeeksforGeeks</a>
         <a href="https://wa.me/919798174491" target="_blank" rel="noopener noreferrer" class="footer-social-link">WhatsApp</a>
         <a href="mailto:shubham824045@gmail.com" class="footer-social-link">Email</a>
       </div>

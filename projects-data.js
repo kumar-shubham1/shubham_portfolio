@@ -7,13 +7,13 @@ const PORTFOLIO_DATA = {
   personal: {
     name: "Shubham Kumar",
     wordmark: "Shubham Kumar",
-    title: "Software Engineer | Backend & Full Stack Developer | AI/ML Enthusiast",
+    title: "Aspiring Software Engineer | Backend & Distributed Systems Enthusiast",
     headline: "Building intelligent software. Engineering systems that scale.",
-    introduction: "I'm Shubham Kumar, a Computer Science undergraduate and software developer interested in backend engineering, distributed systems and AI-powered applications. I enjoy turning complex technical ideas into practical, reliable software.",
+    introduction: "I'm Shubham Kumar, a Computer Science undergraduate at Graphic Era University, Dehradun. I enjoy building backend systems, distributed applications and AI-powered software. My focus is on writing clean, maintainable code, understanding system architecture and solving challenging engineering problems. I believe good software is not just about making things work — it is about making them reliable, efficient and easy to evolve.",
     education: {
-      degree: "B.Tech in Computer Science & Engineering",
+      degree: "B.Tech in Computer Science and Engineering",
       institution: "Graphic Era University, Dehradun",
-      status: "3rd Year",
+      status: "3rd Year — approaching 4th Year",
       period: "2024 – Present",
       expectedGraduation: 2028
     },
@@ -24,7 +24,7 @@ const PORTFOLIO_DATA = {
     github: "https://github.com/kumar-shubham1",
     linkedin: "https://www.linkedin.com/in/shubham-k-62aa571b7/",
     leetcode: "https://leetcode.com/u/kumar-shubham1/",
-    gfg: "https://www.geeksforgeeks.org/user/shubhamvezhpz/",
+    gfg: "https://www.geeksforgeeks.org/profile/shubhamvezhpz",
     resumeUrl: "https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view"
   },
 
@@ -895,28 +895,27 @@ message OrderResponse {
   ],
 
   /* ==========================================================================
-     RECRUITER FAST-TRACK SUMMARY
+     PROBLEM SOLVING & DSA PLATFORMS
      ========================================================================== */
-  recruiterExecutiveSummary: {
-    candidateName: "Shubham Kumar",
-    headline: "Aspiring Software Engineer (SDE) | Distributed Systems & Backend",
-    academicStatus: "3rd Year B.Tech CSE (Graphic Era University, Expected 2028)",
-    targetRoles: "Software Development Engineer (SDE) Internships & Graduate Roles",
-    coreStrengths: [
-      "Distributed systems understanding: Apache Kafka partitions, Dead Letter Queues, and asynchronous concurrency.",
-      "Enterprise backend engineering: Spring Boot microservices, Spring AI, PostgreSQL B-Tree indexing, and REST APIs.",
-      "Algorithmic rigor: 700+ Data Structures & Algorithms problems solved across LeetCode & GeeksforGeeks (#59 Institute Rank).",
-      "Applied AI & Edge compute: PyTorch ResNet9 computer vision, offline-first on-device AI architectures (AstraOS).",
-      "Engineering maturity: Focus on failure modes, automated testing, benchmark methodology, and clean code."
-    ],
-    verifiedLinks: {
-      resumeUrl: "https://drive.google.com/file/d/1A7FP-SUBR1kGe3iCnRIEs2DJ4KaCDzTW/view",
-      github: "https://github.com/kumar-shubham1",
-      linkedin: "https://www.linkedin.com/in/shubham-k-62aa571b7/",
-      leetcode: "https://leetcode.com/u/kumar-shubham1/",
-      email: "shubham824045@gmail.com",
-      whatsapp: "https://wa.me/919798174491"
-    }
+  problemSolvingDSA: {
+    statement: "700+ DSA problems solved across LeetCode and GeeksforGeeks.",
+    note: "Combined total across both platforms focusing on data structures, algorithmic paradigms, and system logic.",
+    platforms: [
+      {
+        name: "LeetCode",
+        handle: "@kumar-shubham1",
+        url: "https://leetcode.com/u/kumar-shubham1/",
+        description: "Consistent problem-solving in Java and C++ covering dynamic programming, graph traversal, trees, heaps, and binary search.",
+        badge: "LeetCode Profile"
+      },
+      {
+        name: "GeeksforGeeks",
+        handle: "@shubhamvezhpz",
+        url: "https://www.geeksforgeeks.org/profile/shubhamvezhpz",
+        description: "Algorithmic practice, core computer science data structures, and institute leaderboard ranking (#59 at Graphic Era University).",
+        badge: "Rank #59 (GEU)"
+      }
+    ]
   }
 };
 

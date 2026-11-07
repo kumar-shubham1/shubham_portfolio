@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initOpenSourceSection();
   initTechnicalNotes();
   initCurrentlyExploring();
-  initRecruiterFastTrack();
   initProjectModal();
   initScrollSpy();
   initMobileNav();
@@ -142,9 +141,9 @@ function initHeroTyping() {
   if (!target) return;
 
   const descriptors = [
-    'Backend Systems Engineer',
-    'Distributed Architecture Builder',
-    'AI & Applied ML Developer',
+    'Aspiring Software Engineer',
+    'Backend Development Enthusiast',
+    'Distributed Systems Explorer',
     'Algorithmic Problem Solver'
   ];
 
@@ -175,9 +174,8 @@ function initCommandPalette() {
 
   // Global commands palette registry
   const commands = [
-    { title: "Recruiter Fast-Track (Executive Summary)", category: "Recruiter", action: "recruiter" },
     { title: "Go to Home", category: "Navigation", target: "#home" },
-    { title: "About Me", category: "Navigation", target: "#about" },
+    { title: "About Shubham (Engineering Profile)", category: "Navigation", target: "#about" },
     { title: "Engineering Principles", category: "Architecture", target: "#principles" },
     { title: "Engineering Case Studies (12-Point Analysis)", category: "Deep Dive", target: "#case-studies" },
     { title: "View Skills Stack", category: "Navigation", target: "#skills" },
@@ -190,6 +188,7 @@ function initCommandPalette() {
     { title: "Engineering Lab", category: "Interactive", target: "#lab" },
     { title: "Engineering Quality Dashboard", category: "Verification", target: "#quality" },
     { title: "Performance & Benchmark Lab", category: "Benchmarks", target: "#benchmarks" },
+    { title: "Problem Solving & DSA (700+ Problems)", category: "Coding", target: "#dsa" },
     { title: "Interactive API Playground", category: "Contracts", target: "#api-playground" },
     { title: "Developer Activity & GitHub", category: "Navigation", target: "#github-activity" },
     { title: "Open Source Contributions", category: "Open Source", target: "#opensource" },
@@ -197,10 +196,11 @@ function initCommandPalette() {
     { title: "Currently Exploring Topics", category: "Roadmap", target: "#exploring" },
     { title: "Career & Academic Timeline", category: "Navigation", target: "#timeline" },
     { title: "View Honors & Achievements", category: "Navigation", target: "#achievements" },
-    { title: "Download Verified Resume", category: "Action", url: PORTFOLIO_DATA.personal.resumeUrl },
+    { title: "Download Resume", category: "Action", url: PORTFOLIO_DATA.personal.resumeUrl },
     { title: "Open GitHub Profile", category: "Social", url: PORTFOLIO_DATA.personal.github },
     { title: "Open LinkedIn Profile", category: "Social", url: PORTFOLIO_DATA.personal.linkedin },
     { title: "Open LeetCode Profile", category: "Coding", url: PORTFOLIO_DATA.personal.leetcode },
+    { title: "Open GeeksforGeeks Profile", category: "Coding", url: PORTFOLIO_DATA.personal.gfg },
     { title: "Contact Shubham", category: "Contact", target: "#contact" },
     { title: "Switch to Dark Theme", category: "Theme", action: "theme-dark" },
     { title: "Switch to Light Theme", category: "Theme", action: "theme-light" }
@@ -247,10 +247,6 @@ function initCommandPalette() {
 
   function executeCommand(item) {
     closePalette();
-    if (item.action === 'recruiter') {
-      if (typeof window.openRecruiterModal === 'function') window.openRecruiterModal();
-      return;
-    }
     if (item.action === 'theme-dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('portfolio-theme', 'dark');
@@ -351,16 +347,17 @@ function initDevTerminal() {
       "  about          - View engineering background & education",
       "  skills         - Technologies, languages, and frameworks",
       "  projects       - Overview of the 6 signature projects",
+      "  dsa            - Algorithmic problem solving & profiles",
       "  current-focus  - What I am building and researching now",
       "  github         - Public repositories and profile link",
-      "  contact        - Direct contact info (Email, WhatsApp)",
+      "  contact        - Direct contact info (Email, LinkedIn, WhatsApp)",
       "  clear          - Clear current terminal output buffer"
     ],
     whoami: () => [
-      "Shubham Kumar — Computer Science Developer."
+      "Shubham Kumar — Aspiring Software Engineer."
     ],
     about: () => [
-      "Shubham Kumar — B.Tech in Computer Science & Engineering (3rd Year).",
+      "Shubham Kumar — B.Tech in Computer Science & Engineering (3rd Year — approaching 4th Year).",
       "Graphic Era University, Dehradun (Expected Graduation: 2028).",
       "Focus: Scalable backend architectures, distributed event streaming, and applied AI."
     ],
@@ -375,6 +372,11 @@ function initDevTerminal() {
     ],
     "current_focus": () => [
       "Backend Engineering, Distributed Systems and AI Engineering."
+    ],
+    dsa: () => [
+      "DSA Foundation: 700+ problems solved across LeetCode and GeeksforGeeks.",
+      "LeetCode: https://leetcode.com/u/kumar-shubham1/",
+      "GeeksforGeeks: https://www.geeksforgeeks.org/profile/shubhamvezhpz"
     ],
     github: () => [
       "GitHub Profile: https://github.com/kumar-shubham1",
@@ -392,14 +394,12 @@ function initDevTerminal() {
     notes: () => [
       "Field Notes: 5 technical articles on partition rebalancing, idempotency, Dijkstra transit, and on-device PyTorch."
     ],
-    recruiter: () => [
-      "Recruiter Fast-Track: 3rd Year B.Tech CSE (Graphic Era Univ, Expected 2028). SDE candidate (700+ DSA)."
-    ],
     contact: () => [
-      "Email:    shubham824045@gmail.com",
-      "WhatsApp: +91 97981 74491",
-      "LinkedIn: https://www.linkedin.com/in/shubham-k-62aa571b7/",
-      "LeetCode: https://leetcode.com/u/kumar-shubham1/"
+      "Email:        shubham824045@gmail.com",
+      "WhatsApp:     +91 97981 74491",
+      `LinkedIn:     ${PORTFOLIO_DATA.personal.linkedin}`,
+      `LeetCode:     ${PORTFOLIO_DATA.personal.leetcode}`,
+      `GeeksforGeeks:${PORTFOLIO_DATA.personal.gfg}`
     ]
   };
 
@@ -517,7 +517,7 @@ function initDetailedCaseStudies() {
     panel.innerHTML = `
       <div class="cs-overview-banner">
         <div>
-          <span class="recruiter-fast-badge">${escapeHtml(sec.architecture ? 'VERIFIED ARCHITECTURE' : 'SYSTEM DEEP DIVE')}</span>
+          <span class="edu-badge">${escapeHtml(sec.architecture ? 'VERIFIED ARCHITECTURE' : 'SYSTEM DEEP DIVE')}</span>
           <h3 class="cs-overview-title">${escapeHtml(cs.title)}</h3>
           <div class="cs-overview-sub">${escapeHtml(cs.tagline || cs.subtitle || '')}</div>
         </div>
@@ -1324,7 +1324,7 @@ function initTechnicalNotes() {
         </div>
 
         <div class="article-modal-body">
-          <div class="recruiter-pitch-box" style="margin-bottom:20px;">
+          <div class="about-philosophy-box" style="margin-bottom:20px;">
             <strong style="color:var(--text-main);">Core Engineering Takeaway:</strong> ${escapeHtml(art.keyTakeaway)}
           </div>
 
@@ -1395,101 +1395,6 @@ function initCurrentlyExploring() {
       </div>
     </div>
   `).join('');
-}
-
-/* ==========================================================================
-   10.4. RECRUITER FAST-TRACK MODAL
-   ========================================================================== */
-function initRecruiterFastTrack() {
-  const navTrigger = document.getElementById('recruiterModalTrigger');
-  const heroTrigger = document.getElementById('heroFasttrackTrigger');
-  const backdrop = document.getElementById('recruiterModalBackdrop');
-  const content = document.getElementById('recruiterModalContent');
-  if (!backdrop || !content || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.recruiterExecutiveSummary) return;
-
-  const res = PORTFOLIO_DATA.recruiterExecutiveSummary;
-
-  window.openRecruiterModal = function() {
-    content.innerHTML = `
-      <div class="recruiter-modal-header">
-        <div>
-          <span class="recruiter-fast-badge">EXECUTIVE SUMMARY // 30-SECOND RECRUITER DIGEST</span>
-          <h2 style="font-size:1.7rem; font-weight:800; color:var(--text-main); margin-bottom:4px;">${escapeHtml(res.candidateName)}</h2>
-          <div style="font-size:0.95rem; color:var(--accent-primary); font-weight:600;">${escapeHtml(res.headline)}</div>
-          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint); margin-top:4px;">
-            ${escapeHtml(res.academicStatus)} · Target: ${escapeHtml(res.targetRoles)}
-          </div>
-        </div>
-        <button class="modal-close-trigger" id="recruiterModalCloseBtn" aria-label="Close recruiter summary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-
-      <div class="recruiter-modal-body">
-        <div class="recruiter-pitch-box">
-          <p style="font-size:0.95rem; color:var(--text-main); line-height:1.6; margin:0;">
-            "I build scalable backend systems, distributed applications, and AI-powered software. I am seeking SDE internship and graduate roles where I can contribute to high-concurrency event pipelines, reliable service design, and production engineering."
-          </p>
-        </div>
-
-        <div style="margin-bottom:20px;">
-          <h4 style="font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; color:var(--text-faint); margin-bottom:12px; letter-spacing:0.06em;">
-            Verified Technical Pillars &amp; Core Strengths:
-          </h4>
-          <ul class="modal-bullet-list">
-            ${res.coreStrengths.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
-          </ul>
-        </div>
-
-        <div class="recruiter-links-cluster">
-          <a href="${escapeHtml(res.verifiedLinks.resumeUrl)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-solid-orange btn-magnetic">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download Verified Resume
-          </a>
-          <a href="${escapeHtml(res.verifiedLinks.github)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
-            GitHub (@kumar-shubham1)
-          </a>
-          <a href="${escapeHtml(res.verifiedLinks.linkedin)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
-            LinkedIn Profile
-          </a>
-          <a href="${escapeHtml(res.verifiedLinks.leetcode)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
-            LeetCode (700+ Solved)
-          </a>
-          <a href="mailto:${escapeHtml(res.verifiedLinks.email)}" class="btn-editorial btn-ghost-orange btn-magnetic">
-            Email: ${escapeHtml(res.verifiedLinks.email)}
-          </a>
-        </div>
-      </div>
-    `;
-
-    backdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
-
-    const closeBtn = document.getElementById('recruiterModalCloseBtn');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        backdrop.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    }
-  };
-
-  if (navTrigger) navTrigger.addEventListener('click', window.openRecruiterModal);
-  if (heroTrigger) heroTrigger.addEventListener('click', window.openRecruiterModal);
-
-  backdrop.addEventListener('click', (e) => {
-    if (e.target === backdrop) {
-      backdrop.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && backdrop.classList.contains('open')) {
-      backdrop.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
 }
 
 /* ==========================================================================
@@ -1622,14 +1527,38 @@ function initScrollSpy() {
 function initMobileNav() {
   const toggleBtn = document.getElementById('navMenuToggle');
   const linksMenu = document.getElementById('navLinksMenu');
+  const moreBtn = document.getElementById('navMoreDropdownBtn');
+  const dropdownWrap = document.querySelector('.nav-dropdown-wrapper');
   if (!toggleBtn || !linksMenu) return;
 
   toggleBtn.addEventListener('click', () => {
     linksMenu.classList.toggle('open');
   });
 
+  if (moreBtn && dropdownWrap) {
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownWrap.classList.toggle('open');
+      const expanded = dropdownWrap.classList.contains('open');
+      moreBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdownWrap.contains(e.target)) {
+        dropdownWrap.classList.remove('open');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   linksMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => linksMenu.classList.remove('open'));
+    a.addEventListener('click', () => {
+      linksMenu.classList.remove('open');
+      if (dropdownWrap) {
+        dropdownWrap.classList.remove('open');
+        if (moreBtn) moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 }
 
