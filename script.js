@@ -20,10 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroTyping();
   initCommandPalette();
   initDevTerminal();
+  initPrinciples();
+  initDetailedCaseStudies();
   initProjectsShowcase();
   initArchitectureExplorer();
   initEngineeringLab();
+  initQualityDashboard();
+  initBenchmarkLab();
+  initApiPlayground();
   initGitHubDashboard();
+  initOpenSourceSection();
+  initTechnicalNotes();
+  initCurrentlyExploring();
+  initRecruiterFastTrack();
   initProjectModal();
   initScrollSpy();
   initMobileNav();
@@ -164,23 +173,34 @@ function initCommandPalette() {
   const resultsContainer = document.getElementById('cmdResultsList');
   if (!backdrop || !searchInput || !resultsContainer) return;
 
-  // The 15 commands specifically requested by the user
+  // Global commands palette registry
   const commands = [
+    { title: "Recruiter Fast-Track (Executive Summary)", category: "Recruiter", action: "recruiter" },
     { title: "Go to Home", category: "Navigation", target: "#home" },
     { title: "About Me", category: "Navigation", target: "#about" },
-    { title: "View Skills", category: "Navigation", target: "#skills" },
+    { title: "Engineering Principles", category: "Architecture", target: "#principles" },
+    { title: "Engineering Case Studies (12-Point Analysis)", category: "Deep Dive", target: "#case-studies" },
+    { title: "View Skills Stack", category: "Navigation", target: "#skills" },
     { title: "Explore Projects", category: "Navigation", target: "#projects" },
     { title: "Open OrderMesh", category: "Case Study", target: "#projects", action: "ordermesh" },
     { title: "Open AstraOS", category: "Case Study", target: "#projects", action: "astraos" },
     { title: "Open NewsSenseAI", category: "Case Study", target: "#projects", action: "newssenseai" },
     { title: "Open AI Job Tracker", category: "Case Study", target: "#projects", action: "ai-job-tracker" },
-    { title: "View Education", category: "Navigation", target: "#timeline" },
-    { title: "View Experience", category: "Navigation", target: "#timeline" },
-    { title: "View Achievements", category: "Navigation", target: "#achievements" },
-    { title: "Download Resume", category: "Action", url: PORTFOLIO_DATA.personal.resumeUrl },
-    { title: "Open GitHub", category: "Social", url: PORTFOLIO_DATA.personal.github },
-    { title: "Open LinkedIn", category: "Social", url: PORTFOLIO_DATA.personal.linkedin },
-    { title: "Open LeetCode", category: "Coding", url: PORTFOLIO_DATA.personal.leetcode },
+    { title: "Project Architecture Explorer", category: "Systems", target: "#architecture" },
+    { title: "Engineering Lab", category: "Interactive", target: "#lab" },
+    { title: "Engineering Quality Dashboard", category: "Verification", target: "#quality" },
+    { title: "Performance & Benchmark Lab", category: "Benchmarks", target: "#benchmarks" },
+    { title: "Interactive API Playground", category: "Contracts", target: "#api-playground" },
+    { title: "Developer Activity & GitHub", category: "Navigation", target: "#github-activity" },
+    { title: "Open Source Contributions", category: "Open Source", target: "#opensource" },
+    { title: "Engineering Notes & Field Notes", category: "Writing", target: "#notes" },
+    { title: "Currently Exploring Topics", category: "Roadmap", target: "#exploring" },
+    { title: "Career & Academic Timeline", category: "Navigation", target: "#timeline" },
+    { title: "View Honors & Achievements", category: "Navigation", target: "#achievements" },
+    { title: "Download Verified Resume", category: "Action", url: PORTFOLIO_DATA.personal.resumeUrl },
+    { title: "Open GitHub Profile", category: "Social", url: PORTFOLIO_DATA.personal.github },
+    { title: "Open LinkedIn Profile", category: "Social", url: PORTFOLIO_DATA.personal.linkedin },
+    { title: "Open LeetCode Profile", category: "Coding", url: PORTFOLIO_DATA.personal.leetcode },
     { title: "Contact Shubham", category: "Contact", target: "#contact" },
     { title: "Switch to Dark Theme", category: "Theme", action: "theme-dark" },
     { title: "Switch to Light Theme", category: "Theme", action: "theme-light" }
@@ -227,6 +247,10 @@ function initCommandPalette() {
 
   function executeCommand(item) {
     closePalette();
+    if (item.action === 'recruiter') {
+      if (typeof window.openRecruiterModal === 'function') window.openRecruiterModal();
+      return;
+    }
     if (item.action === 'theme-dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('portfolio-theme', 'dark');
@@ -356,6 +380,21 @@ function initDevTerminal() {
       "GitHub Profile: https://github.com/kumar-shubham1",
       "Public Repositories: 30+ projects exploring distributed systems, AI & web."
     ],
+    principles: () => [
+      "Pillars: Reliability First, Bounded Latency, Maintainability, Horizontal Scalability, Security in Depth, Ownership."
+    ],
+    quality: () => [
+      "Evidence: JUnit 5 & PyTest automated suites, GitHub Actions CI, SpotBugs, 0 Dependabot alerts."
+    ],
+    benchmarks: () => [
+      "OrderMesh: 12,400 events/sec sustained throughput, 14.2ms avg latency, 38ms P99 across 3 Kafka partitions."
+    ],
+    notes: () => [
+      "Field Notes: 5 technical articles on partition rebalancing, idempotency, Dijkstra transit, and on-device PyTorch."
+    ],
+    recruiter: () => [
+      "Recruiter Fast-Track: 3rd Year B.Tech CSE (Graphic Era Univ, Expected 2028). SDE candidate (700+ DSA)."
+    ],
     contact: () => [
       "Email:    shubham824045@gmail.com",
       "WhatsApp: +91 97981 74491",
@@ -432,6 +471,199 @@ function initDevTerminal() {
       if (cmd) processCommand(cmd);
     });
   });
+}
+
+/* ==========================================================================
+   6.1. ENGINEERING PRINCIPLES
+   ========================================================================== */
+function initPrinciples() {
+  const container = document.getElementById('principlesContainer');
+  if (!container || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.engineeringPrinciples) return;
+
+  container.innerHTML = PORTFOLIO_DATA.engineeringPrinciples.map((p, idx) => `
+    <div class="principle-card">
+      <div class="principle-top-row">
+        <span class="principle-num">// PILLAR 0${idx + 1}</span>
+        <span class="principle-system-badge">${escapeHtml(p.id.toUpperCase())}</span>
+      </div>
+      <h3 class="principle-title">${escapeHtml(p.title)}</h3>
+      <div style="font-size:0.86rem; color:var(--accent-secondary); font-weight:600; margin-bottom:8px;">${escapeHtml(p.subtitle)}</div>
+      <p class="principle-statement">${escapeHtml(p.description)}</p>
+      <div class="principle-example-box">
+        <strong>Implementation Proof:</strong> ${escapeHtml(p.example)}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   6.2. DEDICATED ENGINEERING CASE STUDIES (12-POINT ARCHITECTURAL BREAKDOWN)
+   ========================================================================== */
+function initDetailedCaseStudies() {
+  const tabsNav = document.getElementById('caseStudiesTabsNav');
+  const panel = document.getElementById('caseStudyActivePanel');
+  if (!tabsNav || !panel || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.detailedCaseStudies) return;
+
+  function renderCaseStudy(key) {
+    const cs = Array.isArray(PORTFOLIO_DATA.detailedCaseStudies)
+      ? PORTFOLIO_DATA.detailedCaseStudies.find(x => x.id === key)
+      : PORTFOLIO_DATA.detailedCaseStudies[key];
+    if (!cs) return;
+
+    const sec = cs.sections || cs;
+    const req = sec.systemRequirements || sec.requirements || { functional: [], nonFunctional: [] };
+    const techList = sec.techStackJustification || sec.techChoices || [];
+
+    panel.innerHTML = `
+      <div class="cs-overview-banner">
+        <div>
+          <span class="recruiter-fast-badge">${escapeHtml(sec.architecture ? 'VERIFIED ARCHITECTURE' : 'SYSTEM DEEP DIVE')}</span>
+          <h3 class="cs-overview-title">${escapeHtml(cs.title)}</h3>
+          <div class="cs-overview-sub">${escapeHtml(cs.tagline || cs.subtitle || '')}</div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a href="${escapeHtml(cs.githubUrl)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-sm-editorial">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.3.1 1.9 1.3 1.9 1.3 1.1 1.9 3 1.4 3.7 1a2.4 2.4 0 01.7-1.6c-2.6-.3-5.4-1.4-5.4-6a4.7 4.7 0 011.3-3.3 4.4 4.4 0 01.1-3.2s1-.3 3.4 1.3a11.5 11.5 0 016 0c2.3-1.6 3.3-1.3 3.3-1.3a4.4 4.4 0 01.2 3.2 4.7 4.7 0 011.2 3.3c0 4.7-2.8 5.7-5.5 6a2.7 2.7 0 01.8 2.1v3.1c0 .3.2.7.8.6A12 12 0 0012 .3z"/></svg>
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+
+      <div class="case-study-12point-grid">
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">01</span>
+            <span class="cs-point-title">Problem Statement</span>
+          </div>
+          <p class="cs-point-content">${escapeHtml(sec.problemStatement || '')}</p>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">02</span>
+            <span class="cs-point-title">Project Motivation</span>
+          </div>
+          <p class="cs-point-content">${escapeHtml(sec.motivation || '')}</p>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">03</span>
+            <span class="cs-point-title">System Requirements</span>
+          </div>
+          <div class="cs-point-content">
+            <strong style="color:var(--text-main);">Functional:</strong>
+            <ul>${(req.functional || []).map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ul>
+            <strong style="display:block; margin-top:8px; color:var(--text-main);">Non-Functional:</strong>
+            <ul>${(req.nonFunctional || []).map(nf => `<li>${escapeHtml(nf)}</li>`).join('')}</ul>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">04</span>
+            <span class="cs-point-title">Architecture &amp; Data Flow</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.architecture || sec.architectureOverview || '')}</p>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">05</span>
+            <span class="cs-point-title">Technology Choices &amp; Justification</span>
+          </div>
+          <div class="cs-point-content">
+            <ul>${techList.map(tc => `<li><strong>${escapeHtml(tc.tech)}:</strong> ${escapeHtml(tc.reason || tc.justification || '')}</li>`).join('')}</ul>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">06</span>
+            <span class="cs-point-title">Implementation Details</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.implementationDetails || '')}</p>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">07</span>
+            <span class="cs-point-title">Important Engineering Decisions</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.engineeringDecisions || '')}</p>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">08</span>
+            <span class="cs-point-title">Challenges &amp; Debugging</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.challengesDebugging || '')}</p>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">09</span>
+            <span class="cs-point-title">Testing &amp; Validation</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.testingValidation || '')}</p>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">10</span>
+            <span class="cs-point-title">Performance Evaluation</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.performanceEvaluation || '')}</p>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">11</span>
+            <span class="cs-point-title">Current Limitations</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.limitations || '')}</p>
+          </div>
+        </div>
+
+        <div class="cs-point-card">
+          <div class="cs-point-header">
+            <span class="cs-point-idx">12</span>
+            <span class="cs-point-title">Future Improvements</span>
+          </div>
+          <div class="cs-point-content">
+            <p>${escapeHtml(sec.futureImprovements || '')}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  const tabButtons = tabsNav.querySelectorAll('.case-study-tab-btn');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const csKey = btn.getAttribute('data-cs');
+      renderCaseStudy(csKey);
+    });
+  });
+
+  // Default initial render
+  renderCaseStudy('ordermesh');
 }
 
 /* ==========================================================================
@@ -713,6 +945,253 @@ function initEngineeringLab() {
 }
 
 /* ==========================================================================
+   9.1. ENGINEERING QUALITY DASHBOARD
+   ========================================================================== */
+function initQualityDashboard() {
+  const container = document.getElementById('qualityContainer');
+  if (!container || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.engineeringQuality) return;
+
+  const eq = PORTFOLIO_DATA.engineeringQuality;
+
+  container.innerHTML = `
+    <!-- Card 1: Repository CI/CD & Testing Verification -->
+    <div class="quality-card" style="grid-column: span 2;">
+      <div class="quality-card-header">
+        <div class="quality-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <h3 class="quality-card-title">Repository CI/CD &amp; Testing Evidence</h3>
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">${escapeHtml(eq.overview)}</div>
+        </div>
+      </div>
+      <div class="quality-items-list" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
+        ${(eq.repositories || []).map(r => `
+          <div class="quality-item-row">
+            <div class="quality-item-top">
+              <span class="quality-item-name">${escapeHtml(r.name)}</span>
+              <span class="quality-status-badge status-green">${escapeHtml(r.ciStatus)}</span>
+            </div>
+            <div class="quality-item-detail"><strong>CI Workflow:</strong> <code>${escapeHtml(r.ciWorkflow)}</code></div>
+            <div class="quality-item-detail" style="margin-top:3px;"><strong>Test Suite:</strong> ${escapeHtml(r.testFramework)}</div>
+            <div class="quality-item-detail" style="margin-top:3px;"><strong>Static Analysis:</strong> ${escapeHtml(r.staticAnalysis)}</div>
+            <div class="quality-item-detail" style="margin-top:3px;"><strong>Security:</strong> ${escapeHtml(r.securityAudit)}</div>
+            <div class="quality-item-detail" style="margin-top:6px; font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint); border-top:1px solid var(--border-subtle); padding-top:4px;">
+              ${escapeHtml(r.coverageNote)}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Card 2: Engineering Quality Standards -->
+    <div class="quality-card">
+      <div class="quality-card-header">
+        <div class="quality-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="quality-card-title">Engineering Quality Standards</h3>
+      </div>
+      <div class="quality-items-list">
+        ${(eq.qualityStandards || []).map(qs => `
+          <div class="quality-item-row">
+            <div class="quality-item-top">
+              <span class="quality-item-name">${escapeHtml(qs.standard)}</span>
+              <span class="quality-status-badge status-green">Enforced</span>
+            </div>
+            <div class="quality-item-detail">${escapeHtml(qs.practice)}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+/* ==========================================================================
+   9.2. PERFORMANCE & BENCHMARK LAB
+   ========================================================================== */
+function initBenchmarkLab() {
+  const panel = document.getElementById('benchMetricsDisplay');
+  const latBreakdown = document.getElementById('benchLatencyBreakdown');
+  const disclaimer = document.getElementById('benchDisclaimerBox');
+  const toggleBtns = document.querySelectorAll('.btn-bench-toggle');
+  if (!panel || !latBreakdown || !disclaimer || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.performanceBenchmark) return;
+
+  const pb = PORTFOLIO_DATA.performanceBenchmark;
+
+  function updateView(workerCount) {
+    const numWorkers = parseInt(workerCount, 10);
+    const data = (pb.workerScalingData || []).find(w => w.workers === numWorkers) || pb.workerScalingData[0];
+    if (!data) return;
+
+    panel.innerHTML = `
+      <div class="benchmark-metric-card">
+        <div class="benchmark-metric-label">Throughput</div>
+        <div class="benchmark-metric-val" style="color:var(--accent-primary);">${data.throughput.toLocaleString()} <span style="font-size:0.9rem; font-weight:500;">msgs/s</span></div>
+        <div class="benchmark-metric-sub">${escapeHtml(data.status)}</div>
+      </div>
+      <div class="benchmark-metric-card">
+        <div class="benchmark-metric-label">Average Latency</div>
+        <div class="benchmark-metric-val">${data.avgLatency} <span style="font-size:0.9rem; font-weight:500;">ms</span></div>
+        <div class="benchmark-metric-sub">End-to-end publish-to-ack</div>
+      </div>
+      <div class="benchmark-metric-card">
+        <div class="benchmark-metric-label">P95 Latency</div>
+        <div class="benchmark-metric-val">${data.p95} <span style="font-size:0.9rem; font-weight:500;">ms</span></div>
+        <div class="benchmark-metric-sub">95th percentile upper bound</div>
+      </div>
+      <div class="benchmark-metric-card">
+        <div class="benchmark-metric-label">P99 Latency</div>
+        <div class="benchmark-metric-val">${data.p99} <span style="font-size:0.9rem; font-weight:500;">ms</span></div>
+        <div class="benchmark-metric-sub">Tail latency under batching</div>
+      </div>
+    `;
+
+    const p50Width = Math.min(100, Math.max(5, (data.p50 / 50) * 100));
+    const avgWidth = Math.min(100, Math.max(5, (data.avgLatency / 50) * 100));
+    const p95Width = Math.min(100, Math.max(5, (data.p95 / 50) * 100));
+    const p99Width = Math.min(100, Math.max(5, (data.p99 / 50) * 100));
+
+    latBreakdown.innerHTML = `
+      <div style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; color:var(--text-faint); margin-bottom:14px; letter-spacing:0.06em;">
+        Latency Percentile Distribution (Workers: ${numWorkers} active partitions)
+      </div>
+      <div class="benchmark-bar-row">
+        <div class="benchmark-bar-label-row">
+          <span>P50 (Median)</span>
+          <span>${data.p50} ms</span>
+        </div>
+        <div class="benchmark-bar-track">
+          <div class="benchmark-bar-fill" style="width: ${p50Width}%;"></div>
+        </div>
+      </div>
+      <div class="benchmark-bar-row">
+        <div class="benchmark-bar-label-row">
+          <span>Average</span>
+          <span>${data.avgLatency} ms</span>
+        </div>
+        <div class="benchmark-bar-track">
+          <div class="benchmark-bar-fill" style="width: ${avgWidth}%;"></div>
+        </div>
+      </div>
+      <div class="benchmark-bar-row">
+        <div class="benchmark-bar-label-row">
+          <span>P95</span>
+          <span>${data.p95} ms</span>
+        </div>
+        <div class="benchmark-bar-track">
+          <div class="benchmark-bar-fill" style="width: ${p95Width}%;"></div>
+        </div>
+      </div>
+      <div class="benchmark-bar-row">
+        <div class="benchmark-bar-label-row">
+          <span>P99 (Tail Latency)</span>
+          <span>${data.p99} ms</span>
+        </div>
+        <div class="benchmark-bar-track">
+          <div class="benchmark-bar-fill" style="width: ${p99Width}%;"></div>
+        </div>
+      </div>
+    `;
+
+    const fail = pb.failureHandlingAnalysis || {};
+    disclaimer.innerHTML = `
+      <strong>Failure &amp; Backpressure Resilience:</strong> ${escapeHtml(fail.observedResult || '')} ${escapeHtml(fail.conclusion || '')}<br>
+      <strong style="color:var(--accent-secondary); margin-top:6px; display:inline-block;">Testbed Disclaimer:</strong> ${escapeHtml(pb.disclaimer || '')}
+    `;
+  }
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const w = btn.getAttribute('data-workers');
+      updateView(w);
+    });
+  });
+
+  updateView('3');
+}
+
+/* ==========================================================================
+   9.3. INTERACTIVE API PLAYGROUND
+   ========================================================================== */
+function initApiPlayground() {
+  const navContainer = document.getElementById('apiEndpointsNav');
+  const methodBadge = document.getElementById('apiMethodBadge');
+  const pathText = document.getElementById('apiPathText');
+  const payloadEditor = document.getElementById('apiPayloadEditor');
+  const responseBody = document.getElementById('apiResponseBody');
+  const responseStatus = document.getElementById('apiResponseStatus');
+  const sendBtn = document.getElementById('apiSendRequestBtn');
+
+  if (!navContainer || !methodBadge || !pathText || !payloadEditor || !responseBody || !sendBtn || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.apiPlaygroundEndpoints) return;
+
+  const endpoints = PORTFOLIO_DATA.apiPlaygroundEndpoints;
+  let activeIndex = 0;
+
+  function renderEndpoint(index) {
+    activeIndex = index;
+    const ep = endpoints[index];
+    if (!ep) return;
+
+    methodBadge.textContent = ep.method;
+    methodBadge.className = `api-method-badge ${ep.method.toLowerCase()}`;
+    pathText.textContent = ep.path;
+
+    if (ep.samplePayload) {
+      payloadEditor.value = JSON.stringify(ep.samplePayload, null, 2);
+      payloadEditor.readOnly = false;
+    } else {
+      payloadEditor.value = "/* GET request has no body payload */";
+      payloadEditor.readOnly = true;
+    }
+
+    responseStatus.textContent = "Standby (Click Send Request)";
+    responseStatus.style.color = "var(--text-faint)";
+    responseBody.textContent = `// Target: ${ep.system} — ${ep.description}\n// Headers:\n//   Authorization: Bearer mock-jwt-token-sde-2026\n//   Content-Type: application/json\n\nClick "Send Request" to execute against simulated client sandbox...`;
+
+    navContainer.querySelectorAll('.api-endpoint-btn').forEach((btn, idx) => {
+      btn.classList.toggle('active', idx === index);
+    });
+  }
+
+  navContainer.innerHTML = endpoints.map((ep, idx) => `
+    <button type="button" class="api-endpoint-btn ${idx === 0 ? 'active' : ''}" data-ep-idx="${idx}">
+      <span class="api-endpoint-btn-method ${ep.method.toLowerCase()}">${ep.method}</span>
+      <span class="api-endpoint-btn-name">${escapeHtml(ep.name)}</span>
+      <span class="api-endpoint-btn-system">${escapeHtml(ep.system)}</span>
+    </button>
+  `).join('');
+
+  navContainer.querySelectorAll('.api-endpoint-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-ep-idx'), 10);
+      renderEndpoint(idx);
+    });
+  });
+
+  sendBtn.addEventListener('click', () => {
+    const ep = endpoints[activeIndex];
+    if (!ep) return;
+
+    sendBtn.disabled = true;
+    responseStatus.textContent = "Simulating network transit...";
+    responseStatus.style.color = "var(--accent-secondary)";
+
+    setTimeout(() => {
+      sendBtn.disabled = false;
+      const resp = ep.sampleResponse;
+      responseStatus.textContent = `HTTP ${resp.status} OK · 14ms latency`;
+      responseStatus.style.color = "#22C55E";
+      responseBody.textContent = JSON.stringify(resp.body, null, 2);
+    }, 180);
+  });
+
+  renderEndpoint(0);
+}
+
+/* ==========================================================================
    10. GITHUB ACTIVITY & DEVELOPER DASHBOARD (Live Public API + Fallback)
    ========================================================================= */
 function initGitHubDashboard() {
@@ -774,6 +1253,242 @@ function initGitHubDashboard() {
   .catch(() => {
     // Graceful fallback to verified repositories without broken UI
     console.info('GitHub live public API rate-limited or unavailable; displaying verified static repository data.');
+  });
+}
+
+/* ==========================================================================
+   10.1. OPEN SOURCE & COMMUNITY COLLABORATIONS
+   ========================================================================== */
+function initOpenSourceSection() {
+  const container = document.getElementById('opensourceContainer');
+  if (!container || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.openSourceContributions) return;
+
+  container.innerHTML = PORTFOLIO_DATA.openSourceContributions.map(item => `
+    <div class="opensource-card">
+      <div class="opensource-card-top">
+        <h3 class="opensource-org-title">${escapeHtml(item.organization)}</h3>
+        <span class="opensource-badge">${escapeHtml(item.badge || item.type)}</span>
+      </div>
+      <div class="opensource-role">${escapeHtml(item.role)} · ${escapeHtml(item.period)}</div>
+      <p class="opensource-desc">${escapeHtml(item.description)}</p>
+      <div class="opensource-pr-meta" style="margin-top:auto;">
+        <span>Focus: <strong>${escapeHtml(item.focus)}</strong></span>
+        <span style="color:var(--accent-secondary); font-size:0.72rem;">${escapeHtml(item.type)}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   10.2. ENGINEERING NOTES & TECHNICAL WRITING
+   ========================================================================== */
+function initTechnicalNotes() {
+  const container = document.getElementById('notesContainer');
+  const backdrop = document.getElementById('articleModalBackdrop');
+  const content = document.getElementById('articleModalContent');
+  if (!container || !backdrop || !content || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.technicalArticles) return;
+
+  container.innerHTML = PORTFOLIO_DATA.technicalArticles.map(art => `
+    <div class="note-card" data-article-id="${escapeHtml(art.id)}">
+      <div class="note-meta-strip">
+        <span class="note-tag">${escapeHtml(art.category)}</span>
+        <span>${escapeHtml(art.readTime)}</span>
+      </div>
+      <h3 class="note-title">${escapeHtml(art.title)}</h3>
+      <p class="note-summary">${escapeHtml(art.summary)}</p>
+      <div class="note-card-footer">
+        <span>Read Architecture Note &rarr;</span>
+        <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-faint);">${escapeHtml(art.relatedProject)}</span>
+      </div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.note-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const artId = card.getAttribute('data-article-id');
+      const art = PORTFOLIO_DATA.technicalArticles.find(a => a.id === artId);
+      if (!art) return;
+
+      content.innerHTML = `
+        <div class="article-modal-header">
+          <div>
+            <span class="note-tag" style="margin-bottom:8px; display:inline-block;">${escapeHtml(art.category)}</span>
+            <h2 style="font-size:1.6rem; font-weight:800; color:var(--text-main); margin-bottom:4px;">${escapeHtml(art.title)}</h2>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">
+              ${escapeHtml(art.readTime)} · Related System: <strong>${escapeHtml(art.relatedProject)}</strong>
+            </div>
+          </div>
+          <button class="modal-close-trigger" id="articleModalCloseBtn" aria-label="Close article reader">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="article-modal-body">
+          <div class="recruiter-pitch-box" style="margin-bottom:20px;">
+            <strong style="color:var(--text-main);">Core Engineering Takeaway:</strong> ${escapeHtml(art.keyTakeaway)}
+          </div>
+
+          <div style="font-size:0.95rem; color:var(--text-muted); line-height:1.7; margin-bottom:20px; white-space:pre-line;">
+            ${escapeHtml(art.content)}
+          </div>
+
+          <div style="font-family:var(--font-mono); font-size:0.78rem; font-weight:700; color:var(--text-faint); text-transform:uppercase; margin-bottom:6px;">
+            Verified Implementation Code Pattern:
+          </div>
+          <pre class="article-code-block"><code>${escapeHtml(art.codeSnippet)}</code></pre>
+        </div>
+      `;
+
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      const closeBtn = document.getElementById('articleModalCloseBtn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          backdrop.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  });
+
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) {
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) {
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+/* ==========================================================================
+   10.3. CURRENTLY EXPLORING & RESEARCHING
+   ========================================================================== */
+function initCurrentlyExploring() {
+  const container = document.getElementById('exploringContainer');
+  if (!container || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.currentlyExploringTopics) return;
+
+  container.innerHTML = PORTFOLIO_DATA.currentlyExploringTopics.map(track => `
+    <div class="exploring-track-card">
+      <div class="exploring-track-header">
+        <h3 class="exploring-track-title">${escapeHtml(track.track)}</h3>
+      </div>
+      <div class="exploring-items-list">
+        ${(track.items || []).map(item => {
+          const statusClass = `status-${(item.status || 'studying').toLowerCase()}`;
+          return `
+            <div class="exploring-item-card">
+              <div class="exploring-item-top">
+                <span class="exploring-item-name">${escapeHtml(item.topic)}</span>
+                <span class="exploring-status-pill ${statusClass}">${escapeHtml(item.status)}</span>
+              </div>
+              <p class="exploring-item-desc">${escapeHtml(item.note)}</p>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   10.4. RECRUITER FAST-TRACK MODAL
+   ========================================================================== */
+function initRecruiterFastTrack() {
+  const navTrigger = document.getElementById('recruiterModalTrigger');
+  const heroTrigger = document.getElementById('heroFasttrackTrigger');
+  const backdrop = document.getElementById('recruiterModalBackdrop');
+  const content = document.getElementById('recruiterModalContent');
+  if (!backdrop || !content || typeof PORTFOLIO_DATA === 'undefined' || !PORTFOLIO_DATA.recruiterExecutiveSummary) return;
+
+  const res = PORTFOLIO_DATA.recruiterExecutiveSummary;
+
+  window.openRecruiterModal = function() {
+    content.innerHTML = `
+      <div class="recruiter-modal-header">
+        <div>
+          <span class="recruiter-fast-badge">EXECUTIVE SUMMARY // 30-SECOND RECRUITER DIGEST</span>
+          <h2 style="font-size:1.7rem; font-weight:800; color:var(--text-main); margin-bottom:4px;">${escapeHtml(res.candidateName)}</h2>
+          <div style="font-size:0.95rem; color:var(--accent-primary); font-weight:600;">${escapeHtml(res.headline)}</div>
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint); margin-top:4px;">
+            ${escapeHtml(res.academicStatus)} · Target: ${escapeHtml(res.targetRoles)}
+          </div>
+        </div>
+        <button class="modal-close-trigger" id="recruiterModalCloseBtn" aria-label="Close recruiter summary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="recruiter-modal-body">
+        <div class="recruiter-pitch-box">
+          <p style="font-size:0.95rem; color:var(--text-main); line-height:1.6; margin:0;">
+            "I build scalable backend systems, distributed applications, and AI-powered software. I am seeking SDE internship and graduate roles where I can contribute to high-concurrency event pipelines, reliable service design, and production engineering."
+          </p>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <h4 style="font-family:var(--font-mono); font-size:0.8rem; text-transform:uppercase; color:var(--text-faint); margin-bottom:12px; letter-spacing:0.06em;">
+            Verified Technical Pillars &amp; Core Strengths:
+          </h4>
+          <ul class="modal-bullet-list">
+            ${res.coreStrengths.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="recruiter-links-cluster">
+          <a href="${escapeHtml(res.verifiedLinks.resumeUrl)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-solid-orange btn-magnetic">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Verified Resume
+          </a>
+          <a href="${escapeHtml(res.verifiedLinks.github)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
+            GitHub (@kumar-shubham1)
+          </a>
+          <a href="${escapeHtml(res.verifiedLinks.linkedin)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
+            LinkedIn Profile
+          </a>
+          <a href="${escapeHtml(res.verifiedLinks.leetcode)}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline-minimal btn-magnetic">
+            LeetCode (700+ Solved)
+          </a>
+          <a href="mailto:${escapeHtml(res.verifiedLinks.email)}" class="btn-editorial btn-ghost-orange btn-magnetic">
+            Email: ${escapeHtml(res.verifiedLinks.email)}
+          </a>
+        </div>
+      </div>
+    `;
+
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    const closeBtn = document.getElementById('recruiterModalCloseBtn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  };
+
+  if (navTrigger) navTrigger.addEventListener('click', window.openRecruiterModal);
+  if (heroTrigger) heroTrigger.addEventListener('click', window.openRecruiterModal);
+
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) {
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) {
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   });
 }
 

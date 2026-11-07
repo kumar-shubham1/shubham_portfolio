@@ -45,16 +45,24 @@
       <nav class="nav-links-menu" id="navLinksMenu" aria-label="Main Navigation">
         <a href="#home" class="nav-item active">Home</a>
         <a href="#about" class="nav-item">About</a>
-        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#principles" class="nav-item">Principles</a>
+        <a href="#case-studies" class="nav-item">Case Studies</a>
         <a href="#projects" class="nav-item">Projects</a>
-        <a href="#architecture" class="nav-item">Architecture</a>
-        <a href="#lab" class="nav-item">Lab</a>
-        <a href="#github-activity" class="nav-item">Dashboard</a>
+        <a href="#quality" class="nav-item">Quality</a>
+        <a href="#benchmarks" class="nav-item">Benchmarks</a>
+        <a href="#opensource" class="nav-item">Open Source</a>
+        <a href="#notes" class="nav-item">Notes</a>
+        <a href="#api-playground" class="nav-item">API</a>
         <a href="#timeline" class="nav-item">Timeline</a>
         <a href="#contact" class="nav-item">Contact</a>
       </nav>
 
       <div class="nav-actions">
+        <button type="button" class="btn-fasttrack btn-magnetic" id="recruiterModalTrigger" aria-label="Open Recruiter Fast-Track summary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Recruiter Fast-Track</span>
+        </button>
+
         <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -109,6 +117,10 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download Resume
             </a>
+            <button type="button" class="btn-editorial btn-fasttrack-outline btn-magnetic" id="heroFasttrackTrigger">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Recruiter Fast-Track
+            </button>
             <a href="#contact" class="btn-editorial btn-ghost-orange btn-magnetic">
               Let's Connect
             </a>
@@ -249,6 +261,21 @@
               <button type="button" class="quick-cmd-btn" data-cmd="clear">clear</button>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ENGINEERING PRINCIPLES ===== -->
+    <section id="principles">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Core Philosophy</span>
+          <h2 class="section-title">Engineering Principles</h2>
+          <p class="section-desc">Practical architectural heuristics derived from building distributed event streams, backend microservices, and on-device software.</p>
+        </div>
+
+        <div class="principles-grid" id="principlesContainer">
+          <!-- Injected dynamically by script.js -->
         </div>
       </div>
     </section>
@@ -461,6 +488,49 @@
       </div>
     </section>
 
+    <!-- ===== DEDICATED ENGINEERING CASE STUDIES (12-POINT DEEP DIVE) ===== -->
+    <section id="case-studies">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Deep-Dive Systems Analysis</span>
+          <h2 class="section-title">Engineering Case Studies</h2>
+          <p class="section-desc">In-depth technical dissections of my strongest production-grade systems: requirement framing, architectural trade-offs, debugging stories, and measured benchmarks.</p>
+        </div>
+
+        <div class="case-studies-container">
+          <!-- Case Studies Tab Bar -->
+          <div class="case-studies-tabs-nav" id="caseStudiesTabsNav">
+            <button type="button" class="case-study-tab-btn active" data-cs="ordermesh">
+              <span class="cs-tab-number">01</span>
+              <div class="cs-tab-meta">
+                <strong>OrderMesh</strong>
+                <span>Kafka Event Streaming</span>
+              </div>
+            </button>
+            <button type="button" class="case-study-tab-btn" data-cs="astraos">
+              <span class="cs-tab-number">02</span>
+              <div class="cs-tab-meta">
+                <strong>AstraOS</strong>
+                <span>Offline Local AI</span>
+              </div>
+            </button>
+            <button type="button" class="case-study-tab-btn" data-cs="newssenseai">
+              <span class="cs-tab-number">03</span>
+              <div class="cs-tab-meta">
+                <strong>NewsSenseAI</strong>
+                <span>Spring Boot &amp; Spring AI</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Active Case Study Dynamic View -->
+          <div class="case-study-view-panel" id="caseStudyActivePanel">
+            <!-- Populated dynamically by script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== PROJECT SHOWCASE (ALTERNATING EDITORIAL BLUEPRINTS) ===== -->
     <section id="projects">
       <div class="wrap">
@@ -610,6 +680,113 @@
       </div>
     </section>
 
+    <!-- ===== ENGINEERING QUALITY DASHBOARD ===== -->
+    <section id="quality">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Verification &amp; CI/CD</span>
+          <h2 class="section-title">Engineering Quality &amp; Evidence</h2>
+          <p class="section-desc">Automated testing suites, GitHub Actions CI workflows, static analysis, and dependency security audits derived directly from active repositories.</p>
+        </div>
+
+        <div class="quality-grid" id="qualityContainer">
+          <!-- Populated dynamically by script.js from PORTFOLIO_DATA.engineeringQuality -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PERFORMANCE & BENCHMARK LAB ===== -->
+    <section id="benchmarks">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Measured System Latencies</span>
+          <h2 class="section-title">Performance &amp; Benchmark Lab</h2>
+          <p class="section-desc">OrderMesh throughput and latency distribution measurements under simulated worker scaling. Transparent testbed conditions.</p>
+        </div>
+
+        <div class="benchmark-lab-panel">
+          <div class="benchmark-lab-header">
+            <div>
+              <h3 style="font-size:1.25rem; font-weight:700; color:var(--text-main); margin-bottom:4px;">OrderMesh Worker Scalability &amp; Latency</h3>
+              <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">Testbed: Single-node Docker (Kafka 3.4 KRaft, 3-partition order topic, consumer concurrency 1–3)</div>
+            </div>
+            <!-- Interactive Worker Selector -->
+            <div class="benchmark-worker-controls">
+              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted); margin-right:8px;">Worker Scale:</span>
+              <button type="button" class="btn-bench-toggle" data-workers="1">1 Worker</button>
+              <button type="button" class="btn-bench-toggle" data-workers="2">2 Workers</button>
+              <button type="button" class="btn-bench-toggle active" data-workers="3">3 Workers</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Metrics Grid -->
+          <div class="benchmark-metrics-display" id="benchMetricsDisplay">
+            <!-- Populated dynamically by script.js -->
+          </div>
+
+          <!-- Latency Distribution Bars -->
+          <div class="benchmark-latency-breakdown" id="benchLatencyBreakdown">
+            <!-- Populated dynamically by script.js -->
+          </div>
+
+          <!-- Failure Handling & Transparency Disclaimer -->
+          <div class="benchmark-disclaimer-box" id="benchDisclaimerBox">
+            <!-- Populated dynamically by script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INTERACTIVE API PLAYGROUND ===== -->
+    <section id="api-playground">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Interactive Contract Explorer</span>
+          <h2 class="section-title">API Playground &amp; Contracts</h2>
+          <p class="section-desc">Inspect real request payloads, schema contracts, and simulate live REST responses for OrderMesh and NewsSenseAI endpoints.</p>
+        </div>
+
+        <div class="api-playground-box">
+          <div class="api-playground-sidebar">
+            <div class="api-endpoint-selector-label">AVAILABLE ENDPOINTS</div>
+            <div class="api-endpoints-nav" id="apiEndpointsNav">
+              <!-- Endpoint tab buttons populated dynamically -->
+            </div>
+          </div>
+
+          <div class="api-playground-console">
+            <div class="api-console-header">
+              <div class="api-url-bar" id="apiUrlBar">
+                <span class="api-method-badge" id="apiMethodBadge">POST</span>
+                <span class="api-path-text" id="apiPathText">/api/v1/orders/checkout</span>
+              </div>
+              <button type="button" class="btn-editorial btn-solid-orange btn-sm-editorial btn-magnetic" id="apiSendRequestBtn">
+                Send Request
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </button>
+            </div>
+
+            <div class="api-console-panes">
+              <!-- Request Pane -->
+              <div class="api-pane api-request-pane">
+                <div class="api-pane-title">REQUEST PAYLOAD (JSON)</div>
+                <textarea id="apiPayloadEditor" class="api-code-textarea" spellcheck="false"></textarea>
+              </div>
+
+              <!-- Response Pane -->
+              <div class="api-pane api-response-pane">
+                <div class="api-pane-title-row">
+                  <div class="api-pane-title">SIMULATED RESPONSE</div>
+                  <div class="api-response-status" id="apiResponseStatus">HTTP 200 OK · 14ms</div>
+                </div>
+                <pre class="api-json-pre" id="apiResponseBody">Click "Send Request" to simulate execution...</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== DEVELOPER ACTIVITY & GITHUB DASHBOARD ===== -->
     <section id="github-activity">
       <div class="wrap">
@@ -639,57 +816,47 @@
       </div>
     </section>
 
-    <!-- ===== CURRENTLY BUILDING (CENTRALIZED DATA) ===== -->
-    <section id="building">
+    <!-- ===== OPEN SOURCE & COMMUNITY COLLABORATION ===== -->
+    <section id="opensource">
       <div class="wrap">
         <div class="section-meta-header">
-          <span class="section-label">Active Exploration</span>
-          <h2 class="section-title">Currently Building &amp; Researching</h2>
-          <p class="section-desc">Active investigations into distributed consensus protocols, high-concurrency RPC protocols, and edge compute.</p>
+          <span class="section-label">Community &amp; Code Review</span>
+          <h2 class="section-title">Open Source Contributions</h2>
+          <p class="section-desc">Selected contributions to developer tools and community repositories, distinguishing original repositories from collaborative codebases.</p>
         </div>
 
-        <div class="currently-building-grid">
-          <div class="building-card">
-            <div class="building-card-top">
-              <span class="building-status-pill">Active Prototype</span>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">SYSTEMS</span>
-            </div>
-            <h3 class="building-title">Distributed Consensus Protocols (Raft)</h3>
-            <p class="building-focus">Implementing leader election, log replication, and heartbeat mechanisms in Python/Go to examine network partition split-brain resilience.</p>
-            <div class="building-tech-stack">
-              <span class="tech-tag-mono">Raft</span>
-              <span class="tech-tag-mono">RPC</span>
-              <span class="tech-tag-mono">Distributed</span>
-            </div>
-          </div>
+        <div class="opensource-grid" id="opensourceContainer">
+          <!-- Populated dynamically by script.js from PORTFOLIO_DATA.openSourceContributions -->
+        </div>
+      </div>
+    </section>
 
-          <div class="building-card">
-            <div class="building-card-top">
-              <span class="building-status-pill">Benchmarking</span>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">BACKEND</span>
-            </div>
-            <h3 class="building-title">High-Throughput gRPC Microservices</h3>
-            <p class="building-focus">Benchmarking Protocol Buffers vs REST JSON serialization latencies under high concurrency workloads.</p>
-            <div class="building-tech-stack">
-              <span class="tech-tag-mono">Java</span>
-              <span class="tech-tag-mono">gRPC</span>
-              <span class="tech-tag-mono">Protobuf</span>
-            </div>
-          </div>
+    <!-- ===== ENGINEERING NOTES & TECHNICAL WRITING ===== -->
+    <section id="notes">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Field Notes &amp; Architecture</span>
+          <h2 class="section-title">Engineering Notes</h2>
+          <p class="section-desc">Concise technical essays dissecting concurrency hazards, transactional patterns, partition rebalancing, and on-device inference.</p>
+        </div>
 
-          <div class="building-card">
-            <div class="building-card-top">
-              <span class="building-status-pill">Model Quantization</span>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint);">AI EDGE</span>
-            </div>
-            <h3 class="building-title">On-Device Edge Vision Pipelines</h3>
-            <p class="building-focus">Optimizing quantized PyTorch models for zero-cloud latency inference in low-compute hardware environments.</p>
-            <div class="building-tech-stack">
-              <span class="tech-tag-mono">PyTorch</span>
-              <span class="tech-tag-mono">ONNX</span>
-              <span class="tech-tag-mono">Computer Vision</span>
-            </div>
-          </div>
+        <div class="notes-grid" id="notesContainer">
+          <!-- Populated dynamically by script.js from PORTFOLIO_DATA.technicalArticles -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CURRENTLY EXPLORING (STRUCTURED TRACKS) ===== -->
+    <section id="exploring">
+      <div class="wrap">
+        <div class="section-meta-header">
+          <span class="section-label">Technical Horizons</span>
+          <h2 class="section-title">Currently Exploring &amp; Researching</h2>
+          <p class="section-desc">Structured learning roadmaps and hands-on prototypes across distributed systems, backend performance, and AI engineering.</p>
+        </div>
+
+        <div class="exploring-tracks-grid" id="exploringContainer">
+          <!-- Populated dynamically by script.js from PORTFOLIO_DATA.currentlyExploringTopics -->
         </div>
       </div>
     </section>
@@ -918,6 +1085,20 @@
   <!-- ===== PROJECT DETAILS MODAL / DRAWER ===== -->
   <div class="project-modal-backdrop" id="projectModalBackdrop" role="dialog" aria-modal="true" aria-label="Project Case Study Sheet">
     <div class="project-modal-sheet" id="projectModalSheetContent">
+      <!-- Injected dynamically by script.js -->
+    </div>
+  </div>
+
+  <!-- ===== RECRUITER FAST-TRACK MODAL ===== -->
+  <div class="recruiter-modal-backdrop" id="recruiterModalBackdrop" role="dialog" aria-modal="true" aria-label="Recruiter Fast-Track Executive Summary">
+    <div class="recruiter-modal-sheet" id="recruiterModalContent">
+      <!-- Injected dynamically by script.js -->
+    </div>
+  </div>
+
+  <!-- ===== TECHNICAL ARTICLE MODAL READER ===== -->
+  <div class="article-modal-backdrop" id="articleModalBackdrop" role="dialog" aria-modal="true" aria-label="Engineering Note Reader">
+    <div class="article-modal-sheet" id="articleModalContent">
       <!-- Injected dynamically by script.js -->
     </div>
   </div>
